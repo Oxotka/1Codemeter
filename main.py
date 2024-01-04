@@ -1,12 +1,15 @@
 import secret
 import re
 import os
+import git
 
 
 class ObjectTree:
     def __init__(self, conf_name):
         self.configuration_name = conf_name
         self.subsystems = []
+        self.path_to_repo = secret.path_to_repo()
+        self.name_of_src = secret.name_of_configuration()
 
     def print_obj(self):
         spacer = '  '
@@ -17,6 +20,7 @@ class ObjectTree:
             self.print_subsystem(subsystem, count, spacer)
 
     def print_subsystem(self, subsystem, count, spacer):
+        count += 1
         for info in subsystem:
             print(spacer * count + info)
             count += 1
@@ -31,11 +35,33 @@ class ObjectTree:
             for content in subsystem.get(info).get('contents'):
                 print(spacer * (count + 1) + content)
 
+    def get_line_owners(self):
+        repo = git.Repo(self.path_to_repo)
+
+        for subsystem in self.subsystems:
+            for info in subsystem:
+                # if len(subsystem.get(info).get('subsystems')) > 0:
+                    # for inner_subsystem in subsystem.get(info).get('subsystems'):
+
+                for content in subsystem.get(info).get('contents'):
+                    path_object = self.path_to_repo + self.name_of_src + 'src/' + path_to_object(content)
+                    print(path_object)
+                    print(repo.blame(file=path_object, rev='HEAD'))
+
+
+def path_to_object(content):
+    parts_of_name = content.split('.')
+    if content.startswith('FilterCriterion'):
+        return content.replace("FilterCriterion.", "FilterCriteria/") + "/" + parts_of_name[1] + '.mdo'
+    if content.startswith('ChartOfCharacteristicTypes'):
+        return content.replace("ChartOfCharacteristicTypes.", "ChartsOfCharacteristicTypes/") + "/" + parts_of_name[1] + '.mdo'
+    return content.replace(".", "s/") + "/" + parts_of_name[1] + '.mdo'
+
 
 def build_object_tree():
 
     obj = ObjectTree('ДемонстрационноеПриложение')
-    path = secret.path_to_configuration()
+    path = obj.path_to_repo + obj.name_of_src
     configuration = 'src/Configuration/Configuration.mdo'
     subsystem_path = 'src/Subsystems/'
 
@@ -82,4 +108,6 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 if __name__ == '__main__':
     obj = build_object_tree()
-    obj.print_obj()
+    obj.get_line_owners()
+    # obj.print_obj()
+

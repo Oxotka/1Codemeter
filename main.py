@@ -8,6 +8,29 @@ class ObjectTree:
         self.configuration_name = conf_name
         self.subsystems = []
 
+    def print_obj(self):
+        spacer = '  '
+        print(self.configuration_name)
+        print(spacer + 'Подсистемы')
+        count = 1
+        for subsystem in self.subsystems:
+            self.print_subsystem(subsystem, count, spacer)
+
+    def print_subsystem(self, subsystem, count, spacer):
+        for info in subsystem:
+            print(spacer * count + info)
+            count += 1
+            if len(subsystem.get(info).get('subsystems')) > 0:
+                print(spacer * count + 'Подсистемы')
+                for inner_subsystem in subsystem.get(info).get('subsystems'):
+                    count += 1
+                    self.print_subsystem(inner_subsystem, count, spacer)
+                    count -= 1
+
+            print(spacer * count + 'Объекты')
+            for content in subsystem.get(info).get('contents'):
+                print(spacer * (count + 1) + content)
+
 
 def build_object_tree():
 
@@ -45,7 +68,7 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
         for inner_subsystem in inner_subsystems:
             inner_subsystem_path = path + 'Subsystems/' + inner_subsystem + '/'
             inner_info = info_about_subsystems(inner_subsystem, inner_subsystem_path, reg_exp_pattern_content)
-            subsystems.append({inner_subsystem: inner_info})
+            subsystems.append(inner_info)
 
     with open(subsystem_name, 'r') as f:
         for line in f.readlines():
@@ -59,4 +82,4 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 if __name__ == '__main__':
     obj = build_object_tree()
-    print(obj.subsystems)
+    obj.print_obj()

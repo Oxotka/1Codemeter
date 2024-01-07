@@ -38,15 +38,17 @@ class ObjectTree:
     def get_line_owners(self):
         repo = git.Repo(self.path_to_repo)
 
-        for subsystem in self.subsystems:
-            for info in subsystem:
-                # if len(subsystem.get(info).get('subsystems')) > 0:
-                    # for inner_subsystem in subsystem.get(info).get('subsystems'):
-
-                for content in subsystem.get(info).get('contents'):
-                    path_object = self.path_to_repo + self.name_of_src + 'src/' + path_to_object(content)
-                    print(path_object)
-                    print(repo.blame(file=path_object, rev='HEAD'))
+        commits = list(repo.iter_commits("master"))
+        infos_about_commits = []
+        for commit in commits:
+            info = {'author': commit.author.name, 'email': commit.author.email}
+            stats = []
+            for file in commit.stats.files:
+                if file.endswith('bsl'):
+                    stat = {'file': file, 'stats': commit.stats.files.get(file)}
+                    stats.append(stat)
+            info.update({'stats': stats})
+            print(info)
 
 
 def path_to_object(content):

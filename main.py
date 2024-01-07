@@ -7,21 +7,22 @@ import git
 
 
 class ObjectTree:
-    def __init__(self, conf_name):
-        self.configuration_name = conf_name
-        self.date_since = datetime.datetime(2010, 1, 1)
-        self.subsystems = []
-        self.commits = []
+    def __init__(self):
         self.path_to_repo = secret.path_to_repo()
         self.name_of_src = secret.name_of_configuration()
+        self.date_since = datetime.datetime(2016, 1, 1)
+        self.configuration_name = ''
+        self.subsystems = []
+        self.commits = []
 
     def print_obj(self):
         spacer = '  '
         print(self.configuration_name)
-        print(spacer + 'Подсистемы')
-        count = 1
-        for subsystem in self.subsystems:
-            self.print_subsystem(subsystem, count, spacer)
+        if len(self.subsystems) > 0:
+            print(spacer + 'Подсистемы')
+            count = 1
+            for subsystem in self.subsystems:
+                self.print_subsystem(subsystem, count, spacer)
 
     def print_subsystem(self, subsystem, count, spacer):
         count += 1
@@ -39,23 +40,23 @@ class ObjectTree:
             for content in subsystem.get(info).get('contents'):
                 print(spacer * (count + 1) + content)
 
-    def get_line_owners(self):
+    def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
         commits = list(repo.iter_commits("master"))
         for commit in commits:
-
             if commit.committed_datetime.timestamp() <= self.date_since.timestamp():
                 break
             for file in commit.stats.files:
-                if file.endswith('bsl'):
-                    stat = {'date': commit.committed_datetime,
+                # find only in chosen configuration in secret and .bsl files
+                if file.startswith(self.name_of_src + 'src/') and file.endswith('bsl'):
+                    stat = {'date': commit.committed_datetime.date(),
                             'file': file,
                             'insert': commit.stats.files.get(file).get('insertions'),
                             'delete': commit.stats.files.get(file).get('deletions'),
                             'author': commit.author.name,
                             'email': commit.author.email}
+                    print(stat)
                     self.commits.append(stat)
-
 
 
 def path_to_object(content):
@@ -69,18 +70,23 @@ def path_to_object(content):
 
 def build_object_tree():
 
-    obj = ObjectTree('ДемонстрационноеПриложение')
+    obj = ObjectTree()
     path = obj.path_to_repo + obj.name_of_src
     configuration = 'src/Configuration/Configuration.mdo'
     subsystem_path = 'src/Subsystems/'
 
     reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
     reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
-
+    reg_exp_pattern_name = '(?<=<name>).*?(?=</name>)'
     # get upper subsystems
     upper_subsystems = []
     with open(path + configuration, 'r') as f:
         for line in f.readlines():
+            if obj.configuration_name == '':
+                m = re.search(reg_exp_pattern_name, line)
+                if not (m is None):
+                    obj.configuration_name = m.group()
+
             m = re.search(reg_exp_pattern_subsystem, line)
             if not(m is None):
                 upper_subsystems.append(m.group())
@@ -117,6 +123,6 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 if __name__ == '__main__':
     obj = build_object_tree()
-    obj.get_line_owners()
-    # obj.print_obj()
+    obj.print_obj()
+    obj.get_commits_info()
 

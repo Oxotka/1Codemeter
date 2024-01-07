@@ -1,3 +1,5 @@
+import datetime
+
 import secret
 import re
 import os
@@ -7,7 +9,9 @@ import git
 class ObjectTree:
     def __init__(self, conf_name):
         self.configuration_name = conf_name
+        self.date_since = datetime.datetime(2010, 1, 1)
         self.subsystems = []
+        self.commits = []
         self.path_to_repo = secret.path_to_repo()
         self.name_of_src = secret.name_of_configuration()
 
@@ -37,18 +41,21 @@ class ObjectTree:
 
     def get_line_owners(self):
         repo = git.Repo(self.path_to_repo)
-
         commits = list(repo.iter_commits("master"))
-        infos_about_commits = []
         for commit in commits:
-            info = {'author': commit.author.name, 'email': commit.author.email}
-            stats = []
+
+            if commit.committed_datetime.timestamp() <= self.date_since.timestamp():
+                break
             for file in commit.stats.files:
                 if file.endswith('bsl'):
-                    stat = {'file': file, 'stats': commit.stats.files.get(file)}
-                    stats.append(stat)
-            info.update({'stats': stats})
-            print(info)
+                    stat = {'date': commit.committed_datetime,
+                            'file': file,
+                            'insert': commit.stats.files.get(file).get('insertions'),
+                            'delete': commit.stats.files.get(file).get('deletions'),
+                            'author': commit.author.name,
+                            'email': commit.author.email}
+                    self.commits.append(stat)
+
 
 
 def path_to_object(content):

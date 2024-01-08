@@ -55,8 +55,28 @@ class ObjectTree:
                             'delete': commit.stats.files.get(file).get('deletions'),
                             'author': commit.author.name,
                             'email': commit.author.email}
-                    print(stat)
+                    # print(stat)
                     self.commits.append(stat)
+
+    def summurize_info_to_contents(self):
+        summurized = {}
+        if len(self.commits) == 0:
+            return
+        for commit in self.commits:
+            file = commit.get('file')
+            email = commit.get('email')
+            file_info = summurized.get(file)
+            if file_info is None:
+                file_info = {email: {'insert': 0, 'delete': 0}}
+            email_info = file_info.get(email)
+            if email_info is None:
+                email_info = {'insert': 0, 'delete': 0}
+            email_info.update({'insert': email_info.get('insert') + commit.get('insert')})
+            email_info.update({'delete': email_info.get('delete') + commit.get('delete')})
+            file_info.update({email: email_info})
+            summurized.update({file: file_info})
+
+        print(summurized)
 
 
 def path_to_object(content):
@@ -78,6 +98,7 @@ def build_object_tree():
     reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
     reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
     reg_exp_pattern_name = '(?<=<name>).*?(?=</name>)'
+
     # get upper subsystems
     upper_subsystems = []
     with open(path + configuration, 'r') as f:
@@ -123,6 +144,7 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 if __name__ == '__main__':
     obj = build_object_tree()
-    obj.print_obj()
+    # obj.print_obj()
     obj.get_commits_info()
+    obj.summurize_info_to_contents()
 

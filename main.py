@@ -82,6 +82,7 @@ class ObjectTree:
     def sort_by_content_and_subsystem(self):
         structure = {}
         for file in self.summarized_info:
+            email_info = self.summarized_info.get(file)
             # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
             file = file.replace(secret.name_of_configuration()+'src/', '')  # example: AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
             parts_of_name = file.split('/')
@@ -89,11 +90,20 @@ class ObjectTree:
             object = parts_of_name[1]  # example: Взаиморасчеты
             type_info = structure.get(type, {})
             object_info = type_info.get(object, {})
-            list_of_obj = []
             info = object_info
-            for i in range(2, len(parts_of_name)-1):
-                info = info.get(parts_of_name[i], {})
-                info.update()
+            for i in range(2, len(parts_of_name)):
+                inner_info = info.get(parts_of_name[i])
+                if inner_info is None:
+                    info.update({parts_of_name[i]: {}})
+                    inner_info = info.get(parts_of_name[i])
+                info = inner_info
+
+                if i == len(parts_of_name)-1:
+                    info.update(email_info)
+            type_info.update({object: object_info})
+            structure.update({type: type_info})
+
+        print(structure)
         return
 
 
@@ -168,7 +178,7 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 if __name__ == '__main__':
     obj = build_object_tree()
-    obj.print_obj()
-    # obj.get_commits_info()
-    # obj.summarize_info_to_contents()
-
+    # obj.print_obj()
+    obj.get_commits_info()
+    obj.summarize_info_to_contents()
+    obj.sort_by_content_and_subsystem()

@@ -14,6 +14,7 @@ class ObjectTree:
         self.configuration_name = ''
         self.subsystems = []
         self.commits = []
+        self.summarized_info = {}
 
     def print_obj(self):
         spacer = '  '
@@ -38,7 +39,7 @@ class ObjectTree:
 
             print(spacer * count + 'Объекты')
             for content in subsystem.get(info).get('contents'):
-                print(spacer * (count + 1) + content)
+                print(spacer * (count + 1) + single_to_plural(content).replace('.', '/'))
 
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
@@ -55,17 +56,16 @@ class ObjectTree:
                             'delete': commit.stats.files.get(file).get('deletions'),
                             'author': commit.author.name,
                             'email': commit.author.email}
-                    # print(stat)
                     self.commits.append(stat)
 
-    def summurize_info_to_contents(self):
-        summurized = {}
+    def summarize_info_to_contents(self):
+        summarized = {}
         if len(self.commits) == 0:
             return
         for commit in self.commits:
             file = commit.get('file')
             email = commit.get('email')
-            file_info = summurized.get(file)
+            file_info = summarized.get(file)
             if file_info is None:
                 file_info = {email: {'insert': 0, 'delete': 0}}
             email_info = file_info.get(email)
@@ -74,18 +74,42 @@ class ObjectTree:
             email_info.update({'insert': email_info.get('insert') + commit.get('insert')})
             email_info.update({'delete': email_info.get('delete') + commit.get('delete')})
             file_info.update({email: email_info})
-            summurized.update({file: file_info})
+            summarized.update({file: file_info})
 
-        print(summurized)
+        self.summarized_info = summarized
+        print(summarized)
+
+    def sort_by_content_and_subsystem(self):
+        structure = {}
+        for file in self.summarized_info:
+            # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
+            file = file.replace(secret.name_of_configuration()+'src/', '')  # example: AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
+            parts_of_name = file.split('/')
+            type = parts_of_name[0]  # example: AccumulationRegisters
+            object = parts_of_name[1]  # example: Взаиморасчеты
+            type_info = structure.get(type, {})
+            object_info = type_info.get(object, {})
+            list_of_obj = []
+            info = object_info
+            for i in range(2, len(parts_of_name)-1):
+                info = info.get(parts_of_name[i], {})
+                info.update()
+        return
+
+
+def single_to_plural(content):
+    if content.startswith('FilterCriterion'):
+        return content.replace("FilterCriterion", "FilterCriteria")
+    if content.startswith('ChartOfCharacteristicTypes'):
+        return content.replace("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes")
+    else:
+        return content.replace(".", "s.")
 
 
 def path_to_object(content):
+    content = single_to_plural(content)
     parts_of_name = content.split('.')
-    if content.startswith('FilterCriterion'):
-        return content.replace("FilterCriterion.", "FilterCriteria/") + "/" + parts_of_name[1] + '.mdo'
-    if content.startswith('ChartOfCharacteristicTypes'):
-        return content.replace("ChartOfCharacteristicTypes.", "ChartsOfCharacteristicTypes/") + "/" + parts_of_name[1] + '.mdo'
-    return content.replace(".", "s/") + "/" + parts_of_name[1] + '.mdo'
+    return content.replace(".", "/") + "/" + parts_of_name[1] + '.mdo'
 
 
 def build_object_tree():
@@ -144,7 +168,7 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 if __name__ == '__main__':
     obj = build_object_tree()
-    # obj.print_obj()
-    obj.get_commits_info()
-    obj.summurize_info_to_contents()
+    obj.print_obj()
+    # obj.get_commits_info()
+    # obj.summarize_info_to_contents()
 

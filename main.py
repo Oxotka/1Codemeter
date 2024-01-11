@@ -84,7 +84,7 @@ class ObjectTree:
         for file in self.summarized_info:
             email_info = self.summarized_info.get(file)
             # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
-            file = file.replace(secret.name_of_configuration()+'src/', '')  # example: AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
+            file = file.replace(secret.name_of_configuration() + 'src/', '')
             parts_of_name = file.split('/')
             type = parts_of_name[0]  # example: AccumulationRegisters
             object = parts_of_name[1]  # example: Взаиморасчеты
@@ -98,9 +98,21 @@ class ObjectTree:
                     inner_info = info.get(parts_of_name[i])
                 info = inner_info
 
-                if i == len(parts_of_name)-1:
+                if i == len(parts_of_name) - 1:
                     info.update(email_info)
             type_info.update({object: object_info})
+            for email_info_by_author in email_info:
+                authors = type_info.get('authors', {})
+                author = authors.get(email_info_by_author)
+                if author is None:
+                    author = email_info.get(email_info_by_author)
+                else:
+                    author.update({'insert': author.get('insert', 0) + email_info.get(
+                                                                  email_info_by_author).get('insert', 0)})
+                    author.update({'delete': author.get('delete', 0) + email_info.get(
+                                                                  email_info_by_author).get('delete', 0)})
+                authors.update({email_info_by_author: author})
+                type_info.update({'authors': authors})
             structure.update({type: type_info})
 
         print(structure)
@@ -123,7 +135,6 @@ def path_to_object(content):
 
 
 def build_object_tree():
-
     obj = ObjectTree()
     path = obj.path_to_repo + obj.name_of_src
     configuration = 'src/Configuration/Configuration.mdo'
@@ -143,7 +154,7 @@ def build_object_tree():
                     obj.configuration_name = m.group()
 
             m = re.search(reg_exp_pattern_subsystem, line)
-            if not(m is None):
+            if not (m is None):
                 upper_subsystems.append(m.group())
 
     # get info about subsystems

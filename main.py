@@ -15,6 +15,7 @@ class ObjectTree:
         self.subsystems = []
         self.commits = []
         self.summarized_info = {}
+        self.structure = {}
 
     def print_obj(self):
         spacer = '  '
@@ -77,7 +78,6 @@ class ObjectTree:
             summarized.update({file: file_info})
 
         self.summarized_info = summarized
-        print(summarized)
 
     def sort_by_content_and_subsystem(self):
         structure = {}
@@ -113,10 +113,49 @@ class ObjectTree:
                                                                   email_info_by_author).get('delete', 0)})
                 authors.update({email_info_by_author: author})
                 type_info.update({'authors': authors})
+
+                structure_authors = structure.get('authors', {})
+                structure_author = structure_authors.get(email_info_by_author)
+                if structure_author is None:
+                    structure_author = email_info.get(email_info_by_author)
+                else:
+                    structure_author.update({'insert': structure_author.get('insert', 0) + email_info.get(
+                        email_info_by_author).get('insert', 0)})
+                    structure_author.update({'delete': structure_author.get('delete', 0) + email_info.get(
+                        email_info_by_author).get('delete', 0)})
+                structure_authors.update({email_info_by_author: structure_author})
+                structure.update({'authors': structure_authors})
+
             structure.update({type: type_info})
 
-        print(structure)
+        self.structure = structure
+
         return
+
+    def print_structure(self):
+        if len(self.structure) == 0:
+            return
+        spacer = '  '
+        print(self.configuration_name)
+        for obj in self.structure:
+            if obj == 'authors':
+                print(spacer + 'Авторы:')
+                authors = self.structure.get('authors')
+                for author in authors:
+                    author_info = authors.get(author)
+                    print('{} {}; Insert: {}; Delete: {}'.format(
+                        spacer * 2, author, author_info.get('insert', 0), author_info.get('delete', 0)))
+            else:
+                print(spacer + obj)
+                types = self.structure.get(obj)
+                for type in types:
+                    if type == 'authors':
+                        print(spacer * 2 + 'Авторы:')
+                        authors = types.get('authors')
+                        for author in authors:
+                            author_info = authors.get(author)
+                            print('{} {}; Insert: {}; Delete: {}'.format(
+                                spacer * 3, author, author_info.get('insert', 0), author_info.get('delete', 0)))
 
 
 def single_to_plural(content):
@@ -193,3 +232,4 @@ if __name__ == '__main__':
     obj.get_commits_info()
     obj.summarize_info_to_contents()
     obj.sort_by_content_and_subsystem()
+    obj.print_structure()

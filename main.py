@@ -97,10 +97,10 @@ class ObjectTree:
                     info.update({parts_of_name[i]: {}})
                     inner_info = info.get(parts_of_name[i])
                 info = inner_info
-
                 if i == len(parts_of_name) - 1:
                     info.update(email_info)
             type_info.update({object: object_info})
+
             for email_info_by_author in email_info:
                 authors = type_info.get('authors', {})
                 author = authors.get(email_info_by_author)

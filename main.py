@@ -113,6 +113,9 @@ class ObjectTree:
                                                                   email_info_by_author).get('delete', 0)})
                 authors.update({email_info_by_author: author})
                 type_info.update({'authors': authors})
+            structure.update({type: type_info})
+
+            for email_info_by_author in email_info:
 
                 structure_authors = structure.get('authors', {})
                 structure_author = structure_authors.get(email_info_by_author)
@@ -125,8 +128,6 @@ class ObjectTree:
                         email_info_by_author).get('delete', 0)})
                 structure_authors.update({email_info_by_author: structure_author})
                 structure.update({'authors': structure_authors})
-
-            structure.update({type: type_info})
 
         self.structure = structure
 

@@ -101,6 +101,7 @@ class ObjectTree:
                     info.update(email_info)
             type_info.update({object: object_info})
 
+            # stats by type
             for email_info_by_author in email_info:
                 authors = type_info.get('authors', {})
                 author = authors.get(email_info_by_author)
@@ -115,8 +116,8 @@ class ObjectTree:
                 type_info.update({'authors': authors})
             structure.update({type: type_info})
 
+            # common info about stats
             for email_info_by_author in email_info:
-
                 structure_authors = structure.get('authors', {})
                 structure_author = structure_authors.get(email_info_by_author)
                 if structure_author is None:
@@ -128,9 +129,7 @@ class ObjectTree:
                         email_info_by_author).get('delete', 0)})
                 structure_authors.update({email_info_by_author: structure_author})
                 structure.update({'authors': structure_authors})
-
         self.structure = structure
-
         return
 
     def print_structure(self):

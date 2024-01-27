@@ -91,8 +91,8 @@ class ObjectTree:
             parts_of_name = file.split('/')
             type = parts_of_name[0]  # example: AccumulationRegisters
             object = parts_of_name[1]  # example: Взаиморасчеты
-            type_info = structure.get(type, {})
-            object_info = type_info.get(object, {})
+            type_info = dict(structure.get(type, {}))
+            object_info = dict(type_info.get(object, {}))
             info = object_info
             for i in range(2, len(parts_of_name)):
                 inner_info = info.get(parts_of_name[i])
@@ -106,10 +106,10 @@ class ObjectTree:
 
             # stats by type
             for email_info_by_author in email_info:
-                authors = type_info.get('authors', {})
+                authors = dict(type_info.get('authors', {}))
                 author = authors.get(email_info_by_author)
                 if author is None:
-                    author = email_info.get(email_info_by_author)
+                    author = dict(email_info.get(email_info_by_author, {}))
                 else:
                     author.update({'insert': author.get('insert', 0) + email_info.get(
                                                                   email_info_by_author).get('insert', 0)})

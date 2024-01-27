@@ -4,6 +4,7 @@ import secret
 import re
 import os
 import git
+from tqdm import tqdm
 
 
 class ObjectTree:
@@ -45,19 +46,21 @@ class ObjectTree:
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
         commits = list(repo.iter_commits("master"))
-        for commit in commits:
-            if commit.committed_datetime.timestamp() <= self.date_since.timestamp():
-                break
-            for file in commit.stats.files:
-                # find only in chosen configuration in secret and .bsl files
-                if file.startswith(self.name_of_src + 'src/') and file.endswith('bsl'):
-                    stat = {'date': commit.committed_datetime.date(),
-                            'file': file,
-                            'insert': commit.stats.files.get(file).get('insertions'),
-                            'delete': commit.stats.files.get(file).get('deletions'),
-                            'author': commit.author.name,
-                            'email': commit.author.email}
-                    self.commits.append(stat)
+        with tqdm(total=len(commits), desc='Get commits', ncols=100, colour='green') as pbar:
+            for commit in commits:
+                pbar.update(1)
+                if commit.committed_datetime.timestamp() <= self.date_since.timestamp():
+                    break
+                for file in commit.stats.files:
+                    # find only in chosen configuration in secret and .bsl files
+                    if file.startswith(self.name_of_src + 'src/') and file.endswith('bsl'):
+                        stat = {'date': commit.committed_datetime.date(),
+                                'file': file,
+                                'insert': commit.stats.files.get(file).get('insertions'),
+                                'delete': commit.stats.files.get(file).get('deletions'),
+                                'author': commit.author.name,
+                                'email': commit.author.email}
+                        self.commits.append(stat)
 
     def summarize_info_to_contents(self):
         summarized = {}
@@ -227,6 +230,7 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 
 if __name__ == '__main__':
+
     obj = build_object_tree()
     # obj.print_obj()
     obj.get_commits_info()

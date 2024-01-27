@@ -4,6 +4,7 @@ import secret
 import re
 import os
 import git
+import copy
 from tqdm import tqdm
 
 
@@ -17,6 +18,7 @@ class ObjectTree:
         self.commits = []
         self.summarized_info = {}
         self.structure = {}
+        self.authors = {}
 
     def print_obj(self):
         spacer = '  '
@@ -61,6 +63,7 @@ class ObjectTree:
                                 'author': commit.author.name,
                                 'email': commit.author.email}
                         self.commits.append(stat)
+                        self.authors[commit.author.email] = commit.author.name
 
     def summarize_info_to_contents(self):
         summarized = {}
@@ -91,8 +94,8 @@ class ObjectTree:
             parts_of_name = file.split('/')
             type = parts_of_name[0]  # example: AccumulationRegisters
             object = parts_of_name[1]  # example: Взаиморасчеты
-            type_info = dict(structure.get(type, {}))
-            object_info = dict(type_info.get(object, {}))
+            type_info = copy.deepcopy(structure.get(type, {}))
+            object_info = copy.deepcopy(type_info.get(object, {}))
             info = object_info
             for i in range(2, len(parts_of_name)):
                 inner_info = info.get(parts_of_name[i])
@@ -106,17 +109,17 @@ class ObjectTree:
 
             # stats by type
             for email_info_by_author in email_info:
-                authors = dict(type_info.get('authors', {}))
+                authors = copy.deepcopy(type_info.get('authors', {}))
                 author = authors.get(email_info_by_author)
                 if author is None:
-                    author = dict(email_info.get(email_info_by_author, {}))
+                    author = copy.deepcopy(email_info.get(email_info_by_author, {}))
                 else:
                     author.update({'insert': author.get('insert', 0) + email_info.get(
                                                                   email_info_by_author).get('insert', 0)})
                     author.update({'delete': author.get('delete', 0) + email_info.get(
                                                                   email_info_by_author).get('delete', 0)})
-                authors.update({email_info_by_author: author})
-                type_info.update({'authors': authors})
+                authors[email_info_by_author] = author
+                type_info['authors'] = authors
             structure.update({type: type_info})
 
             # common info about stats
@@ -136,29 +139,82 @@ class ObjectTree:
         return
 
     def print_structure(self):
+
         if len(self.structure) == 0:
             return
-        spacer = '  '
-        print(self.configuration_name)
-        for obj in self.structure:
-            if obj == 'authors':
-                print(spacer + 'Авторы:')
-                authors = self.structure.get('authors')
-                for author in authors:
-                    author_info = authors.get(author)
-                    print('{} {}; Insert: {}; Delete: {}'.format(
-                        spacer * 2, author, author_info.get('insert', 0), author_info.get('delete', 0)))
-            else:
-                print(spacer + obj)
-                types = self.structure.get(obj)
-                for type in types:
-                    if type == 'authors':
-                        print(spacer * 2 + 'Авторы:')
-                        authors = types.get('authors')
-                        for author in authors:
-                            author_info = authors.get(author)
-                            print('{} {}; Insert: {}; Delete: {}'.format(
-                                spacer * 3, author, author_info.get('insert', 0), author_info.get('delete', 0)))
+
+        with open('stats_info.md', 'w') as result_file:
+            write_line(result_file, self.configuration_name, '#')
+            write_line(result_file, 'Авторы:', '##')
+            print_authors(self.authors, self.structure.get('authors'), result_file)
+
+            write_line(result_file, 'Объекты:', '##')
+            for obj in self.structure:
+                if obj == 'authors':
+                    continue
+                else:
+                    write_line(result_file, obj, '###')
+                    types = self.structure.get(obj)
+                    for type in types:
+                        if type == 'authors':
+                            continue
+                        else:
+                            write_line(result_file, type, '####')
+                            if obj == 'CommonModules':
+                                lines_info = types.get(type).get('Module.bsl')
+                                print_authors(self.authors, lines_info, result_file)
+                            elif obj == 'Catalogs':
+                                catalog_info = types.get(type)
+                                if catalog_info.get('ObjectModule.bsl') is not None:
+                                    write_line(result_file, '', '')
+                                    write_line(result_file, '**Модуль объекта**', '')
+                                    write_line(result_file, '', '')
+                                    lines_info = catalog_info.get('ObjectModule.bsl')
+                                    print_authors(self.authors, lines_info, result_file)
+
+                                if catalog_info.get('ManagerModule.bsl') is not None:
+                                    write_line(result_file, '', '')
+                                    write_line(result_file, '**Модуль менеджера**', '')
+                                    write_line(result_file, '', '')
+                                    lines_info = catalog_info.get('ManagerModule.bsl')
+                                    print_authors(self.authors, lines_info, result_file)
+
+                                if catalog_info.get('Forms') is not None:
+                                    write_line(result_file, '', '')
+                                    write_line(result_file, '**Формы**', '')
+                                    write_line(result_file, '', '')
+                                    forms_info = catalog_info.get('Forms')
+                                    for form in forms_info:
+                                        write_line(result_file, '', '')
+                                        write_line(result_file, form, '')
+                                        write_line(result_file, '', '')
+                                        lines_info = forms_info.get(form).get('Module.bsl')
+                                        print_authors(self.authors, lines_info, result_file)
+
+
+def print_authors(authors, lines_info, file):
+    number = 1
+    for author in lines_info:
+        author_info = lines_info.get(author)
+        write_line(file, '{num}. {name} <{email}> {insert} {delete}'.format(
+            num=number,
+            name=authors.get(author),
+            email=author,
+            insert=color_text('+ {}'.format(author_info.get('insert', 0)), 'green'),
+            delete=color_text('- {}'.format(author_info.get('delete', 0)), 'red')))
+        number += 1
+
+
+def color_text(text, color):
+    return '<span style="color:{color}">{text}</span>'.format(color=color, text=text)
+
+
+def write_line(file, content, tag=''):
+    if tag == '':
+        file.write(content)
+    else:
+        file.write('{tag} {content}'.format(tag=tag, content=content))
+    file.write('\n')
 
 
 def single_to_plural(content):

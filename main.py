@@ -60,7 +60,6 @@ class ObjectTree:
                                 'file': file,
                                 'insert': commit.stats.files.get(file).get('insertions'),
                                 'delete': commit.stats.files.get(file).get('deletions'),
-                                'author': commit.author.name,
                                 'email': commit.author.email}
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name
@@ -78,10 +77,10 @@ class ObjectTree:
             email_info = file_info.get(email)
             if email_info is None:
                 email_info = {'insert': 0, 'delete': 0}
-            email_info.update({'insert': email_info.get('insert') + commit.get('insert')})
-            email_info.update({'delete': email_info.get('delete') + commit.get('delete')})
-            file_info.update({email: email_info})
-            summarized.update({file: file_info})
+            email_info['insert'] = email_info.get('insert') + commit.get('insert')
+            email_info['delete'] = email_info.get('delete') + commit.get('delete')
+            file_info[email] = email_info
+            summarized[file] = file_info
 
         self.summarized_info = summarized
 
@@ -110,31 +109,32 @@ class ObjectTree:
             # stats by type
             for email_info_by_author in email_info:
                 authors = copy.deepcopy(type_info.get('authors', {}))
-                author = authors.get(email_info_by_author)
-                if author is None:
-                    author = copy.deepcopy(email_info.get(email_info_by_author, {}))
+                if authors.get(email_info_by_author) is None:
+                    upd_author = email_info.get(email_info_by_author, {})
                 else:
-                    author.update({'insert': author.get('insert', 0) + email_info.get(
-                                                                  email_info_by_author).get('insert', 0)})
-                    author.update({'delete': author.get('delete', 0) + email_info.get(
-                                                                  email_info_by_author).get('delete', 0)})
-                authors[email_info_by_author] = author
+                    upd_author = copy.deepcopy(authors.get(email_info_by_author))
+                    upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
+                                                                  email_info_by_author).get('insert', 0)
+                    upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
+                                                                  email_info_by_author).get('delete', 0)
+                authors[email_info_by_author] = upd_author
                 type_info['authors'] = authors
             structure.update({type: type_info})
 
             # common info about stats
             for email_info_by_author in email_info:
                 structure_authors = structure.get('authors', {})
-                structure_author = structure_authors.get(email_info_by_author)
-                if structure_author is None:
+                if structure_authors.get(email_info_by_author) is None:
                     structure_author = email_info.get(email_info_by_author)
                 else:
-                    structure_author.update({'insert': structure_author.get('insert', 0) + email_info.get(
-                        email_info_by_author).get('insert', 0)})
-                    structure_author.update({'delete': structure_author.get('delete', 0) + email_info.get(
-                        email_info_by_author).get('delete', 0)})
-                structure_authors.update({email_info_by_author: structure_author})
-                structure.update({'authors': structure_authors})
+                    structure_author = copy.deepcopy(structure_authors.get(email_info_by_author))
+
+                    structure_author['insert'] = structure_author.get('insert', 0) + email_info.get(
+                        email_info_by_author).get('insert', 0)
+                    structure_author['delete'] = structure_author.get('delete', 0) + email_info.get(
+                        email_info_by_author).get('delete', 0)
+                structure_authors[email_info_by_author] = structure_author
+                structure['authors'] = structure_authors
         self.structure = structure
         return
 
@@ -150,7 +150,7 @@ class ObjectTree:
 
             write_line(result_file, 'Объекты:', '##')
             for obj in self.structure:
-                if obj == 'authors':
+                if obj == 'authors' or obj == 'Configuration':
                     continue
                 else:
                     write_line(result_file, obj, '###')
@@ -163,27 +163,51 @@ class ObjectTree:
                             if obj == 'CommonModules':
                                 lines_info = types.get(type).get('Module.bsl')
                                 print_authors(self.authors, lines_info, result_file)
-                            elif obj == 'Catalogs':
-                                catalog_info = types.get(type)
-                                if catalog_info.get('ObjectModule.bsl') is not None:
+                            elif obj == 'Catalogs' or obj == 'DataProcessors':
+                                object_info = types.get(type)
+                                if object_info.get('ObjectModule.bsl') is not None:
                                     write_line(result_file, '', '')
                                     write_line(result_file, '**Модуль объекта**', '')
                                     write_line(result_file, '', '')
-                                    lines_info = catalog_info.get('ObjectModule.bsl')
+                                    lines_info = object_info.get('ObjectModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
 
-                                if catalog_info.get('ManagerModule.bsl') is not None:
+                                if object_info.get('ManagerModule.bsl') is not None:
                                     write_line(result_file, '', '')
                                     write_line(result_file, '**Модуль менеджера**', '')
                                     write_line(result_file, '', '')
-                                    lines_info = catalog_info.get('ManagerModule.bsl')
+                                    lines_info = object_info.get('ManagerModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
 
-                                if catalog_info.get('Forms') is not None:
+                                if object_info.get('Forms') is not None:
                                     write_line(result_file, '', '')
                                     write_line(result_file, '**Формы**', '')
                                     write_line(result_file, '', '')
-                                    forms_info = catalog_info.get('Forms')
+                                    forms_info = object_info.get('Forms')
+                                    for form in forms_info:
+                                        write_line(result_file, '', '')
+                                        write_line(result_file, form, '')
+                                        write_line(result_file, '', '')
+                                        lines_info = forms_info.get(form).get('Module.bsl')
+                                        print_authors(self.authors, lines_info, result_file)
+
+                            elif obj == 'Constants':
+                                lines_info = types.get(type).get('ValueManagerModule.bsl')
+                                print_authors(self.authors, lines_info, result_file)
+
+                            elif obj == 'InformationRegisters':
+                                object_info = types.get(type)
+                                if object_info.get('RecordSetModule.bsl') is not None:
+                                    write_line(result_file, '', '')
+                                    write_line(result_file, '**Модуль записи**', '')
+                                    write_line(result_file, '', '')
+                                    lines_info = object_info.get('RecordSetModule.bsl')
+                                    print_authors(self.authors, lines_info, result_file)
+                                if object_info.get('Forms') is not None:
+                                    write_line(result_file, '', '')
+                                    write_line(result_file, '**Формы**', '')
+                                    write_line(result_file, '', '')
+                                    forms_info = object_info.get('Forms')
                                     for form in forms_info:
                                         write_line(result_file, '', '')
                                         write_line(result_file, form, '')

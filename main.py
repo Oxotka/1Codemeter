@@ -153,7 +153,7 @@ class ObjectTree:
                 if obj == 'authors' or obj == 'Configuration':
                     continue
                 else:
-                    write_line(result_file, obj, '###')
+                    write_line(result_file, icon_md(obj) + obj, '###')
                     write_line(result_file, '<details>', '')
                     write_line(result_file, '  <summary><i>Подробнее</i></summary>', '')
                     write_line(result_file, '', '')
@@ -162,7 +162,7 @@ class ObjectTree:
                         if type == 'authors':
                             continue
                         else:
-                            write_line(result_file, type, '####')
+                            write_line(result_file, icon_md(obj) + type, '####')
                             # write_line(result_file, '**Авторы:**', '')
                             # print_authors(self.authors, types.get('authors'), result_file)
                             write_line(result_file, '<details>', '')
@@ -227,6 +227,10 @@ class ObjectTree:
                             write_line(result_file, '', '')
                     write_line(result_file, '</details>', '')
                     write_line(result_file, '', '')
+
+
+def icon_md(name):
+    return '<img title="{name}" align=center width=16 height=16 src="icons/{name}.png"> '.format(name=name)
 
 
 def print_authors(authors, lines_info, file):

@@ -52,7 +52,7 @@ class ObjectTree:
             for commit in commits:
                 pbar.update(1)
                 if commit.committed_datetime.timestamp() <= self.date_since.timestamp():
-                    break
+                    continue
                 for file in commit.stats.files:
                     # find only in chosen configuration in secret and .bsl files
                     if file.startswith(self.name_of_src + 'src/') and file.endswith('bsl'):
@@ -165,9 +165,10 @@ class ObjectTree:
                             write_line(result_file, icon_md(obj) + type, '####')
                             # write_line(result_file, '**Авторы:**', '')
                             # print_authors(self.authors, types.get('authors'), result_file)
-                            write_line(result_file, '<details>', '')
-                            write_line(result_file, '  <summary><i>Еще</i></summary>', '')
-                            write_line(result_file, '', '')
+                            if not (obj == 'Constants' or obj == 'CommonModules'):
+                                write_line(result_file, '<details>', '')
+                                write_line(result_file, '  <summary><i>Еще</i></summary>', '')
+                                write_line(result_file, '', '')
                             if obj == 'CommonModules':
                                 lines_info = types.get(type).get('Module.bsl')
                                 print_authors(self.authors, lines_info, result_file)
@@ -223,8 +224,9 @@ class ObjectTree:
                                         lines_info = forms_info.get(form).get('Module.bsl')
                                         print_authors(self.authors, lines_info, result_file)
 
-                            write_line(result_file, '</details>', '')
-                            write_line(result_file, '', '')
+                            if not (obj == 'Constants' or obj == 'CommonModules'):
+                                write_line(result_file, '</details>', '')
+                                write_line(result_file, '', '')
                     write_line(result_file, '</details>', '')
                     write_line(result_file, '', '')
 

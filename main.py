@@ -154,16 +154,24 @@ class ObjectTree:
                     continue
                 else:
                     write_line(result_file, obj, '###')
+                    write_line(result_file, '<details>', '')
+                    write_line(result_file, '  <summary><i>Подробнее</i></summary>', '')
+                    write_line(result_file, '', '')
                     types = self.structure.get(obj)
                     for type in types:
                         if type == 'authors':
                             continue
                         else:
                             write_line(result_file, type, '####')
+                            # write_line(result_file, '**Авторы:**', '')
+                            # print_authors(self.authors, types.get('authors'), result_file)
+                            write_line(result_file, '<details>', '')
+                            write_line(result_file, '  <summary><i>Еще</i></summary>', '')
+                            write_line(result_file, '', '')
                             if obj == 'CommonModules':
                                 lines_info = types.get(type).get('Module.bsl')
                                 print_authors(self.authors, lines_info, result_file)
-                            elif obj == 'Catalogs' or obj == 'DataProcessors':
+                            elif obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents':
                                 object_info = types.get(type)
                                 if object_info.get('ObjectModule.bsl') is not None:
                                     write_line(result_file, '', '')
@@ -214,6 +222,11 @@ class ObjectTree:
                                         write_line(result_file, '', '')
                                         lines_info = forms_info.get(form).get('Module.bsl')
                                         print_authors(self.authors, lines_info, result_file)
+
+                            write_line(result_file, '</details>', '')
+                            write_line(result_file, '', '')
+                    write_line(result_file, '</details>', '')
+                    write_line(result_file, '', '')
 
 
 def print_authors(authors, lines_info, file):

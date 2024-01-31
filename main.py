@@ -49,8 +49,8 @@ def print_authors(authors, lines_info, file):
             num=number,
             name=authors.get(author),
             email=author,
-            insert=color_text('+ {}'.format(author_info.get('insert', 0)), 'green'),
-            delete=color_text('- {}'.format(author_info.get('delete', 0)), 'red')))
+            insert=color_text('+{}'.format(author_info.get('insert', 0)), 'green'),
+            delete=color_text('-{}'.format(author_info.get('delete', 0)), 'red')))
         number += 1
 
 

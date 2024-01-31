@@ -8,6 +8,52 @@ import copy
 from tqdm import tqdm
 
 
+def color_text(text, color):
+    return '<span style="color:{color}">{text}</span>'.format(color=color, text=text)
+
+
+def write_line(file, content, tag=''):
+    if tag == '':
+        file.write(content)
+    else:
+        file.write('{tag} {content}'.format(tag=tag, content=content))
+    file.write('\n')
+
+
+def open_details(title, file):
+    write_line(file, '<details>', '')
+    write_line(file, '  <summary><i>{title}</i></summary>'.format(title=title), '')
+    write_line(file, '', '')
+
+
+def close_details(file):
+    write_line(file, '</details>', '')
+    write_line(file, '', '')
+
+
+def write_title(title, file):
+    write_line(file, '', '')
+    write_line(file, title, '')
+    write_line(file, '', '')
+
+
+def icon_md(name):
+    return '<img title="{name}" align=center width=16 height=16 src="icons/{name}.png"> '.format(name=name)
+
+
+def print_authors(authors, lines_info, file):
+    number = 1
+    for author in lines_info:
+        author_info = lines_info.get(author)
+        write_line(file, '{num}. {name} <{email}> {insert} {delete}'.format(
+            num=number,
+            name=authors.get(author),
+            email=author,
+            insert=color_text('+ {}'.format(author_info.get('insert', 0)), 'green'),
+            delete=color_text('- {}'.format(author_info.get('delete', 0)), 'red')))
+        number += 1
+
+
 class ObjectTree:
     def __init__(self):
         self.path_to_repo = secret.path_to_repo()
@@ -104,7 +150,21 @@ class ObjectTree:
                 info = inner_info
                 if i == len(parts_of_name) - 1:
                     info.update(email_info)
-            type_info.update({object: object_info})
+            type_info[object] = object_info
+
+            # stats by obj
+            for email_info_by_author in email_info:
+                authors = copy.deepcopy(object_info.get('authors', {}))
+                if authors.get(email_info_by_author) is None:
+                    upd_author = email_info.get(email_info_by_author, {})
+                else:
+                    upd_author = copy.deepcopy(authors.get(email_info_by_author))
+                    upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
+                                                                  email_info_by_author).get('insert', 0)
+                    upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
+                                                                  email_info_by_author).get('delete', 0)
+                authors[email_info_by_author] = upd_author
+                object_info['authors'] = authors
 
             # stats by type
             for email_info_by_author in email_info:
@@ -145,7 +205,6 @@ class ObjectTree:
 
         with open('stats_info.md', 'w') as result_file:
             write_line(result_file, self.configuration_name, '#')
-            write_line(result_file, 'Авторы:', '##')
             print_authors(self.authors, self.structure.get('authors'), result_file)
 
             write_line(result_file, 'Объекты:', '##')
@@ -154,51 +213,39 @@ class ObjectTree:
                     continue
                 else:
                     write_line(result_file, icon_md(obj) + obj, '###')
-                    write_line(result_file, '<details>', '')
-                    write_line(result_file, '  <summary><i>Подробнее</i></summary>', '')
-                    write_line(result_file, '', '')
+                    open_details('Подробнее', result_file)
                     types = self.structure.get(obj)
                     for type in types:
                         if type == 'authors':
                             continue
                         else:
                             write_line(result_file, icon_md(obj) + type, '####')
-                            # write_line(result_file, '**Авторы:**', '')
-                            # print_authors(self.authors, types.get('authors'), result_file)
-                            if not (obj == 'Constants' or obj == 'CommonModules'):
-                                write_line(result_file, '<details>', '')
-                                write_line(result_file, '  <summary><i>Еще</i></summary>', '')
-                                write_line(result_file, '', '')
                             if obj == 'CommonModules':
                                 lines_info = types.get(type).get('Module.bsl')
                                 print_authors(self.authors, lines_info, result_file)
                             elif obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents':
                                 object_info = types.get(type)
+
+                                print_authors(self.authors, object_info.get('authors'), result_file)
+                                open_details('Еще', result_file)
                                 if object_info.get('ObjectModule.bsl') is not None:
-                                    write_line(result_file, '', '')
-                                    write_line(result_file, '**Модуль объекта**', '')
-                                    write_line(result_file, '', '')
+                                    write_title('**Модуль объекта**', result_file)
                                     lines_info = object_info.get('ObjectModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
 
                                 if object_info.get('ManagerModule.bsl') is not None:
-                                    write_line(result_file, '', '')
-                                    write_line(result_file, '**Модуль менеджера**', '')
-                                    write_line(result_file, '', '')
+                                    write_title('**Модуль менеджера**', result_file)
                                     lines_info = object_info.get('ManagerModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
 
                                 if object_info.get('Forms') is not None:
-                                    write_line(result_file, '', '')
-                                    write_line(result_file, '**Формы**', '')
-                                    write_line(result_file, '', '')
+                                    write_title('**Формы**', result_file)
                                     forms_info = object_info.get('Forms')
                                     for form in forms_info:
-                                        write_line(result_file, '', '')
-                                        write_line(result_file, form, '')
-                                        write_line(result_file, '', '')
+                                        write_title(form, result_file)
                                         lines_info = forms_info.get(form).get('Module.bsl')
                                         print_authors(self.authors, lines_info, result_file)
+                                close_details(result_file)
 
                             elif obj == 'Constants':
                                 lines_info = types.get(type).get('ValueManagerModule.bsl')
@@ -206,58 +253,21 @@ class ObjectTree:
 
                             elif obj == 'InformationRegisters':
                                 object_info = types.get(type)
+                                print_authors(self.authors, object_info.get('authors'), result_file)
+                                open_details('Еще', result_file)
                                 if object_info.get('RecordSetModule.bsl') is not None:
-                                    write_line(result_file, '', '')
-                                    write_line(result_file, '**Модуль записи**', '')
-                                    write_line(result_file, '', '')
+                                    write_title('**Модуль записи**', result_file)
                                     lines_info = object_info.get('RecordSetModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
                                 if object_info.get('Forms') is not None:
-                                    write_line(result_file, '', '')
-                                    write_line(result_file, '**Формы**', '')
-                                    write_line(result_file, '', '')
+                                    write_title('**Формы**', result_file)
                                     forms_info = object_info.get('Forms')
                                     for form in forms_info:
-                                        write_line(result_file, '', '')
-                                        write_line(result_file, form, '')
-                                        write_line(result_file, '', '')
+                                        write_title(form, result_file)
                                         lines_info = forms_info.get(form).get('Module.bsl')
                                         print_authors(self.authors, lines_info, result_file)
-
-                            if not (obj == 'Constants' or obj == 'CommonModules'):
-                                write_line(result_file, '</details>', '')
-                                write_line(result_file, '', '')
-                    write_line(result_file, '</details>', '')
-                    write_line(result_file, '', '')
-
-
-def icon_md(name):
-    return '<img title="{name}" align=center width=16 height=16 src="icons/{name}.png"> '.format(name=name)
-
-
-def print_authors(authors, lines_info, file):
-    number = 1
-    for author in lines_info:
-        author_info = lines_info.get(author)
-        write_line(file, '{num}. {name} <{email}> {insert} {delete}'.format(
-            num=number,
-            name=authors.get(author),
-            email=author,
-            insert=color_text('+ {}'.format(author_info.get('insert', 0)), 'green'),
-            delete=color_text('- {}'.format(author_info.get('delete', 0)), 'red')))
-        number += 1
-
-
-def color_text(text, color):
-    return '<span style="color:{color}">{text}</span>'.format(color=color, text=text)
-
-
-def write_line(file, content, tag=''):
-    if tag == '':
-        file.write(content)
-    else:
-        file.write('{tag} {content}'.format(tag=tag, content=content))
-    file.write('\n')
+                                close_details(result_file)
+                    close_details(result_file)
 
 
 def single_to_plural(content):

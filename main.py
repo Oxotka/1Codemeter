@@ -220,10 +220,19 @@ class ObjectTree:
                             continue
                         else:
                             write_line(result_file, icon_md(obj) + type, '####')
-                            if obj == 'CommonModules':
+                            if obj == 'CommonModules' or obj == 'CommonForms':
                                 lines_info = types.get(type).get('Module.bsl')
                                 print_authors(self.authors, lines_info, result_file)
-                            elif obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents':
+
+                            elif obj == 'Constants':
+                                lines_info = types.get(type).get('ValueManagerModule.bsl')
+                                print_authors(self.authors, lines_info, result_file)
+
+                            elif obj == 'CommonCommands':
+                                lines_info = types.get(type).get('CommandModule.bsl')
+                                print_authors(self.authors, lines_info, result_file)
+
+                            elif obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
                                 object_info = types.get(type)
 
                                 print_authors(self.authors, object_info.get('authors'), result_file)
@@ -247,11 +256,7 @@ class ObjectTree:
                                         print_authors(self.authors, lines_info, result_file)
                                 close_details(result_file)
 
-                            elif obj == 'Constants':
-                                lines_info = types.get(type).get('ValueManagerModule.bsl')
-                                print_authors(self.authors, lines_info, result_file)
-
-                            elif obj == 'InformationRegisters':
+                            elif obj == 'InformationRegisters' or obj == 'AccumulationRegisters':
                                 object_info = types.get(type)
                                 print_authors(self.authors, object_info.get('authors'), result_file)
                                 open_details('Еще', result_file)
@@ -267,6 +272,10 @@ class ObjectTree:
                                         lines_info = forms_info.get(form).get('Module.bsl')
                                         print_authors(self.authors, lines_info, result_file)
                                 close_details(result_file)
+                            else:
+                                object_info = types.get(type)
+                                print_authors(self.authors, object_info.get('authors'), result_file)
+
                     close_details(result_file)
 
 

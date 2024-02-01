@@ -220,22 +220,10 @@ class ObjectTree:
                             continue
                         else:
                             write_line(result_file, icon_md(obj) + type, '####')
-                            if obj == 'CommonModules' or obj == 'CommonForms':
-                                lines_info = types.get(type).get('Module.bsl')
-                                print_authors(self.authors, lines_info, result_file)
+                            object_info = types.get(type)
+                            print_authors(self.authors, object_info.get('authors'), result_file)
 
-                            elif obj == 'Constants':
-                                lines_info = types.get(type).get('ValueManagerModule.bsl')
-                                print_authors(self.authors, lines_info, result_file)
-
-                            elif obj == 'CommonCommands':
-                                lines_info = types.get(type).get('CommandModule.bsl')
-                                print_authors(self.authors, lines_info, result_file)
-
-                            elif obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
-                                object_info = types.get(type)
-
-                                print_authors(self.authors, object_info.get('authors'), result_file)
+                            if obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
                                 open_details('Еще', result_file)
                                 if object_info.get('ObjectModule.bsl') is not None:
                                     write_title('**Модуль объекта**', result_file)
@@ -257,8 +245,6 @@ class ObjectTree:
                                 close_details(result_file)
 
                             elif obj == 'InformationRegisters' or obj == 'AccumulationRegisters':
-                                object_info = types.get(type)
-                                print_authors(self.authors, object_info.get('authors'), result_file)
                                 open_details('Еще', result_file)
                                 if object_info.get('RecordSetModule.bsl') is not None:
                                     write_title('**Модуль записи**', result_file)
@@ -272,9 +258,6 @@ class ObjectTree:
                                         lines_info = forms_info.get(form).get('Module.bsl')
                                         print_authors(self.authors, lines_info, result_file)
                                 close_details(result_file)
-                            else:
-                                object_info = types.get(type)
-                                print_authors(self.authors, object_info.get('authors'), result_file)
 
                     close_details(result_file)
 

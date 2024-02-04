@@ -49,8 +49,8 @@ def print_authors(authors, lines_info, file):
             num=number,
             name=authors.get(author),
             email=author,
-            insert=color_text('+{}'.format(author_info.get('insert', 0)), 'green'),
-            delete=color_text('-{}'.format(author_info.get('delete', 0)), 'red')))
+            insert=color_text('+{}'.format(author_info.get('insert', 0)), 'rgb(0,128,0)'),
+            delete=color_text('-{}'.format(author_info.get('delete', 0)), 'rgb(255,0,0)')))
         number += 1
 
 
@@ -166,8 +166,6 @@ class ObjectTree:
                 authors[email_info_by_author] = upd_author
                 object_info['authors'] = authors
 
-            # stats by type
-            for email_info_by_author in email_info:
                 authors = copy.deepcopy(type_info.get('authors', {}))
                 if authors.get(email_info_by_author) is None:
                     upd_author = email_info.get(email_info_by_author, {})
@@ -179,10 +177,8 @@ class ObjectTree:
                                                                   email_info_by_author).get('delete', 0)
                 authors[email_info_by_author] = upd_author
                 type_info['authors'] = authors
-            structure.update({type: type_info})
 
-            # common info about stats
-            for email_info_by_author in email_info:
+                # common info about stats
                 structure_authors = structure.get('authors', {})
                 if structure_authors.get(email_info_by_author) is None:
                     structure_author = email_info.get(email_info_by_author)
@@ -194,7 +190,9 @@ class ObjectTree:
                     structure_author['delete'] = structure_author.get('delete', 0) + email_info.get(
                         email_info_by_author).get('delete', 0)
                 structure_authors[email_info_by_author] = structure_author
+
                 structure['authors'] = structure_authors
+            structure.update({type: type_info})
         self.structure = structure
         return
 

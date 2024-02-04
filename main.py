@@ -61,10 +61,27 @@ class ObjectTree:
         self.date_since = datetime.datetime(2016, 1, 1)
         self.configuration_name = ''
         self.subsystems = []
+        self.obj_subsystem = {}
         self.commits = []
         self.summarized_info = {}
         self.structure = {}
         self.authors = {}
+
+    def get_structure_subsystem(self):
+        if len(self.subsystems) == 0:
+            return
+        for subsystem in self.subsystems:
+            self.get_subsystem_info(subsystem)
+
+    def get_subsystem_info(self, subsystem):
+        for info in subsystem:
+            if len(subsystem.get(info).get('subsystems')) > 0:
+                for inner_subsystem in subsystem.get(info).get('subsystems'):
+                    self.get_subsystem_info(inner_subsystem)
+
+            for content in subsystem.get(info).get('contents'):
+                print(content)
+                # print(spacer * (count + 1) + single_to_plural(content).replace('.', '/'))
 
     def print_obj(self):
         spacer = '  '
@@ -331,8 +348,10 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 if __name__ == '__main__':
 
     obj = build_object_tree()
-    # obj.print_obj()
+    obj.get_structure_subsystem()
+    obj.print_obj()
+
     obj.get_commits_info()
     obj.summarize_info_to_contents()
     obj.sort_by_content_and_subsystem()
-    obj.print_structure()
+    # obj.print_structure()

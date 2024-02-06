@@ -80,8 +80,16 @@ class ObjectTree:
                     self.get_subsystem_info(inner_subsystem)
 
             for content in subsystem.get(info).get('contents'):
-                print(content)
-                # print(spacer * (count + 1) + single_to_plural(content).replace('.', '/'))
+                elements = single_to_plural(content).split('.')
+                type = elements[0]
+                obj = elements[1]
+                type_info = self.obj_subsystem.get(type, [])
+                if obj not in type_info:
+                    type_info.append(obj)
+                #     TODO insert info about subsystem
+                self.obj_subsystem[type] = type_info
+
+        print(self.obj_subsystem)
 
     def print_obj(self):
         spacer = '  '

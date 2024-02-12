@@ -16,7 +16,12 @@ def write_line(file, content, tag=''):
     if tag == '':
         file.write(content)
     else:
+        if '#' in tag:
+            # Headings should be surrounded by blank lines
+            file.write('\n')
         file.write('{tag} {content}'.format(tag=tag, content=content))
+        if '#' in tag:
+            file.write('\n')
     file.write('\n')
 
 
@@ -32,7 +37,6 @@ def close_details(file):
 
 
 def write_title(title, file):
-    write_line(file, '', '')
     write_line(file, title, '')
     write_line(file, '', '')
 
@@ -45,7 +49,6 @@ def print_authors(authors, lines_info, file):
     if len(lines_info) == 0:
         return
 
-    write_line(file, '')
     number = 1
     for author in lines_info:
         author_info = lines_info.get(author)
@@ -57,6 +60,15 @@ def print_authors(authors, lines_info, file):
             delete=color_text('-{}'.format(author_info.get('delete', 0)), 'rgb(255,0,0)')))
         number += 1
     write_line(file, '')
+
+
+def print_subsystem(subsystems, file):
+    if len(subsystems) > 0:
+        write_line(file, "##### Подсистемы")
+        write_line(file, '')
+        for subsystem in subsystems:
+            write_line(file, subsystem, '-')
+        write_line(file, '')
 
 
 class ObjectTree:
@@ -247,32 +259,25 @@ class ObjectTree:
                         if type == 'authors':
                             continue
                         else:
-                            subsystem_type = subsystem_obj.get(type, [])
                             write_line(result_file, icon_md(obj) + type, '####')
-
                             object_info = types.get(type)
                             print_authors(self.authors, object_info.get('authors'), result_file)
-                            if len(subsystem_type) > 0:
-
-                                write_line(result_file, "**Подсистемы**")
-                                for subsystem in subsystem_type:
-                                    write_line(result_file, subsystem, ' - ')
-                                write_line(result_file, '')
-
+                            subsystem_type = subsystem_obj.get(type, [])
+                            print_subsystem(subsystem_type, result_file)
                             if obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
                                 open_details('Еще', result_file)
                                 if object_info.get('ObjectModule.bsl') is not None:
-                                    write_title('**Модуль объекта**', result_file)
+                                    write_title('##### Модуль объекта', result_file)
                                     lines_info = object_info.get('ObjectModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
 
                                 if object_info.get('ManagerModule.bsl') is not None:
-                                    write_title('**Модуль менеджера**', result_file)
+                                    write_title('##### Модуль менеджера', result_file)
                                     lines_info = object_info.get('ManagerModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
 
                                 if object_info.get('Forms') is not None:
-                                    write_title('**Формы**', result_file)
+                                    write_title('##### Формы', result_file)
                                     forms_info = object_info.get('Forms')
                                     for form in forms_info:
                                         write_title(form, result_file)
@@ -283,11 +288,11 @@ class ObjectTree:
                             elif obj == 'InformationRegisters' or obj == 'AccumulationRegisters':
                                 open_details('Еще', result_file)
                                 if object_info.get('RecordSetModule.bsl') is not None:
-                                    write_title('**Модуль записи**', result_file)
+                                    write_title('##### Модуль записи', result_file)
                                     lines_info = object_info.get('RecordSetModule.bsl')
                                     print_authors(self.authors, lines_info, result_file)
                                 if object_info.get('Forms') is not None:
-                                    write_title('**Формы**', result_file)
+                                    write_title('##### Формы', result_file)
                                     forms_info = object_info.get('Forms')
                                     for form in forms_info:
                                         write_title(form, result_file)

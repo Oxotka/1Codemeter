@@ -42,6 +42,10 @@ def icon_md(name):
 
 
 def print_authors(authors, lines_info, file):
+    if len(lines_info) == 0:
+        return
+
+    write_line(file, '')
     number = 1
     for author in lines_info:
         author_info = lines_info.get(author)
@@ -52,6 +56,7 @@ def print_authors(authors, lines_info, file):
             insert=color_text('+{}'.format(author_info.get('insert', 0)), 'rgb(0,128,0)'),
             delete=color_text('-{}'.format(author_info.get('delete', 0)), 'rgb(255,0,0)')))
         number += 1
+    write_line(file, '')
 
 
 class ObjectTree:
@@ -89,8 +94,6 @@ class ObjectTree:
                     obj_info.append(info)
                 type_info[obj] = obj_info
                 self.obj_subsystem[type] = type_info
-
-        print(self.obj_subsystem)
 
     def print_obj(self):
         spacer = '  '
@@ -236,6 +239,7 @@ class ObjectTree:
                 if obj == 'authors' or obj == 'Configuration':
                     continue
                 else:
+                    subsystem_obj = self.obj_subsystem.get(obj, {})
                     write_line(result_file, icon_md(obj) + obj, '###')
                     open_details('Подробнее', result_file)
                     types = self.structure.get(obj)
@@ -243,9 +247,17 @@ class ObjectTree:
                         if type == 'authors':
                             continue
                         else:
+                            subsystem_type = subsystem_obj.get(type, [])
                             write_line(result_file, icon_md(obj) + type, '####')
+
                             object_info = types.get(type)
                             print_authors(self.authors, object_info.get('authors'), result_file)
+                            if len(subsystem_type) > 0:
+
+                                write_line(result_file, "**Подсистемы**")
+                                for subsystem in subsystem_type:
+                                    write_line(result_file, subsystem, ' - ')
+                                write_line(result_file, '')
 
                             if obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
                                 open_details('Еще', result_file)
@@ -358,9 +370,9 @@ if __name__ == '__main__':
 
     obj = build_object_tree()
     obj.get_structure_subsystem()
-    obj.print_obj()
+    # obj.print_obj()
 
     obj.get_commits_info()
     obj.summarize_info_to_contents()
     obj.sort_by_content_and_subsystem()
-    # obj.print_structure()
+    obj.print_structure()

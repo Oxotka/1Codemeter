@@ -83,10 +83,11 @@ class ObjectTree:
                 elements = single_to_plural(content).split('.')
                 type = elements[0]
                 obj = elements[1]
-                type_info = self.obj_subsystem.get(type, [])
-                if obj not in type_info:
-                    type_info.append(obj)
-                #     TODO insert info about subsystem
+                type_info = self.obj_subsystem.get(type, {})
+                obj_info = type_info.get(obj, [])
+                if info not in obj_info:
+                    obj_info.append(info)
+                type_info[obj] = obj_info
                 self.obj_subsystem[type] = type_info
 
         print(self.obj_subsystem)

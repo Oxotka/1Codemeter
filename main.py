@@ -80,6 +80,7 @@ class ObjectTree:
         self.subsystems = []
         self.obj_subsystem = {}
         self.exclude_subsystems = []
+        self.include_subsystems = []
         self.commits = []
         self.summarized_info = {}
         self.structure = {}
@@ -170,9 +171,16 @@ class ObjectTree:
                     info.update(email_info)
             type_info[object] = object_info
             skip = False
-            if len(self.obj_subsystem) > 0:
+            if len(self.obj_subsystem) > 0 and (len(self.include_subsystems) > 0 or len(self.exclude_subsystems) > 0):
                 subsystem_type = self.obj_subsystem.get(type, {})
                 subsystems = subsystem_type.get(object, [])
+                it_is_include = False
+                for include in self.include_subsystems:
+                    if include != "" and include in subsystems:
+                        it_is_include = True
+                        break
+                skip = not it_is_include
+
                 for exclude in self.exclude_subsystems:
                     if exclude != "" and exclude in subsystems:
                         skip = True
@@ -311,6 +319,7 @@ def build_object_tree():
     configuration = 'src/Configuration/Configuration.mdo'
     subsystem_path = 'src/Subsystems/'
 
+    obj.include_subsystems = secret.include_subsystems()
     obj.exclude_subsystems = secret.exclude_subsystems()
 
     reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'

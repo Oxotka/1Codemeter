@@ -1,8 +1,8 @@
 
 # ДемонстрационноеПриложение
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2233</span> <span style="color:rgb(255,0,0)">-574</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+4811</span> <span style="color:rgb(255,0,0)">-0</span>
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+495</span> <span style="color:rgb(255,0,0)">-117</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+1432</span> <span style="color:rgb(255,0,0)">-0</span>
 
 
 ## Объекты:
@@ -133,24 +133,6 @@
 
 </details>
 
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Склады
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+45</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- ТоварныеЗапасы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль менеджера
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+45</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
 </details>
 
 
@@ -181,234 +163,10 @@
 </details>
 
 
-### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> CommonForms
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> Звонок
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ФормаПодбораМобильная
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+121</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> НастройкаПомощникаНеотработанныхЗаказов
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+69</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ОбщиеНастройки
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ФормаПодбора
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+97</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> CommonModules
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ГеопозиционированиеКлиент
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+115</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ГеопозиционированиеСервер
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+66</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСДоставляемымиУведомлениям
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+49</span> <span style="color:rgb(255,0,0)">-125</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+76</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПанельюЗадач
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+53</span> <span style="color:rgb(255,0,0)">-2</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> УведомленияКлиент
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+60</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> УведомленияСервер
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+153</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбменМобильныеПереопределяемый
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+38</span> <span style="color:rgb(255,0,0)">-18</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+238</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> Пользователи
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-37</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+64</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> Помощник
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+244</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ПомощникКлиент
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+24</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСИсториейДанных
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСХранилищемОбщихНастроек
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+30</span> <span style="color:rgb(255,0,0)">-0</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+56</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПочтой
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+35</span> <span style="color:rgb(255,0,0)">-12</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+346</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПочтойВызовСервера
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+12</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСТорговымОборудованием
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-0</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+177</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РегламентныеЗаданияАгрегатов
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+23</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> СервисныеМеханизмы
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+11</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбменМобильныеОбщее
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+109</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПолнотекстовымПоиском
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+18</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> DataProcessors
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> Путеводитель
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+191</span> <span style="color:rgb(255,0,0)">-0</span>
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаПутеводителя
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+185</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-</details>
-
-
 ### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> Documents
 
 <details>
   <summary><i>Подробнее</i></summary>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> Заказ
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+162</span> <span style="color:rgb(255,0,0)">-70</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+323</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Продажи
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+44</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+161</span> <span style="color:rgb(255,0,0)">-69</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+279</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> ОперацияПоУчетуТоваров
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+23</span> <span style="color:rgb(255,0,0)">-23</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+90</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- ТоварныеЗапасы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+19</span> <span style="color:rgb(255,0,0)">-19</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+26</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+64</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
 
 
 #### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> Оплата
@@ -493,57 +251,6 @@
 
 </details>
 
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> РасходТовара
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+129</span> <span style="color:rgb(255,0,0)">-114</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+688</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Продажи
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+57</span> <span style="color:rgb(255,0,0)">-47</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+310</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+72</span> <span style="color:rgb(255,0,0)">-67</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+295</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ОформлениеДоставки
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-</details>
-
-
-### <img title="HTTPServices" align=center width=16 height=16 src="icons/HTTPServices.png"> HTTPServices
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="HTTPServices" align=center width=16 height=16 src="icons/HTTPServices.png"> ОписанияТоваров
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+67</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="HTTPServices" align=center width=16 height=16 src="icons/HTTPServices.png"> Товары
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+216</span> <span style="color:rgb(255,0,0)">-0</span>
-
 </details>
 
 
@@ -568,32 +275,6 @@
   <summary><i>Еще</i></summary>
 
 </details>
-
-</details>
-
-
-### <img title="WebServices" align=center width=16 height=16 src="icons/WebServices.png"> WebServices
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="WebServices" align=center width=16 height=16 src="icons/WebServices.png"> MAExchange
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+179</span> <span style="color:rgb(255,0,0)">-12</span>
-
-</details>
-
-
-### <img title="SettingsStorages" align=center width=16 height=16 src="icons/SettingsStorages.png"> SettingsStorages
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="SettingsStorages" align=center width=16 height=16 src="icons/SettingsStorages.png"> ХранилищеВариантовОтчетов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+512</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 

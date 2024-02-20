@@ -79,6 +79,7 @@ class ObjectTree:
         self.configuration_name = ''
         self.subsystems = []
         self.obj_subsystem = {}
+        self.exclude_subsystems = []
         self.commits = []
         self.summarized_info = {}
         self.structure = {}
@@ -107,31 +108,6 @@ class ObjectTree:
                 type_info[obj] = obj_info
                 self.obj_subsystem[type] = type_info
 
-    def print_obj(self):
-        spacer = '  '
-        print(self.configuration_name)
-        if len(self.subsystems) > 0:
-            print(spacer + 'Подсистемы')
-            count = 1
-            for subsystem in self.subsystems:
-                self.print_subsystem(subsystem, count, spacer)
-
-    def print_subsystem(self, subsystem, count, spacer):
-        count += 1
-        for info in subsystem:
-            print(spacer * count + info)
-            count += 1
-            if len(subsystem.get(info).get('subsystems')) > 0:
-                print(spacer * count + 'Подсистемы')
-                for inner_subsystem in subsystem.get(info).get('subsystems'):
-                    count += 1
-                    self.print_subsystem(inner_subsystem, count, spacer)
-                    count -= 1
-
-            print(spacer * count + 'Объекты')
-            for content in subsystem.get(info).get('contents'):
-                print(spacer * (count + 1) + single_to_plural(content).replace('.', '/'))
-
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
         commits = list(repo.iter_commits("master"))
@@ -150,6 +126,7 @@ class ObjectTree:
                                 'email': commit.author.email}
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name
+        self.summarize_info_to_contents()
 
     def summarize_info_to_contents(self):
         summarized = {}
@@ -324,6 +301,8 @@ def build_object_tree():
     configuration = 'src/Configuration/Configuration.mdo'
     subsystem_path = 'src/Subsystems/'
 
+    obj.exclude_subsystems = secret.exclude_subsystems()
+
     reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
     reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
     reg_exp_pattern_name = '(?<=<name>).*?(?=</name>)'
@@ -375,9 +354,7 @@ if __name__ == '__main__':
 
     obj = build_object_tree()
     obj.get_structure_subsystem()
-    # obj.print_obj()
 
     obj.get_commits_info()
-    obj.summarize_info_to_contents()
     obj.sort_by_content_and_subsystem()
     obj.print_structure()

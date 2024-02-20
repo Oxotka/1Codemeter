@@ -1,8 +1,8 @@
 
 # ДемонстрационноеПриложение
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3710</span> <span style="color:rgb(255,0,0)">-695</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9026</span> <span style="color:rgb(255,0,0)">-0</span>
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2233</span> <span style="color:rgb(255,0,0)">-574</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+4811</span> <span style="color:rgb(255,0,0)">-0</span>
 
 
 ## Объекты:
@@ -81,46 +81,6 @@
 </details>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> МобильныеУстройства
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+31</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль менеджера
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+31</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> НастройкиТорговогоОборудования
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
 #### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Товары
 
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-7</span>
@@ -150,166 +110,6 @@
 
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-2</span>
 2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+484</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ХранимыеФайлы
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+226</span> <span style="color:rgb(255,0,0)">-18</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+1244</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-СписокСертификатов
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+49</span> <span style="color:rgb(255,0,0)">-0</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+154</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаСписка
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+29</span> <span style="color:rgb(255,0,0)">-16</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+216</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+148</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+736</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаЗагрузкиФайлов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+116</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаПароля
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Встречи
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+771</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+44</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Модуль менеджера
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-Календарь
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+595</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаСписка
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+14</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+62</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ИсходящиеПисьма
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+95</span> <span style="color:rgb(255,0,0)">-56</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+271</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+95</span> <span style="color:rgb(255,0,0)">-56</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+265</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ВходящиеПисьма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+42</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+42</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Организации
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Пользователи
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -351,20 +151,6 @@
 
 </details>
 
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ХранилищеВариантовОтчетов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+33</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-</details>
-
 </details>
 
 
@@ -392,42 +178,6 @@
 
 - Закупки
 
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> ОбщиеНастройки
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> УстановитьВидимостьОбъектовЧерезODataAPI
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+45</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> УстановитьРасширениеРаботыСКриптографией
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+10</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> УстановитьРасширениеРаботыСФайлами
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
 </details>
 
 
@@ -442,15 +192,6 @@
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
 
 
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> НастройкиМобильногоУстройства
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+144</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
 #### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ФормаПодбораМобильная
 
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+121</span> <span style="color:rgb(255,0,0)">-0</span>
@@ -459,16 +200,6 @@
 #### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> НастройкаПомощникаНеотработанныхЗаказов
 
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+69</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> НастройкаPushУведомлений
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-8</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+68</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
 
 
 #### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ОбщиеНастройки
@@ -600,28 +331,6 @@
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> НастройкиПользователя
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+65</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+65</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
 #### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> Путеводитель
 
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-4</span>
@@ -636,230 +345,6 @@
 
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-4</span>
 2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+185</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> ЭлектроннаяПочта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-19</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+195</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-19</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+195</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеСистемойВзаимодействия
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+173</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+173</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> ЖурналРегистрации
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+917</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ОтборЖурналаРегистрации
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+311</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ЖурналРегистрации
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+292</span> <span style="color:rgb(255,0,0)">-0</span>
-
-РедакторСоставаСвойства
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+271</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> АдминистративныйСервис
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> ПроведениеДокументов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+151</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+41</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+110</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> СписокАктивныхПользователей
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+106</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаСпискаАктивныхПользователей
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+106</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УдалениеПомеченныхОбъектов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+284</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ОсновнаяФорма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+284</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеАгрегатамиПродаж
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+232</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+232</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеНастройкамиФорм
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+415</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+153</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+262</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеПолнотекстовымПоиском
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+88</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+88</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -1038,23 +523,6 @@
 1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
-
-</details>
-
-
-### <img title="ExchangePlans" align=center width=16 height=16 src="icons/ExchangePlans.png"> ExchangePlans
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="ExchangePlans" align=center width=16 height=16 src="icons/ExchangePlans.png"> Мобильные
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-13</span>
-
-##### Подсистемы
-
-- Предприятие
 
 </details>
 

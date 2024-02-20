@@ -12,5 +12,5 @@ def name_of_configuration():
 
 def exclude_subsystems():
 
-    subsystems = []
+    subsystems = ["Предприятие"]
     return subsystems

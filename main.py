@@ -169,6 +169,16 @@ class ObjectTree:
                 if i == len(parts_of_name) - 1:
                     info.update(email_info)
             type_info[object] = object_info
+            skip = False
+            if len(self.obj_subsystem) > 0:
+                subsystem_type = self.obj_subsystem.get(type, {})
+                subsystems = subsystem_type.get(object, [])
+                for exclude in self.exclude_subsystems:
+                    if exclude != "" and exclude in subsystems:
+                        skip = True
+                        break
+            if skip:
+                continue
 
             # stats by obj
             for email_info_by_author in email_info:

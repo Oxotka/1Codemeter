@@ -5,6 +5,7 @@ import re
 import os
 import git
 import copy
+import openpyxl
 from tqdm import tqdm
 
 
@@ -297,6 +298,19 @@ class ObjectTree:
 
                     close_details(result_file)
 
+    def save_to_excel(self):
+        wb = openpyxl.Workbook()
+        wb.create_sheet(title='Все данные', index=0)
+        sheet = wb['Все данные']
+        sheet['B2'] = self.configuration_name
+        for row in range(3, 6):
+            for col in range(2, 5):
+                value = str(row) + str(col)
+                cell = sheet.cell(row=row, column=col)
+                cell.value = value
+
+        wb.save('stats.xlsx')
+
 
 def single_to_plural(content):
     if content.startswith('FilterCriterion'):
@@ -372,8 +386,9 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 if __name__ == '__main__':
 
     obj = build_object_tree()
-    obj.get_structure_subsystem()
-
-    obj.get_commits_info()
-    obj.sort_by_content_and_subsystem()
-    obj.print_structure()
+    obj.save_to_excel()
+    # obj.get_structure_subsystem()
+    #
+    # obj.get_commits_info()
+    # obj.sort_by_content_and_subsystem()
+    # obj.print_structure()

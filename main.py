@@ -6,6 +6,7 @@ import os
 import git
 import copy
 import openpyxl
+from openpyxl.styles import Font
 from tqdm import tqdm
 
 
@@ -299,10 +300,13 @@ class ObjectTree:
                     close_details(result_file)
 
     def save_to_excel(self):
+        # more info in https://tokmakov.msk.ru/blog/item/71?ysclid=lsy5j4h2hn634627450
         wb = openpyxl.Workbook()
         wb.create_sheet(title='Все данные', index=0)
         sheet = wb['Все данные']
+        font = Font(name='Arial', size=24, italic=True, color='FF0000')
         sheet['B2'] = self.configuration_name
+        sheet['B2'].font = font
         for row in range(3, 6):
             for col in range(2, 5):
                 value = str(row) + str(col)

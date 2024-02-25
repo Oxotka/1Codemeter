@@ -234,7 +234,7 @@ class ObjectTree:
         self.structure = structure
         return
 
-    def print_structure(self):
+    def save_to_markdown(self):
 
         if len(self.structure) == 0:
             return
@@ -312,9 +312,35 @@ class ObjectTree:
         for col in column_titles:
             cell = sheet.cell(row=row_title, column=column_titles[col])
             cell.value = col
-        row = row_title + 1
-        # if self.
-
+        row = row_title
+        for obj in self.structure:
+            if obj == 'authors' or obj == 'Configuration':
+                continue
+            else:
+                subsystem_obj = self.obj_subsystem.get(obj, {})
+                types = self.structure.get(obj)
+                for type in types:
+                    if type == 'authors':
+                        continue
+                    else:
+                        object_info = types.get(type)
+                        authors_info = object_info.get('authors')
+                        for author in authors_info:
+                            row += 1
+                            for col in column_titles:
+                                cell = sheet.cell(row=row, column=column_titles[col])
+                                if col == 'type':
+                                    cell.value = type
+                                elif col == 'object':
+                                    cell.value = obj
+                                elif col == 'subsystem':
+                                    cell.value = ', '.join(subsystem_obj.get(type, []))
+                                elif col == 'author':
+                                    cell.value = author
+                                elif col == 'insert':
+                                    cell.value = authors_info.get(author).get('insert')
+                                elif col == 'delete':
+                                    cell.value = authors_info.get(author).get('delete')
         wb.save('stats.xlsx')
 
 
@@ -365,6 +391,10 @@ def build_object_tree():
         info_subsystem = info_about_subsystems(subsystem, path_to_dir_subsystem, reg_exp_pattern_content)
         obj.subsystems.append(info_subsystem)
 
+    obj.get_structure_subsystem()
+    obj.get_commits_info()
+    obj.sort_by_content_and_subsystem()
+
     return obj
 
 
@@ -392,9 +422,6 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 if __name__ == '__main__':
 
     obj = build_object_tree()
+
+    # obj.save_to_markdown()
     obj.save_to_excel()
-    # obj.get_structure_subsystem()
-    #
-    # obj.get_commits_info()
-    # obj.sort_by_content_and_subsystem()
-    # obj.print_structure()

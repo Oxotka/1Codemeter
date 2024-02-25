@@ -75,18 +75,18 @@ def print_subsystem(subsystems, file):
 
 class ObjectTree:
     def __init__(self):
-        self.path_to_repo = secret.path_to_repo()
-        self.name_of_src = secret.name_of_configuration()
-        self.date_since = datetime.datetime(2016, 1, 1)
-        self.configuration_name = ''
-        self.subsystems = []
-        self.obj_subsystem = {}
-        self.exclude_subsystems = []
-        self.include_subsystems = []
-        self.commits = []
-        self.summarized_info = {}
-        self.structure = {}
-        self.authors = {}
+        self.path_to_repo = secret.path_to_repo() # Путь то склонированного репозитория. TODO - проверить на удаленном репо
+        self.name_of_src = secret.name_of_configuration() # Имя по-которому ищем папку с конфигурацией
+        self.date_since = datetime.datetime(2016, 1, 1) # Дата, с которой начинаем читать коммиты
+        self.exclude_subsystems = [] # Исключаемые подсистемы. Задаются в настройках
+        self.include_subsystems = [] # Включаемые подсистемы. Задаются в настройках. Если они заданы, то исключаемые игнорируются
+        self.configuration_name = '' # Имя конфигурации
+        self.commits = []  # Все подходящие коммиты, больше даты в date_since
+        self.subsystems = [] # Все подсистемы. Можно вывести, чтобы посмотреть, что включить, а что исключить. TODO - вернуть красивый вывод подсистем
+        self.obj_subsystem = {} # Служебный словарь. Здесь к каждому типу и объекту приложен массив с его подсистемами. TODO - нужно как-то красиво обозвать
+        self.summarized_info = {} # Служебный словарь, в котором мы сложили коммиты по объектам, чтобы посчитать количество добавлений и удалений. TODO - Грохнуть?
+        self.structure = {}  # Основная часть. Здесь все сложено уже в структуру. TODO - Нужно ее описать правильно и красиво отдельно как-то
+        self.authors = {} # Авторы в формате {емайл : имя}. Заполняется автоматически при чтении коммитов
 
     def get_structure_subsystem(self):
         if len(self.subsystems) == 0:
@@ -304,14 +304,16 @@ class ObjectTree:
         wb = openpyxl.Workbook()
         wb.create_sheet(title='Все данные', index=0)
         sheet = wb['Все данные']
-        font = Font(name='Arial', size=24, italic=True, color='FF0000')
+        font = Font(name='Arial', size=18)
         sheet['B2'] = self.configuration_name
         sheet['B2'].font = font
-        for row in range(3, 6):
-            for col in range(2, 5):
-                value = str(row) + str(col)
-                cell = sheet.cell(row=row, column=col)
-                cell.value = value
+        row_title = 4
+        column_titles = {'type': 2, 'object': 3, 'subsystem': 4, 'author': 5, 'insert': 6, 'delete': 7}
+        for col in column_titles:
+            cell = sheet.cell(row=row_title, column=column_titles[col])
+            cell.value = col
+        row = row_title + 1
+        # if self.
 
         wb.save('stats.xlsx')
 

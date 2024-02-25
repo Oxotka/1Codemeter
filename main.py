@@ -423,5 +423,5 @@ if __name__ == '__main__':
 
     obj = build_object_tree()
 
-    # obj.save_to_markdown()
+    obj.save_to_markdown()
     obj.save_to_excel()

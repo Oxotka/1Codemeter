@@ -1,3 +1,5 @@
+import datetime
+
 
 def path_to_repo():
     return '/Users/nikitaaripov/Documents/dt-demo-configuration/'
@@ -26,6 +28,10 @@ def exclude_subsystems():
     # subsystems = ["Предприятие"]
     subsystems = []
     return subsystems
+
+
+def date_since():
+    return datetime.datetime(2016, 1, 1)
 
 
 

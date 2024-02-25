@@ -1,6 +1,4 @@
-import datetime
-
-import secret
+import settings
 import re
 import os
 import git
@@ -75,18 +73,18 @@ def print_subsystem(subsystems, file):
 
 class ObjectTree:
     def __init__(self):
-        self.path_to_repo = secret.path_to_repo() # Путь то склонированного репозитория. TODO - проверить на удаленном репо
-        self.name_of_src = secret.name_of_configuration() # Имя по-которому ищем папку с конфигурацией
-        self.date_since = datetime.datetime(2016, 1, 1) # Дата, с которой начинаем читать коммиты
-        self.exclude_subsystems = [] # Исключаемые подсистемы. Задаются в настройках
-        self.include_subsystems = [] # Включаемые подсистемы. Задаются в настройках. Если они заданы, то исключаемые игнорируются
-        self.configuration_name = '' # Имя конфигурации
+        self.path_to_repo = settings.path_to_repo()  # Путь до локального репозитория
+        self.name_of_src = settings.name_of_configuration()  # Имя по-которому ищем папку с конфигурацией
+        self.date_since = settings.date_since()  # Дата, с которой начинаем читать коммиты
+        self.exclude_subsystems = settings.include_subsystems()  # Исключаемые подсистемы
+        self.include_subsystems = settings.exclude_subsystems()  # Включаемые подсистемы
+        self.configuration_name = ''  # Имя конфигурации из файлов конфигурации
         self.commits = []  # Все подходящие коммиты, больше даты в date_since
-        self.subsystems = [] # Все подсистемы. Можно вывести, чтобы посмотреть, что включить, а что исключить. TODO - вернуть красивый вывод подсистем
-        self.obj_subsystem = {} # Служебный словарь. Здесь к каждому типу и объекту приложен массив с его подсистемами. TODO - нужно как-то красиво обозвать
-        self.summarized_info = {} # Служебный словарь, в котором мы сложили коммиты по объектам, чтобы посчитать количество добавлений и удалений. TODO - Грохнуть?
+        self.subsystems = []  # Служебный массив всех подсистем. Собирается из файлов конфигурации
+        self.obj_subsystem = {}  # Служебный словарь. Здесь к каждому типу и объекту приложен массив с его подсистемами. TODO - нужно как-то красиво обозвать
+        self.summarized_info = {}  # Служебный словарь, в котором посчитано количество добавлений и удалений. TODO - Грохнуть?
         self.structure = {}  # Основная часть. Здесь все сложено уже в структуру. TODO - Нужно ее описать правильно и красиво отдельно как-то
-        self.authors = {} # Авторы в формате {емайл : имя}. Заполняется автоматически при чтении коммитов
+        self.authors = {}  # Авторы в формате {емайл : имя}. Заполняется автоматически при чтении коммитов
 
     def get_structure_subsystem(self):
         if len(self.subsystems) == 0:
@@ -120,7 +118,7 @@ class ObjectTree:
                 if commit.committed_datetime.timestamp() <= self.date_since.timestamp():
                     continue
                 for file in commit.stats.files:
-                    # find only in chosen configuration in secret and .bsl files
+                    # find only in chosen configuration in settings and .bsl files
                     if file.startswith(self.name_of_src + 'src/') and file.endswith('bsl'):
                         stat = {'date': commit.committed_datetime.date(),
                                 'file': file,
@@ -156,7 +154,7 @@ class ObjectTree:
         for file in self.summarized_info:
             email_info = self.summarized_info.get(file)
             # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
-            file = file.replace(secret.name_of_configuration() + 'src/', '')
+            file = file.replace(self.name_of_src + 'src/', '')
             parts_of_name = file.split('/')
             type = parts_of_name[0]  # example: AccumulationRegisters
             object = parts_of_name[1]  # example: Взаиморасчеты
@@ -329,6 +327,8 @@ class ObjectTree:
                             row += 1
                             for col in column_titles:
                                 cell = sheet.cell(row=row, column=column_titles[col])
+                                # TODO fix type and obj here and other places
+                                # TODO fix to cell = sheet.cell(row=row, column=column_titles['type'])
                                 if col == 'type':
                                     cell.value = obj
                                 elif col == 'object':
@@ -364,9 +364,6 @@ def build_object_tree():
     path = obj.path_to_repo + obj.name_of_src
     configuration = 'src/Configuration/Configuration.mdo'
     subsystem_path = 'src/Subsystems/'
-
-    obj.include_subsystems = secret.include_subsystems()
-    obj.exclude_subsystems = secret.exclude_subsystems()
 
     reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
     reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'

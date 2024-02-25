@@ -330,9 +330,9 @@ class ObjectTree:
                             for col in column_titles:
                                 cell = sheet.cell(row=row, column=column_titles[col])
                                 if col == 'type':
-                                    cell.value = type
-                                elif col == 'object':
                                     cell.value = obj
+                                elif col == 'object':
+                                    cell.value = type
                                 elif col == 'subsystem':
                                     cell.value = ', '.join(subsystem_obj.get(type, []))
                                 elif col == 'author':

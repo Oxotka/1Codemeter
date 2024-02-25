@@ -12,7 +12,8 @@ def name_of_configuration():
 
 def include_subsystems():
 
-    subsystems = ["Финансы", "Закупки"]
+    # subsystems = ["Финансы", "Закупки"]
+    subsystems = []
     return subsystems
 
 
@@ -22,7 +23,8 @@ def exclude_subsystems():
     if len(include_subsystems()) > 0:
         return []
 
-    subsystems = ["Предприятие"]
+    # subsystems = ["Предприятие"]
+    subsystems = []
     return subsystems
 
 

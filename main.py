@@ -80,7 +80,7 @@ class ObjectTree:
         self.exclude_subsystems = settings.include_subsystems()  # Исключаемые подсистемы
         self.include_subsystems = settings.exclude_subsystems()  # Включаемые подсистемы
         self.configuration_name = ''  # Имя конфигурации из файлов конфигурации
-        self.commits = []  # Все подходящие коммиты, больше даты в date_since
+        self.commits = []  # Все подходящие коммиты, между датами date_since и date_before
         self.subsystems = []  # Служебный массив всех подсистем. Собирается из файлов конфигурации
         self.subsystem_by_object = {}  # Служебный словарь подсистем. {type: {object: [subsystem1]}}
         self.authors = {}  # Авторы в формате {емайл : имя}. Заполняется автоматически при чтении коммитов
@@ -115,7 +115,8 @@ class ObjectTree:
         with tqdm(total=len(commits), desc='Get commits', ncols=100, colour='green') as pbar:
             for commit in commits:
                 pbar.update(1)
-                if commit.committed_datetime.timestamp() <= self.date_since.timestamp():
+                if self.date_since.timestamp() >= commit.committed_datetime.timestamp() \
+                        or commit.committed_datetime.timestamp() > self.date_before.timestamp():
                     continue
                 for file in commit.stats.files:
                     # find only in chosen configuration in settings and .bsl files
@@ -132,7 +133,7 @@ class ObjectTree:
     def summarize_info_to_contents(self):
         summarized = {}
         if len(self.commits) == 0:
-            return
+            return summarized
         for commit in self.commits:
             file = commit.get('file')
             email = commit.get('email')
@@ -299,6 +300,8 @@ class ObjectTree:
                         close_details(result_file)
 
     def save_to_excel(self):
+        if len(self.structure_of_conf) == 0:
+            return
         wb = openpyxl.Workbook()
         wb.create_sheet(title='Все данные', index=0)
         sheet = wb['Все данные']
@@ -429,12 +432,17 @@ if __name__ == '__main__':
     if save_to_excel:
         obj.save_to_excel()
     print('')
-    print('Statistics are collected!')
-    if save_to_md and save_to_excel:
-        print('Please check result files: stats_info.md and stats.xlsx')
-    elif save_to_md:
-        print('Please check result file: stats_info.md')
-    elif save_to_excel:
-        print('Please check result file: stats.xlsx')
+
+    if len(obj.structure_of_conf) == 0:
+        print('Nothing was found. Check the settings')
+        print('For example: settings.date_since() and settings.date_before()')
     else:
-        print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_excel()')
+        print('Statistics are collected!')
+        if save_to_md and save_to_excel:
+            print('Please check result files: stats_info.md and stats.xlsx')
+        elif save_to_md:
+            print('Please check result file: stats_info.md')
+        elif save_to_excel:
+            print('Please check result file: stats.xlsx')
+        else:
+            print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_excel()')

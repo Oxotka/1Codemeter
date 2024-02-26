@@ -100,14 +100,14 @@ class StructureOfCodemeter:
 
             for content in subsystem.get(info).get('contents'):
                 elements = single_to_plural(content).split('.')
-                type = elements[0]
-                obj = elements[1]
-                type_info = self.subsystem_by_object.get(type, {})
-                obj_info = type_info.get(obj, [])
-                if info not in obj_info:
-                    obj_info.append(info)
-                type_info[obj] = obj_info
-                self.subsystem_by_object[type] = type_info
+                type_name = elements[0]
+                object_name = elements[1]
+                type_info = self.subsystem_by_object.get(type_name, {})
+                object_info = type_info.get(object_name, [])
+                if info not in object_info:
+                    object_info.append(info)
+                type_info[object_name] = object_info
+                self.subsystem_by_object[type_name] = type_info
 
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
@@ -151,16 +151,16 @@ class StructureOfCodemeter:
 
     def structure_by_content_and_subsystem(self):
         summarized = self.summarize_info_to_contents()
-        structure = {}
+        structure_of_configuration = {}
         for file in summarized:
             email_info = summarized.get(file)
             # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
             file = file.replace(self.name_of_src + 'src/', '')
             parts_of_name = file.split('/')
-            type = parts_of_name[0]  # example: AccumulationRegisters
-            object = parts_of_name[1]  # example: Взаиморасчеты
-            type_info = copy.deepcopy(structure.get(type, {}))
-            object_info = copy.deepcopy(type_info.get(object, {}))
+            type_name = parts_of_name[0]  # example: AccumulationRegisters
+            object_name = parts_of_name[1]  # example: Взаиморасчеты
+            type_info = copy.deepcopy(structure_of_configuration.get(type_name, {}))
+            object_info = copy.deepcopy(type_info.get(object_name, {}))
             info = object_info
             for i in range(2, len(parts_of_name)):
                 inner_info = info.get(parts_of_name[i])
@@ -170,11 +170,12 @@ class StructureOfCodemeter:
                 info = inner_info
                 if i == len(parts_of_name) - 1:
                     info.update(email_info)
-            type_info[object] = object_info
+            type_info[object_name] = object_info
             skip = False
-            if len(self.subsystem_by_object) > 0 and (len(self.include_subsystems) > 0 or len(self.exclude_subsystems) > 0):
-                subsystem_type = self.subsystem_by_object.get(type, {})
-                subsystems = subsystem_type.get(object, [])
+            if len(self.subsystem_by_object) > 0 and (len(self.include_subsystems) > 0
+                                                      or len(self.exclude_subsystems) > 0):
+                subsystem_type = self.subsystem_by_object.get(type_name, {})
+                subsystems = subsystem_type.get(object_name, [])
                 it_is_include = False
                 for include in self.include_subsystems:
                     if include != "" and include in subsystems:
@@ -216,7 +217,7 @@ class StructureOfCodemeter:
                 type_info['authors'] = authors
 
                 # common info about stats
-                structure_authors = structure.get('authors', {})
+                structure_authors = structure_of_configuration.get('authors', {})
                 if structure_authors.get(email_info_by_author) is None:
                     structure_author = email_info.get(email_info_by_author)
                 else:
@@ -228,9 +229,9 @@ class StructureOfCodemeter:
                         email_info_by_author).get('delete', 0)
                 structure_authors[email_info_by_author] = structure_author
 
-                structure['authors'] = structure_authors
-            structure.update({type: type_info})
-        self.structure_of_conf = structure
+                structure_of_configuration['authors'] = structure_authors
+            structure_of_configuration.update({type_name: type_info})
+        self.structure_of_conf = structure_of_configuration
 
     def save_to_markdown(self):
         if len(self.structure_of_conf) == 0:
@@ -242,25 +243,26 @@ class StructureOfCodemeter:
                 print_authors(self.authors, self.structure_of_conf.get('authors'), result_file)
 
                 write_line(result_file, 'Объекты:', '##')
-                for obj in self.structure_of_conf:
+                for object_name in self.structure_of_conf:
                     pbar.update(1)
-                    if obj == 'authors' or obj == 'Configuration':
+                    if object_name == 'authors' or object_name == 'Configuration':
                         continue
                     else:
-                        subsystem_obj = self.subsystem_by_object.get(obj, {})
-                        write_line(result_file, icon_md(obj) + obj, '###')
+                        subsystem_obj = self.subsystem_by_object.get(object_name, {})
+                        write_line(result_file, icon_md(object_name) + object_name, '###')
                         open_details('Подробнее', result_file)
-                        types = self.structure_of_conf.get(obj)
-                        for type in types:
-                            if type == 'authors':
+                        types = self.structure_of_conf.get(object_name)
+                        for type_name in types:
+                            if type_name == 'authors':
                                 continue
                             else:
-                                write_line(result_file, icon_md(obj) + type, '####')
-                                object_info = types.get(type)
+                                write_line(result_file, icon_md(object_name) + type_name, '####')
+                                object_info = types.get(type_name)
                                 print_authors(self.authors, object_info.get('authors'), result_file)
-                                subsystem_type = subsystem_obj.get(type, [])
+                                subsystem_type = subsystem_obj.get(type_name, [])
                                 print_subsystem(subsystem_type, result_file)
-                                if obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
+                                if object_name == 'Catalogs' or object_name == 'DataProcessors' \
+                                        or object_name == 'Documents' or object_name == 'Reports':
                                     open_details('Еще', result_file)
                                     if object_info.get('ObjectModule.bsl') is not None:
                                         write_title('##### Модуль объекта', result_file)
@@ -281,7 +283,7 @@ class StructureOfCodemeter:
                                             print_authors(self.authors, lines_info, result_file)
                                     close_details(result_file)
 
-                                elif obj == 'InformationRegisters' or obj == 'AccumulationRegisters':
+                                elif object_name == 'InformationRegisters' or object_name == 'AccumulationRegisters':
                                     open_details('Еще', result_file)
                                     if object_info.get('RecordSetModule.bsl') is not None:
                                         write_title('##### Модуль записи', result_file)
@@ -316,25 +318,25 @@ class StructureOfCodemeter:
             cell.font = bold_font
         row = row_title
         with tqdm(total=len(self.structure_of_conf), desc='Save to Excel', ncols=100, colour='green') as pbar:
-            for type in self.structure_of_conf:
+            for type_name in self.structure_of_conf:
                 pbar.update(1)
-                if type == 'authors' or type == 'Configuration':
+                if type_name == 'authors' or type_name == 'Configuration':
                     continue
                 else:
-                    subsystem_obj = self.subsystem_by_object.get(type, {})
-                    objects = self.structure_of_conf.get(type)
-                    for object in objects:
-                        if object == 'authors':
+                    subsystem_obj = self.subsystem_by_object.get(type_name, {})
+                    objects = self.structure_of_conf.get(type_name)
+                    for object_name in objects:
+                        if object_name == 'authors':
                             continue
                         else:
-                            object_info = objects.get(object)
+                            object_info = objects.get(object_name)
                             authors_info = object_info.get('authors')
                             for author in authors_info:
                                 row += 1
-                                sheet.cell(row=row, column=column_titles['type']).value = type
-                                sheet.cell(row=row, column=column_titles['object']).value = object
+                                sheet.cell(row=row, column=column_titles['type']).value = type_name
+                                sheet.cell(row=row, column=column_titles['object']).value = object_name
                                 sheet.cell(row=row, column=column_titles['subsystem']).value = \
-                                    ', '.join(subsystem_obj.get(object, []))
+                                    ', '.join(subsystem_obj.get(object_name, []))
                                 sheet.cell(row=row, column=column_titles['email']).value = author
                                 sheet.cell(row=row, column=column_titles['author']).value = self.authors[author]
                                 sheet.cell(row=row, column=column_titles['insert']).value = \

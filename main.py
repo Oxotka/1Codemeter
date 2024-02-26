@@ -298,49 +298,45 @@ class ObjectTree:
                     close_details(result_file)
 
     def save_to_excel(self):
-        # more info in https://tokmakov.msk.ru/blog/item/71?ysclid=lsy5j4h2hn634627450
         wb = openpyxl.Workbook()
         wb.create_sheet(title='Все данные', index=0)
         sheet = wb['Все данные']
-        font = Font(name='Arial', size=18)
+        title_font = Font(name='Arial', size=18)
+        bold_font = Font(bold=True)
         sheet['B2'] = self.configuration_name
-        sheet['B2'].font = font
+        sheet['B2'].font = title_font
         row_title = 4
-        column_titles = {'type': 2, 'object': 3, 'subsystem': 4, 'author': 5, 'insert': 6, 'delete': 7}
+        column_titles = {'type': 2, 'object': 3, 'subsystem': 4, 'author': 5, 'email': 6,  'insert': 7, 'delete': 8}
         for col in column_titles:
             cell = sheet.cell(row=row_title, column=column_titles[col])
             cell.value = col
+            cell.font = bold_font
         row = row_title
-        for obj in self.structure:
-            if obj == 'authors' or obj == 'Configuration':
+        for type in self.structure:
+            if type == 'authors' or type == 'Configuration':
                 continue
             else:
-                subsystem_obj = self.obj_subsystem.get(obj, {})
-                types = self.structure.get(obj)
-                for type in types:
-                    if type == 'authors':
+                subsystem_obj = self.obj_subsystem.get(type, {})
+                objects = self.structure.get(type)
+                for object in objects:
+                    if object == 'authors':
                         continue
                     else:
-                        object_info = types.get(type)
+                        object_info = objects.get(object)
                         authors_info = object_info.get('authors')
                         for author in authors_info:
                             row += 1
-                            for col in column_titles:
-                                cell = sheet.cell(row=row, column=column_titles[col])
-                                # TODO fix type and obj here and other places
-                                # TODO fix to cell = sheet.cell(row=row, column=column_titles['type'])
-                                if col == 'type':
-                                    cell.value = obj
-                                elif col == 'object':
-                                    cell.value = type
-                                elif col == 'subsystem':
-                                    cell.value = ', '.join(subsystem_obj.get(type, []))
-                                elif col == 'author':
-                                    cell.value = author
-                                elif col == 'insert':
-                                    cell.value = authors_info.get(author).get('insert')
-                                elif col == 'delete':
-                                    cell.value = authors_info.get(author).get('delete')
+                            sheet.cell(row=row, column=column_titles['type']).value = type
+                            sheet.cell(row=row, column=column_titles['object']).value = object
+                            sheet.cell(row=row, column=column_titles['subsystem']).value = \
+                                ', '.join(subsystem_obj.get(object, []))
+                            sheet.cell(row=row, column=column_titles['email']).value = author
+                            sheet.cell(row=row, column=column_titles['author']).value = self.authors[author]
+                            sheet.cell(row=row, column=column_titles['insert']).value = \
+                                authors_info.get(author).get('insert')
+                            sheet.cell(row=row, column=column_titles['delete']).value = \
+                                authors_info.get(author).get('delete')
+
         wb.save('stats.xlsx')
 
 

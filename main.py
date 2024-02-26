@@ -76,15 +76,15 @@ class ObjectTree:
         self.path_to_repo = settings.path_to_repo()  # Путь до локального репозитория
         self.name_of_src = settings.name_of_configuration()  # Имя по-которому ищем папку с конфигурацией
         self.date_since = settings.date_since()  # Дата, с которой начинаем читать коммиты
+        self.date_before = settings.date_before()  # Дата, до которой читаем коммиты
         self.exclude_subsystems = settings.include_subsystems()  # Исключаемые подсистемы
         self.include_subsystems = settings.exclude_subsystems()  # Включаемые подсистемы
         self.configuration_name = ''  # Имя конфигурации из файлов конфигурации
         self.commits = []  # Все подходящие коммиты, больше даты в date_since
         self.subsystems = []  # Служебный массив всех подсистем. Собирается из файлов конфигурации
-        self.obj_subsystem = {}  # Служебный словарь. Здесь к каждому типу и объекту приложен массив с его подсистемами. TODO - нужно как-то красиво обозвать
-        self.summarized_info = {}  # Служебный словарь, в котором посчитано количество добавлений и удалений. TODO - Грохнуть?
-        self.structure = {}  # Основная часть. Здесь все сложено уже в структуру. TODO - Нужно ее описать правильно и красиво отдельно как-то
+        self.subsystem_by_object = {}  # Служебный словарь подсистем. {type: {object: [subsystem1]}}
         self.authors = {}  # Авторы в формате {емайл : имя}. Заполняется автоматически при чтении коммитов
+        self.structure_of_conf = {}  # Итоговая структура конфигурации
 
     def get_structure_subsystem(self):
         if len(self.subsystems) == 0:
@@ -102,12 +102,12 @@ class ObjectTree:
                 elements = single_to_plural(content).split('.')
                 type = elements[0]
                 obj = elements[1]
-                type_info = self.obj_subsystem.get(type, {})
+                type_info = self.subsystem_by_object.get(type, {})
                 obj_info = type_info.get(obj, [])
                 if info not in obj_info:
                     obj_info.append(info)
                 type_info[obj] = obj_info
-                self.obj_subsystem[type] = type_info
+                self.subsystem_by_object[type] = type_info
 
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
@@ -127,7 +127,7 @@ class ObjectTree:
                                 'email': commit.author.email}
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name
-        self.summarize_info_to_contents()
+        self.sort_by_content_and_subsystem()
 
     def summarize_info_to_contents(self):
         summarized = {}
@@ -147,12 +147,13 @@ class ObjectTree:
             file_info[email] = email_info
             summarized[file] = file_info
 
-        self.summarized_info = summarized
+        return summarized
 
     def sort_by_content_and_subsystem(self):
+        summarized = self.summarize_info_to_contents()
         structure = {}
-        for file in self.summarized_info:
-            email_info = self.summarized_info.get(file)
+        for file in summarized:
+            email_info = summarized.get(file)
             # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
             file = file.replace(self.name_of_src + 'src/', '')
             parts_of_name = file.split('/')
@@ -171,8 +172,8 @@ class ObjectTree:
                     info.update(email_info)
             type_info[object] = object_info
             skip = False
-            if len(self.obj_subsystem) > 0 and (len(self.include_subsystems) > 0 or len(self.exclude_subsystems) > 0):
-                subsystem_type = self.obj_subsystem.get(type, {})
+            if len(self.subsystem_by_object) > 0 and (len(self.include_subsystems) > 0 or len(self.exclude_subsystems) > 0):
+                subsystem_type = self.subsystem_by_object.get(type, {})
                 subsystems = subsystem_type.get(object, [])
                 it_is_include = False
                 for include in self.include_subsystems:
@@ -229,73 +230,73 @@ class ObjectTree:
 
                 structure['authors'] = structure_authors
             structure.update({type: type_info})
-        self.structure = structure
-        return
+        self.structure_of_conf = structure
 
     def save_to_markdown(self):
-
-        if len(self.structure) == 0:
+        if len(self.structure_of_conf) == 0:
             return
 
-        with open('stats_info.md', 'w') as result_file:
-            write_line(result_file, self.configuration_name, '#')
-            print_authors(self.authors, self.structure.get('authors'), result_file)
+        with tqdm(total=len(self.structure_of_conf), desc='Save to markdown', ncols=100, colour='green') as pbar:
+            with open('stats_info.md', 'w') as result_file:
+                write_line(result_file, self.configuration_name, '#')
+                print_authors(self.authors, self.structure_of_conf.get('authors'), result_file)
 
-            write_line(result_file, 'Объекты:', '##')
-            for obj in self.structure:
-                if obj == 'authors' or obj == 'Configuration':
-                    continue
-                else:
-                    subsystem_obj = self.obj_subsystem.get(obj, {})
-                    write_line(result_file, icon_md(obj) + obj, '###')
-                    open_details('Подробнее', result_file)
-                    types = self.structure.get(obj)
-                    for type in types:
-                        if type == 'authors':
-                            continue
-                        else:
-                            write_line(result_file, icon_md(obj) + type, '####')
-                            object_info = types.get(type)
-                            print_authors(self.authors, object_info.get('authors'), result_file)
-                            subsystem_type = subsystem_obj.get(type, [])
-                            print_subsystem(subsystem_type, result_file)
-                            if obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
-                                open_details('Еще', result_file)
-                                if object_info.get('ObjectModule.bsl') is not None:
-                                    write_title('##### Модуль объекта', result_file)
-                                    lines_info = object_info.get('ObjectModule.bsl')
-                                    print_authors(self.authors, lines_info, result_file)
-
-                                if object_info.get('ManagerModule.bsl') is not None:
-                                    write_title('##### Модуль менеджера', result_file)
-                                    lines_info = object_info.get('ManagerModule.bsl')
-                                    print_authors(self.authors, lines_info, result_file)
-
-                                if object_info.get('Forms') is not None:
-                                    write_title('##### Формы', result_file)
-                                    forms_info = object_info.get('Forms')
-                                    for form in forms_info:
-                                        write_title(form, result_file)
-                                        lines_info = forms_info.get(form).get('Module.bsl')
+                write_line(result_file, 'Объекты:', '##')
+                for obj in self.structure_of_conf:
+                    pbar.update(1)
+                    if obj == 'authors' or obj == 'Configuration':
+                        continue
+                    else:
+                        subsystem_obj = self.subsystem_by_object.get(obj, {})
+                        write_line(result_file, icon_md(obj) + obj, '###')
+                        open_details('Подробнее', result_file)
+                        types = self.structure_of_conf.get(obj)
+                        for type in types:
+                            if type == 'authors':
+                                continue
+                            else:
+                                write_line(result_file, icon_md(obj) + type, '####')
+                                object_info = types.get(type)
+                                print_authors(self.authors, object_info.get('authors'), result_file)
+                                subsystem_type = subsystem_obj.get(type, [])
+                                print_subsystem(subsystem_type, result_file)
+                                if obj == 'Catalogs' or obj == 'DataProcessors' or obj == 'Documents' or obj == 'Reports':
+                                    open_details('Еще', result_file)
+                                    if object_info.get('ObjectModule.bsl') is not None:
+                                        write_title('##### Модуль объекта', result_file)
+                                        lines_info = object_info.get('ObjectModule.bsl')
                                         print_authors(self.authors, lines_info, result_file)
-                                close_details(result_file)
 
-                            elif obj == 'InformationRegisters' or obj == 'AccumulationRegisters':
-                                open_details('Еще', result_file)
-                                if object_info.get('RecordSetModule.bsl') is not None:
-                                    write_title('##### Модуль записи', result_file)
-                                    lines_info = object_info.get('RecordSetModule.bsl')
-                                    print_authors(self.authors, lines_info, result_file)
-                                if object_info.get('Forms') is not None:
-                                    write_title('##### Формы', result_file)
-                                    forms_info = object_info.get('Forms')
-                                    for form in forms_info:
-                                        write_title(form, result_file)
-                                        lines_info = forms_info.get(form).get('Module.bsl')
+                                    if object_info.get('ManagerModule.bsl') is not None:
+                                        write_title('##### Модуль менеджера', result_file)
+                                        lines_info = object_info.get('ManagerModule.bsl')
                                         print_authors(self.authors, lines_info, result_file)
-                                close_details(result_file)
 
-                    close_details(result_file)
+                                    if object_info.get('Forms') is not None:
+                                        write_title('##### Формы', result_file)
+                                        forms_info = object_info.get('Forms')
+                                        for form in forms_info:
+                                            write_title(form, result_file)
+                                            lines_info = forms_info.get(form).get('Module.bsl')
+                                            print_authors(self.authors, lines_info, result_file)
+                                    close_details(result_file)
+
+                                elif obj == 'InformationRegisters' or obj == 'AccumulationRegisters':
+                                    open_details('Еще', result_file)
+                                    if object_info.get('RecordSetModule.bsl') is not None:
+                                        write_title('##### Модуль записи', result_file)
+                                        lines_info = object_info.get('RecordSetModule.bsl')
+                                        print_authors(self.authors, lines_info, result_file)
+                                    if object_info.get('Forms') is not None:
+                                        write_title('##### Формы', result_file)
+                                        forms_info = object_info.get('Forms')
+                                        for form in forms_info:
+                                            write_title(form, result_file)
+                                            lines_info = forms_info.get(form).get('Module.bsl')
+                                            print_authors(self.authors, lines_info, result_file)
+                                    close_details(result_file)
+
+                        close_details(result_file)
 
     def save_to_excel(self):
         wb = openpyxl.Workbook()
@@ -312,30 +313,32 @@ class ObjectTree:
             cell.value = col
             cell.font = bold_font
         row = row_title
-        for type in self.structure:
-            if type == 'authors' or type == 'Configuration':
-                continue
-            else:
-                subsystem_obj = self.obj_subsystem.get(type, {})
-                objects = self.structure.get(type)
-                for object in objects:
-                    if object == 'authors':
-                        continue
-                    else:
-                        object_info = objects.get(object)
-                        authors_info = object_info.get('authors')
-                        for author in authors_info:
-                            row += 1
-                            sheet.cell(row=row, column=column_titles['type']).value = type
-                            sheet.cell(row=row, column=column_titles['object']).value = object
-                            sheet.cell(row=row, column=column_titles['subsystem']).value = \
-                                ', '.join(subsystem_obj.get(object, []))
-                            sheet.cell(row=row, column=column_titles['email']).value = author
-                            sheet.cell(row=row, column=column_titles['author']).value = self.authors[author]
-                            sheet.cell(row=row, column=column_titles['insert']).value = \
-                                authors_info.get(author).get('insert')
-                            sheet.cell(row=row, column=column_titles['delete']).value = \
-                                authors_info.get(author).get('delete')
+        with tqdm(total=len(self.structure_of_conf), desc='Save to Excel', ncols=100, colour='green') as pbar:
+            for type in self.structure_of_conf:
+                pbar.update(1)
+                if type == 'authors' or type == 'Configuration':
+                    continue
+                else:
+                    subsystem_obj = self.subsystem_by_object.get(type, {})
+                    objects = self.structure_of_conf.get(type)
+                    for object in objects:
+                        if object == 'authors':
+                            continue
+                        else:
+                            object_info = objects.get(object)
+                            authors_info = object_info.get('authors')
+                            for author in authors_info:
+                                row += 1
+                                sheet.cell(row=row, column=column_titles['type']).value = type
+                                sheet.cell(row=row, column=column_titles['object']).value = object
+                                sheet.cell(row=row, column=column_titles['subsystem']).value = \
+                                    ', '.join(subsystem_obj.get(object, []))
+                                sheet.cell(row=row, column=column_titles['email']).value = author
+                                sheet.cell(row=row, column=column_titles['author']).value = self.authors[author]
+                                sheet.cell(row=row, column=column_titles['insert']).value = \
+                                    authors_info.get(author).get('insert')
+                                sheet.cell(row=row, column=column_titles['delete']).value = \
+                                    authors_info.get(author).get('delete')
 
         wb.save('stats.xlsx')
 
@@ -413,8 +416,25 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
 
 
 if __name__ == '__main__':
+    save_to_md = settings.save_to_md()
+    save_to_excel = settings.save_to_excel()
 
+    print('')
+    print('Statistics collection has started')
+    print('Please wait. It may take a long time...')
+    print('')
     obj = build_object_tree()
-
-    obj.save_to_markdown()
-    obj.save_to_excel()
+    if save_to_md:
+        obj.save_to_markdown()
+    if save_to_excel:
+        obj.save_to_excel()
+    print('')
+    print('Statistics are collected!')
+    if save_to_md and save_to_excel:
+        print('Please check result files: stats_info.md and stats.xlsx')
+    elif save_to_md:
+        print('Please check result file: stats_info.md')
+    elif save_to_excel:
+        print('Please check result file: stats.xlsx')
+    else:
+        print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_excel()')

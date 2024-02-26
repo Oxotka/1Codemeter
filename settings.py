@@ -34,4 +34,13 @@ def date_since():
     return datetime.datetime(2016, 1, 1)
 
 
+def date_before():
+    return datetime.datetime.now()
 
+
+def save_to_md():
+    return True
+
+
+def save_to_excel():
+    return True

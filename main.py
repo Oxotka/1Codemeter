@@ -71,7 +71,7 @@ def print_subsystem(subsystems, file):
         write_line(file, '')
 
 
-class ObjectTree:
+class StructureOfCodemeter:
     def __init__(self):
         self.path_to_repo = settings.path_to_repo()  # Путь до локального репозитория
         self.name_of_src = settings.name_of_configuration()  # Имя по-которому ищем папку с конфигурацией
@@ -128,7 +128,6 @@ class ObjectTree:
                                 'email': commit.author.email}
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name
-        self.sort_by_content_and_subsystem()
 
     def summarize_info_to_contents(self):
         summarized = {}
@@ -150,7 +149,7 @@ class ObjectTree:
 
         return summarized
 
-    def sort_by_content_and_subsystem(self):
+    def structure_by_content_and_subsystem(self):
         summarized = self.summarize_info_to_contents()
         structure = {}
         for file in summarized:
@@ -361,9 +360,9 @@ def path_to_object(content):
     return content.replace(".", "/") + "/" + parts_of_name[1] + '.mdo'
 
 
-def build_object_tree():
-    obj = ObjectTree()
-    path = obj.path_to_repo + obj.name_of_src
+def get_structure_of_configuration():
+    structure_of_codemeter = StructureOfCodemeter()
+    path = structure_of_codemeter.path_to_repo + structure_of_codemeter.name_of_src
     configuration = 'src/Configuration/Configuration.mdo'
     subsystem_path = 'src/Subsystems/'
 
@@ -375,10 +374,10 @@ def build_object_tree():
     upper_subsystems = []
     with open(path + configuration, 'r') as f:
         for line in f.readlines():
-            if obj.configuration_name == '':
+            if structure_of_codemeter.configuration_name == '':
                 m = re.search(reg_exp_pattern_name, line)
                 if not (m is None):
-                    obj.configuration_name = m.group()
+                    structure_of_codemeter.configuration_name = m.group()
 
             m = re.search(reg_exp_pattern_subsystem, line)
             if not (m is None):
@@ -388,13 +387,13 @@ def build_object_tree():
     for subsystem in upper_subsystems:
         path_to_dir_subsystem = path + subsystem_path + subsystem + '/'
         info_subsystem = info_about_subsystems(subsystem, path_to_dir_subsystem, reg_exp_pattern_content)
-        obj.subsystems.append(info_subsystem)
+        structure_of_codemeter.subsystems.append(info_subsystem)
 
-    obj.get_structure_subsystem()
-    obj.get_commits_info()
-    obj.sort_by_content_and_subsystem()
+    structure_of_codemeter.get_structure_subsystem()
+    structure_of_codemeter.get_commits_info()
+    structure_of_codemeter.structure_by_content_and_subsystem()
 
-    return obj
+    return structure_of_codemeter
 
 
 def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
@@ -426,14 +425,14 @@ if __name__ == '__main__':
     print('Statistics collection has started')
     print('Please wait. It may take a long time...')
     print('')
-    obj = build_object_tree()
+    structure = get_structure_of_configuration()
     if save_to_md:
-        obj.save_to_markdown()
+        structure.save_to_markdown()
     if save_to_excel:
-        obj.save_to_excel()
+        structure.save_to_excel()
     print('')
 
-    if len(obj.structure_of_conf) == 0:
+    if len(structure.structure_of_conf) == 0:
         print('Nothing was found. Check the settings')
         print('For example: settings.date_since() and settings.date_before()')
     else:

@@ -12,30 +12,25 @@ def name_of_configuration():
     return 'GitConverter/'
 
 
-def include_subsystems():
-
-    # subsystems = ["Финансы", "Закупки"]
-    subsystems = []
-    return subsystems
-
-
-def exclude_subsystems():
-
-    # Если есть включаемые подсистемы, то исключаемые не нужны совсем
-    if len(include_subsystems()) > 0:
-        return []
-
-    # subsystems = ["Предприятие"]
-    subsystems = []
-    return subsystems
-
-
 def date_since():
     return datetime.datetime(2016, 1, 1)
 
 
 def date_before():
     return datetime.datetime.now()
+
+
+def include_subsystems():
+    subsystems = []
+    return subsystems
+
+
+def exclude_subsystems():
+    # Если есть включаемые подсистемы, то исключаемые не нужны совсем
+    if len(include_subsystems()) > 0:
+        return []
+    subsystems = []
+    return subsystems
 
 
 def save_to_md():

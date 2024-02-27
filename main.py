@@ -73,8 +73,8 @@ def print_subsystem(subsystems, file):
 
 class StructureOfCodemeter:
     def __init__(self):
-        self.path_to_repo = settings.path_to_repo()  # Путь до локального репозитория
-        self.name_of_src = settings.name_of_configuration()  # Имя по-которому ищем папку с конфигурацией
+        self.path_to_repo = os.path.normpath(settings.path_to_repo())  # Путь до локального репозитория
+        self.name_of_src = os.path.normpath(settings.name_of_configuration())  # Имя в папке с конфигурацией
         self.date_since = settings.date_since()  # Дата, с которой начинаем читать коммиты
         self.date_before = settings.date_before()  # Дата, до которой читаем коммиты
         self.exclude_subsystems = settings.include_subsystems()  # Исключаемые подсистемы
@@ -120,7 +120,7 @@ class StructureOfCodemeter:
                     continue
                 for file in commit.stats.files:
                     # find only in chosen configuration in settings and .bsl files
-                    if file.startswith(self.name_of_src + 'src/') and file.endswith('bsl'):
+                    if file.startswith(os.path.join(self.name_of_src, 'src')) and file.endswith('bsl'):
                         stat = {'date': commit.committed_datetime.date(),
                                 'file': file,
                                 'insert': commit.stats.files.get(file).get('insertions'),
@@ -155,10 +155,10 @@ class StructureOfCodemeter:
         for file in summarized:
             email_info = summarized.get(file)
             # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
-            file = file.replace(self.name_of_src + 'src/', '')
-            parts_of_name = file.split('/')
-            type_name = parts_of_name[0]  # example: AccumulationRegisters
-            object_name = parts_of_name[1]  # example: Взаиморасчеты
+            file = file.replace(os.path.join(self.name_of_src, 'src'), '')
+            parts_of_name = file.split(os.path.sep)
+            type_name = parts_of_name[1]  # example: AccumulationRegisters
+            object_name = parts_of_name[2]  # example: Взаиморасчеты
             type_info = copy.deepcopy(structure_of_configuration.get(type_name, {}))
             object_info = copy.deepcopy(type_info.get(object_name, {}))
             info = object_info
@@ -364,9 +364,9 @@ def path_to_object(content):
 
 def get_structure_of_configuration():
     structure_of_codemeter = StructureOfCodemeter()
-    path = structure_of_codemeter.path_to_repo + structure_of_codemeter.name_of_src
-    configuration = 'src/Configuration/Configuration.mdo'
-    subsystem_path = 'src/Subsystems/'
+    path = os.path.join(structure_of_codemeter.path_to_repo, structure_of_codemeter.name_of_src)
+    configuration = os.path.normpath('src/Configuration/Configuration.mdo')
+    subsystem_path = os.path.normpath('src/Subsystems/')
 
     reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
     reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
@@ -374,7 +374,7 @@ def get_structure_of_configuration():
 
     # get upper subsystems
     upper_subsystems = []
-    with open(path + configuration, 'r') as f:
+    with open(os.path.join(path, configuration), 'r') as f:
         for line in f.readlines():
             if structure_of_codemeter.configuration_name == '':
                 m = re.search(reg_exp_pattern_name, line)
@@ -387,7 +387,7 @@ def get_structure_of_configuration():
 
     # get info about subsystems
     for subsystem in upper_subsystems:
-        path_to_dir_subsystem = path + subsystem_path + subsystem + '/'
+        path_to_dir_subsystem = os.path.join(path, subsystem_path, subsystem)
         info_subsystem = info_about_subsystems(subsystem, path_to_dir_subsystem, reg_exp_pattern_content)
         structure_of_codemeter.subsystems.append(info_subsystem)
 
@@ -399,13 +399,13 @@ def get_structure_of_configuration():
 
 
 def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
-    subsystem_name = path + subsystem + '.mdo'
+    subsystem_name = os.path.join(path, subsystem + '.mdo')
     contents = []
     subsystems = []
     if os.path.isdir(path + 'Subsystems'):
         inner_subsystems = [f for f in os.listdir(path + 'Subsystems') if f != '.DS_Store']
         for inner_subsystem in inner_subsystems:
-            inner_subsystem_path = path + 'Subsystems/' + inner_subsystem + '/'
+            inner_subsystem_path = os.path.join(path, 'Subsystems', inner_subsystem)
             inner_info = info_about_subsystems(inner_subsystem, inner_subsystem_path, reg_exp_pattern_content)
             subsystems.append(inner_info)
 

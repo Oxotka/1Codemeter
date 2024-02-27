@@ -26,6 +26,17 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Формы
+
+ТекущиеВзаиморасчеты
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+22</span> <span style="color:rgb(255,0,0)">-22</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+39</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаСписка
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 </details>
@@ -51,6 +62,22 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-6</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+41</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Модуль менеджера
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаЭлемента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+385</span> <span style="color:rgb(255,0,0)">-8</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+21</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -64,6 +91,10 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Модуль менеджера
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+31</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -79,6 +110,13 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+ФормаЭлемента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -97,6 +135,22 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+147</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаСпискаСОстатками
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-5</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+29</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаЭлемента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-2</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+484</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -112,6 +166,35 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+СписокСертификатов
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+49</span> <span style="color:rgb(255,0,0)">-0</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+154</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаСписка
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+29</span> <span style="color:rgb(255,0,0)">-16</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+216</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаЭлемента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+148</span> <span style="color:rgb(255,0,0)">-2</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+736</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаЗагрузкиФайлов
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+116</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаПароля
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -125,6 +208,28 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+44</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Модуль менеджера
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+Календарь
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+595</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаСписка
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+14</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ФормаЭлемента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+62</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -141,6 +246,13 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Формы
+
+ФормаЭлемента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+95</span> <span style="color:rgb(255,0,0)">-56</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+265</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -154,6 +266,12 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+ФормаЭлемента
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+42</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -169,6 +287,12 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Формы
+
+ФормаЭлемента
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -182,6 +306,10 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Модуль объекта
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -199,6 +327,10 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -212,6 +344,10 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Модуль менеджера
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+45</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -476,6 +612,13 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Формы
+
+Форма
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+65</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -486,6 +629,13 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+ФормаПутеводителя
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-4</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+185</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -502,6 +652,13 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Формы
+
+Форма
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-19</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+195</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -515,6 +672,12 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+Форма
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+173</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -531,6 +694,25 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ОтборЖурналаРегистрации
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+311</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ЖурналРегистрации
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+292</span> <span style="color:rgb(255,0,0)">-0</span>
+
+РедакторСоставаСвойства
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+271</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -544,6 +726,12 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+Форма
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -559,6 +747,16 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+41</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+Форма
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+110</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -572,6 +770,12 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+ФормаСпискаАктивныхПользователей
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+106</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -587,6 +791,12 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Формы
+
+ОсновнаяФорма
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+284</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -600,6 +810,12 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+Форма
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+232</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -615,6 +831,16 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+153</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+Форма
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+262</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -628,6 +854,12 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Формы
+
+Форма
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+88</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -652,6 +884,18 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+44</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаДокумента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+161</span> <span style="color:rgb(255,0,0)">-69</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+279</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -666,6 +910,18 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+19</span> <span style="color:rgb(255,0,0)">-19</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+26</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаДокумента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+64</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -682,6 +938,17 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-7</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+49</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаДокумента
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+40</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -696,6 +963,17 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-7</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+48</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаДокумента
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+37</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -712,6 +990,22 @@
 <details>
   <summary><i>Еще</i></summary>
 
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-8</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+76</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Модуль менеджера
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаДокумента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+50</span> <span style="color:rgb(255,0,0)">-50</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+166</span> <span style="color:rgb(255,0,0)">-0</span>
+
 </details>
 
 
@@ -726,6 +1020,22 @@
 
 <details>
   <summary><i>Еще</i></summary>
+
+##### Модуль объекта
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+57</span> <span style="color:rgb(255,0,0)">-47</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+310</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Формы
+
+ФормаДокумента
+
+1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+72</span> <span style="color:rgb(255,0,0)">-67</span>
+2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+295</span> <span style="color:rgb(255,0,0)">-0</span>
+
+ОформлениеДоставки
+
+1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 

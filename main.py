@@ -374,7 +374,7 @@ def get_structure_of_configuration():
 
     # get upper subsystems
     upper_subsystems = []
-    with open(os.path.join(path, configuration), 'r') as f:
+    with open(os.path.join(path, configuration), mode='r', encoding='utf8') as f:
         for line in f.readlines():
             if structure_of_codemeter.configuration_name == '':
                 m = re.search(reg_exp_pattern_name, line)

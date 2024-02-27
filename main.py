@@ -100,6 +100,8 @@ class StructureOfCodemeter:
 
             for content in subsystem.get(info).get('contents'):
                 elements = single_to_plural(content).split('.')
+                if len(elements) != 2:
+                    continue
                 type_name = elements[0]
                 object_name = elements[1]
                 type_info = self.subsystem_by_object.get(type_name, {})
@@ -112,15 +114,24 @@ class StructureOfCodemeter:
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
         commits = list(repo.iter_commits("master"))
+
         with tqdm(total=len(commits), desc='Get commits', ncols=100, colour='green') as pbar:
             for commit in commits:
                 pbar.update(1)
-                if self.date_since.timestamp() >= commit.committed_datetime.timestamp() \
-                        or commit.committed_datetime.timestamp() > self.date_before.timestamp():
+
+                if commit.committed_datetime.timestamp() > self.date_before.timestamp():
                     continue
+
+                if self.date_since.timestamp() >= commit.committed_datetime.timestamp():
+                    print('Date of commit ({commit}) are earlier then date_since ({since})'.format(
+                        commit=commit.committed_datetime.date(), since=self.date_since.date()))
+                    print('Stop get commit')
+                    break
+
                 for file in commit.stats.files:
                     # find only in chosen configuration in settings and .bsl files
-                    if file.startswith(os.path.join(self.name_of_src, 'src')) and file.endswith('bsl'):
+                    if os.path.normpath(file).startswith(os.path.join(self.name_of_src, 'src')) \
+                            and file.endswith('bsl'):
                         stat = {'date': commit.committed_datetime.date(),
                                 'file': file,
                                 'insert': commit.stats.files.get(file).get('insertions'),
@@ -155,6 +166,7 @@ class StructureOfCodemeter:
         for file in summarized:
             email_info = summarized.get(file)
             # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
+            file = os.path.normpath(file)
             file = file.replace(os.path.join(self.name_of_src, 'src'), '')
             parts_of_name = file.split(os.path.sep)
             type_name = parts_of_name[1]  # example: AccumulationRegisters
@@ -162,7 +174,7 @@ class StructureOfCodemeter:
             type_info = copy.deepcopy(structure_of_configuration.get(type_name, {}))
             object_info = copy.deepcopy(type_info.get(object_name, {}))
             info = object_info
-            for i in range(2, len(parts_of_name)):
+            for i in range(3, len(parts_of_name)):
                 inner_info = info.get(parts_of_name[i])
                 if inner_info is None:
                     info.update({parts_of_name[i]: {}})
@@ -198,9 +210,9 @@ class StructureOfCodemeter:
                 else:
                     upd_author = copy.deepcopy(authors.get(email_info_by_author))
                     upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
-                                                                  email_info_by_author).get('insert', 0)
+                        email_info_by_author).get('insert', 0)
                     upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
-                                                                  email_info_by_author).get('delete', 0)
+                        email_info_by_author).get('delete', 0)
                 authors[email_info_by_author] = upd_author
                 object_info['authors'] = authors
 
@@ -210,9 +222,9 @@ class StructureOfCodemeter:
                 else:
                     upd_author = copy.deepcopy(authors.get(email_info_by_author))
                     upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
-                                                                  email_info_by_author).get('insert', 0)
+                        email_info_by_author).get('insert', 0)
                     upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
-                                                                  email_info_by_author).get('delete', 0)
+                        email_info_by_author).get('delete', 0)
                 authors[email_info_by_author] = upd_author
                 type_info['authors'] = authors
 
@@ -238,7 +250,7 @@ class StructureOfCodemeter:
             return
 
         with tqdm(total=len(self.structure_of_conf), desc='Save to markdown', ncols=100, colour='green') as pbar:
-            with open('stats_info.md', 'w') as result_file:
+            with open('stats_info.md', 'w', encoding='utf-8') as result_file:
                 write_line(result_file, self.configuration_name, '#')
                 print_authors(self.authors, self.structure_of_conf.get('authors'), result_file)
 
@@ -311,7 +323,7 @@ class StructureOfCodemeter:
         sheet['B2'] = self.configuration_name
         sheet['B2'].font = title_font
         row_title = 4
-        column_titles = {'type': 2, 'object': 3, 'subsystem': 4, 'author': 5, 'email': 6,  'insert': 7, 'delete': 8}
+        column_titles = {'type': 2, 'object': 3, 'subsystem': 4, 'author': 5, 'email': 6, 'insert': 7, 'delete': 8}
         for col in column_titles:
             cell = sheet.cell(row=row_title, column=column_titles[col])
             cell.value = col

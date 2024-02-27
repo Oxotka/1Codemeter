@@ -375,15 +375,13 @@ def get_structure_of_configuration():
     # get upper subsystems
     upper_subsystems = []
     with open(os.path.join(path, configuration), mode='r', encoding='utf8') as f:
-        for line in f.readlines():
-            if structure_of_codemeter.configuration_name == '':
-                m = re.search(reg_exp_pattern_name, line)
-                if not (m is None):
-                    structure_of_codemeter.configuration_name = m.group()
+        file = f.read().encode('utf-8').decode('utf-8')
+        m = re.search(reg_exp_pattern_name, file)
+        if not (m is None):
+            structure_of_codemeter.configuration_name = m.group()
 
-            m = re.search(reg_exp_pattern_subsystem, line)
-            if not (m is None):
-                upper_subsystems.append(m.group())
+        for subsystem in re.findall(reg_exp_pattern_subsystem, file):
+            upper_subsystems.append(subsystem)
 
     # get info about subsystems
     for subsystem in upper_subsystems:
@@ -402,19 +400,17 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
     subsystem_name = os.path.join(path, subsystem + '.mdo')
     contents = []
     subsystems = []
-    if os.path.isdir(path + 'Subsystems'):
-        inner_subsystems = [f for f in os.listdir(path + 'Subsystems') if f != '.DS_Store']
+    if os.path.isdir(os.path.join(path, 'Subsystems')):
+        inner_subsystems = [f for f in os.listdir(os.path.join(path, 'Subsystems')) if f != '.DS_Store']
         for inner_subsystem in inner_subsystems:
             inner_subsystem_path = os.path.join(path, 'Subsystems', inner_subsystem)
             inner_info = info_about_subsystems(inner_subsystem, inner_subsystem_path, reg_exp_pattern_content)
             subsystems.append(inner_info)
 
-    with open(subsystem_name, 'r') as f:
-        for line in f.readlines():
-            # contents
-            m = re.search(reg_exp_pattern_content, line)
-            if not (m is None):
-                contents.append(m.group())
+    with open(subsystem_name, mode='r', encoding='utf8') as f:
+        file = f.read().encode('utf-8').decode('utf-8')
+        for content in re.findall(reg_exp_pattern_content, file):
+            contents.append(content)
 
     return {subsystem: {'subsystems': subsystems, 'contents': contents}}
 

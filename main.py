@@ -117,16 +117,20 @@ class StructureOfCodemeter:
         repo = git.Repo(self.path_to_repo)
         commits = list(repo.iter_commits("master"))
 
-        print('Count of all commits in repo: {len}'.format(len=len(commits)))
-        if self.date_before is not None and self.date_before.date() != datetime.datetime.now().date \
-                and self.date_since is not None:
-            print('Processing is performed only between these dates: since - {since}, before - {before}'.format(
+        print('The number of all commits in the repository: {len}'.format(len=len(commits)))
+        print('')
+        if self.date_before is not None and self.date_since is not None:
+            print('Processing is performed only between these dates: {since} and {before}'.format(
                 since=self.date_since.date(), before=self.date_before.date()))
             print('Other commits will be skipped and the process may stop before the progress bar completes.')
 
         elif self.date_since is not None:
-            print('Processing is performed only since this date: {since}'.format(
+            print('Processing is performed only since {since}'.format(
                 since=self.date_since.date()))
+            print('Other commits will be skipped and the process may stop before the progress bar completes.')
+        elif self.date_before is not None:
+            print('Processing is performed only before {before}'.format(
+                before=self.date_since.date()))
             print('Other commits will be skipped and the process may stop before the progress bar completes.')
 
         with tqdm(total=len(commits), desc='Get commits', ncols=100, colour='green') as pbar:
@@ -272,16 +276,16 @@ class StructureOfCodemeter:
                 write_line(result_file, self.configuration_name, '#')
                 open_details('Отборы:', result_file)
                 if self.date_since is not None \
-                        and self.date_before is not None and self.date_before.date() != datetime.datetime.now().date():
+                        and self.date_before is not None:
                     write_line(result_file, 'Коммиты собраны начиная с {since} по {before}'.format(
                         since=self.date_since.date(), before=self.date_before.date()))
                     write_line(result_file, '')
                 elif self.date_since is not None:
                     write_line(result_file,
-                               'Коммиты собраны начиная с даты {since}'.format(since=self.date_since.date()))
+                               'Коммиты собраны начиная с {since}'.format(since=self.date_since.date()))
                     write_line(result_file, '')
-                elif self.date_before is not None and self.date_before.date() != datetime.datetime.now().date():
-                    write_line(result_file, 'Коммиты собраны по дату {before}'.format(before=self.date_before.date()))
+                elif self.date_before is not None:
+                    write_line(result_file, 'Коммиты собраны по {before}'.format(before=self.date_before.date()))
                     write_line(result_file, '')
                 if len(self.include_subsystems) > 0:
                     write_line(result_file, 'Отбор по этим подсистемам:')
@@ -364,9 +368,30 @@ class StructureOfCodemeter:
         sheet = wb['Все данные']
         title_font = Font(name='Arial', size=18)
         bold_font = Font(bold=True)
-        sheet['B2'] = self.configuration_name
-        sheet['B2'].font = title_font
-        row_title = 4
+        row_title = 2
+        sheet['B{}'.format(row_title)] = self.configuration_name
+        sheet['B{}'.format(row_title)].font = title_font
+        row_title += 1
+        if self.date_since is not None \
+                and self.date_before is not None:
+            sheet['B{}'.format(row_title)] = 'Коммиты с {since} по {before}'.format(
+                since=self.date_since.date(), before=self.date_before.date())
+            row_title += 1
+        elif self.date_since is not None:
+            sheet['B{}'.format(row_title)] = 'Коммиты с {since}'.format(since=self.date_since.date())
+            row_title += 1
+        elif self.date_before is not None:
+            sheet['B{}'.format(row_title)] = 'Коммиты по {before}'.format(since=self.date_before.date())
+            row_title += 1
+        if len(self.include_subsystems) > 0:
+            sheet['B{}'.format(row_title)] = 'Отбор по этим подсистемам: {subsystems}'.format(
+                subsystems=', '.join(self.include_subsystems))
+            row_title += 1
+        if len(self.exclude_subsystems) > 0:
+            sheet['B{}'.format(row_title)] = 'Исключая эти подсистемы: {subsystems}'.format(
+                subsystems=', '.join(self.exclude_subsystems))
+            row_title += 1
+        row_title += 1
         column_titles = {'type': 2, 'object': 3, 'subsystem': 4, 'author': 5, 'email': 6, 'insert': 7, 'delete': 8}
         for col in column_titles:
             cell = sheet.cell(row=row_title, column=column_titles[col])

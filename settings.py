@@ -29,7 +29,7 @@ def exclude_subsystems():
     # Если есть включаемые подсистемы, то исключаемые не нужны совсем
     if len(include_subsystems()) > 0:
         return []
-    subsystems = []
+    subsystems = ["BlaBla"]
     return subsystems
 
 

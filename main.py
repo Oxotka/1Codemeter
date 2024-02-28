@@ -1,3 +1,5 @@
+import datetime
+
 import settings
 import re
 import os
@@ -77,8 +79,8 @@ class StructureOfCodemeter:
         self.name_of_src = os.path.normpath(settings.name_of_configuration())  # Имя в папке с конфигурацией
         self.date_since = settings.date_since()  # Дата, с которой начинаем читать коммиты
         self.date_before = settings.date_before()  # Дата, до которой читаем коммиты
-        self.exclude_subsystems = settings.include_subsystems()  # Исключаемые подсистемы
-        self.include_subsystems = settings.exclude_subsystems()  # Включаемые подсистемы
+        self.exclude_subsystems = settings.exclude_subsystems()  # Исключаемые подсистемы
+        self.include_subsystems = settings.include_subsystems()  # Включаемые подсистемы
         self.configuration_name = ''  # Имя конфигурации из файлов конфигурации
         self.commits = []  # Все подходящие коммиты, между датами date_since и date_before
         self.subsystems = []  # Служебный массив всех подсистем. Собирается из файлов конфигурации
@@ -115,17 +117,31 @@ class StructureOfCodemeter:
         repo = git.Repo(self.path_to_repo)
         commits = list(repo.iter_commits("master"))
 
+        print('Count of all commits in repo: {len}'.format(len=len(commits)))
+        if self.date_before is not None and self.date_before.date() != datetime.datetime.now().date \
+                and self.date_since is not None:
+            print('Processing is performed only between these dates: since - {since}, before - {before}'.format(
+                since=self.date_since.date(), before=self.date_before.date()))
+            print('Other commits will be skipped and the process may stop before the progress bar completes.')
+
+        elif self.date_since is not None:
+            print('Processing is performed only since this date: {since}'.format(
+                since=self.date_since.date()))
+            print('Other commits will be skipped and the process may stop before the progress bar completes.')
+
         with tqdm(total=len(commits), desc='Get commits', ncols=100, colour='green') as pbar:
             for commit in commits:
                 pbar.update(1)
 
-                if commit.committed_datetime.timestamp() > self.date_before.timestamp():
+                if self.date_before is not None \
+                        and commit.committed_datetime.timestamp() > self.date_before.timestamp():
                     continue
 
-                if self.date_since.timestamp() >= commit.committed_datetime.timestamp():
+                if self.date_since is not None \
+                        and self.date_since.timestamp() >= commit.committed_datetime.timestamp():
                     print('Date of commit ({commit}) are earlier then date_since ({since})'.format(
                         commit=commit.committed_datetime.date(), since=self.date_since.date()))
-                    print('Stop get commit')
+                    print('It is okay, we stop get commit and go forward')
                     break
 
                 for file in commit.stats.files:
@@ -163,86 +179,88 @@ class StructureOfCodemeter:
     def structure_by_content_and_subsystem(self):
         summarized = self.summarize_info_to_contents()
         structure_of_configuration = {}
-        for file in summarized:
-            email_info = summarized.get(file)
-            # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
-            file = os.path.normpath(file)
-            file = file.replace(os.path.join(self.name_of_src, 'src'), '')
-            parts_of_name = file.split(os.path.sep)
-            type_name = parts_of_name[1]  # example: AccumulationRegisters
-            object_name = parts_of_name[2]  # example: Взаиморасчеты
-            type_info = copy.deepcopy(structure_of_configuration.get(type_name, {}))
-            object_info = copy.deepcopy(type_info.get(object_name, {}))
-            info = object_info
-            for i in range(3, len(parts_of_name)):
-                inner_info = info.get(parts_of_name[i])
-                if inner_info is None:
-                    info.update({parts_of_name[i]: {}})
+        with tqdm(total=len(summarized), desc='Summarize info', ncols=100, colour='green') as pbar:
+            for file in summarized:
+                pbar.update(1)
+                email_info = summarized.get(file)
+                # example: DemoConfDT/src/AccumulationRegisters/Взаиморасчеты/Forms/ТекущиеВзаиморасчеты/Module.bsl
+                file = os.path.normpath(file)
+                file = file.replace(os.path.join(self.name_of_src, 'src'), '')
+                parts_of_name = file.split(os.path.sep)
+                type_name = parts_of_name[1]  # example: AccumulationRegisters
+                object_name = parts_of_name[2]  # example: Взаиморасчеты
+                type_info = copy.deepcopy(structure_of_configuration.get(type_name, {}))
+                object_info = copy.deepcopy(type_info.get(object_name, {}))
+                info = object_info
+                for i in range(3, len(parts_of_name)):
                     inner_info = info.get(parts_of_name[i])
-                info = inner_info
-                if i == len(parts_of_name) - 1:
-                    info.update(email_info)
-            type_info[object_name] = object_info
-            skip = False
-            if len(self.subsystem_by_object) > 0 and (len(self.include_subsystems) > 0
-                                                      or len(self.exclude_subsystems) > 0):
+                    if inner_info is None:
+                        info.update({parts_of_name[i]: {}})
+                        inner_info = info.get(parts_of_name[i])
+                    info = inner_info
+                    if i == len(parts_of_name) - 1:
+                        info.update(email_info)
+                type_info[object_name] = object_info
+                skip = False
                 subsystem_type = self.subsystem_by_object.get(type_name, {})
                 subsystems = subsystem_type.get(object_name, [])
-                it_is_include = False
-                for include in self.include_subsystems:
-                    if include != "" and include in subsystems:
-                        it_is_include = True
-                        break
-                skip = not it_is_include
+                if len(self.include_subsystems) > 0 and len(self.subsystem_by_object) > 0:
+                    it_is_include = False
+                    for include in self.include_subsystems:
+                        if include != "" and include in subsystems:
+                            it_is_include = True
+                            break
+                    skip = not it_is_include
 
-                for exclude in self.exclude_subsystems:
-                    if exclude != "" and exclude in subsystems:
-                        skip = True
-                        break
-            if skip:
-                continue
+                if len(self.exclude_subsystems) > 0 and len(self.subsystem_by_object) > 0:
+                    for exclude in self.exclude_subsystems:
+                        if exclude != "" and exclude in subsystems:
+                            skip = True
+                            break
+                if skip:
+                    continue
 
-            # stats by obj
-            for email_info_by_author in email_info:
-                authors = copy.deepcopy(object_info.get('authors', {}))
-                if authors.get(email_info_by_author) is None:
-                    upd_author = email_info.get(email_info_by_author, {})
-                else:
-                    upd_author = copy.deepcopy(authors.get(email_info_by_author))
-                    upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
-                        email_info_by_author).get('insert', 0)
-                    upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
-                        email_info_by_author).get('delete', 0)
-                authors[email_info_by_author] = upd_author
-                object_info['authors'] = authors
+                # stats by obj
+                for email_info_by_author in email_info:
+                    authors = copy.deepcopy(object_info.get('authors', {}))
+                    if authors.get(email_info_by_author) is None:
+                        upd_author = email_info.get(email_info_by_author, {})
+                    else:
+                        upd_author = copy.deepcopy(authors.get(email_info_by_author))
+                        upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
+                            email_info_by_author).get('insert', 0)
+                        upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
+                            email_info_by_author).get('delete', 0)
+                    authors[email_info_by_author] = upd_author
+                    object_info['authors'] = authors
 
-                authors = copy.deepcopy(type_info.get('authors', {}))
-                if authors.get(email_info_by_author) is None:
-                    upd_author = email_info.get(email_info_by_author, {})
-                else:
-                    upd_author = copy.deepcopy(authors.get(email_info_by_author))
-                    upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
-                        email_info_by_author).get('insert', 0)
-                    upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
-                        email_info_by_author).get('delete', 0)
-                authors[email_info_by_author] = upd_author
-                type_info['authors'] = authors
+                    authors = copy.deepcopy(type_info.get('authors', {}))
+                    if authors.get(email_info_by_author) is None:
+                        upd_author = email_info.get(email_info_by_author, {})
+                    else:
+                        upd_author = copy.deepcopy(authors.get(email_info_by_author))
+                        upd_author['insert'] = upd_author.get('insert', 0) + email_info.get(
+                            email_info_by_author).get('insert', 0)
+                        upd_author['delete'] = upd_author.get('delete', 0) + email_info.get(
+                            email_info_by_author).get('delete', 0)
+                    authors[email_info_by_author] = upd_author
+                    type_info['authors'] = authors
 
-                # common info about stats
-                structure_authors = structure_of_configuration.get('authors', {})
-                if structure_authors.get(email_info_by_author) is None:
-                    structure_author = email_info.get(email_info_by_author)
-                else:
-                    structure_author = copy.deepcopy(structure_authors.get(email_info_by_author))
+                    # common info about stats
+                    structure_authors = structure_of_configuration.get('authors', {})
+                    if structure_authors.get(email_info_by_author) is None:
+                        structure_author = email_info.get(email_info_by_author)
+                    else:
+                        structure_author = copy.deepcopy(structure_authors.get(email_info_by_author))
 
-                    structure_author['insert'] = structure_author.get('insert', 0) + email_info.get(
-                        email_info_by_author).get('insert', 0)
-                    structure_author['delete'] = structure_author.get('delete', 0) + email_info.get(
-                        email_info_by_author).get('delete', 0)
-                structure_authors[email_info_by_author] = structure_author
+                        structure_author['insert'] = structure_author.get('insert', 0) + email_info.get(
+                            email_info_by_author).get('insert', 0)
+                        structure_author['delete'] = structure_author.get('delete', 0) + email_info.get(
+                            email_info_by_author).get('delete', 0)
+                    structure_authors[email_info_by_author] = structure_author
 
-                structure_of_configuration['authors'] = structure_authors
-            structure_of_configuration.update({type_name: type_info})
+                    structure_of_configuration['authors'] = structure_authors
+                structure_of_configuration.update({type_name: type_info})
         self.structure_of_conf = structure_of_configuration
 
     def save_to_markdown(self):
@@ -252,6 +270,32 @@ class StructureOfCodemeter:
         with tqdm(total=len(self.structure_of_conf), desc='Save to markdown', ncols=100, colour='green') as pbar:
             with open('stats_info.md', 'w', encoding='utf-8') as result_file:
                 write_line(result_file, self.configuration_name, '#')
+                open_details('Отборы:', result_file)
+                if self.date_since is not None \
+                        and self.date_before is not None and self.date_before.date() != datetime.datetime.now().date():
+                    write_line(result_file, 'Коммиты собраны начиная с {since} по {before}'.format(
+                        since=self.date_since.date(), before=self.date_before.date()))
+                    write_line(result_file, '')
+                elif self.date_since is not None:
+                    write_line(result_file,
+                               'Коммиты собраны начиная с даты {since}'.format(since=self.date_since.date()))
+                    write_line(result_file, '')
+                elif self.date_before is not None and self.date_before.date() != datetime.datetime.now().date():
+                    write_line(result_file, 'Коммиты собраны по дату {before}'.format(before=self.date_before.date()))
+                    write_line(result_file, '')
+                if len(self.include_subsystems) > 0:
+                    write_line(result_file, 'Отбор по этим подсистемам:')
+                    for subsystem in self.include_subsystems:
+                        write_line(result_file, subsystem, '-')
+                    write_line(result_file, '')
+                if len(self.exclude_subsystems) > 0:
+                    write_line(result_file, 'Исключая эти подсистемы:')
+                    for subsystem in self.exclude_subsystems:
+                        write_line(result_file, subsystem, '-')
+                    write_line(result_file, '')
+                close_details(result_file)
+
+                write_line(result_file, 'Разработчики:', '##')
                 print_authors(self.authors, self.structure_of_conf.get('authors'), result_file)
 
                 write_line(result_file, 'Объекты:', '##')

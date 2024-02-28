@@ -1,6 +1,19 @@
 
 # ДемонстрационноеПриложение
 
+<details>
+  <summary><i>Отборы:</i></summary>
+
+Коммиты собраны начиная с 2016-01-01 по 2024-01-01
+
+Исключая эти подсистемы:
+- BlaBla
+
+</details>
+
+
+## Разработчики:
+
 1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3710</span> <span style="color:rgb(255,0,0)">-695</span>
 2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9026</span> <span style="color:rgb(255,0,0)">-0</span>
 

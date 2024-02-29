@@ -467,7 +467,7 @@ def get_structure_of_configuration():
     # get info about subsystems
     for subsystem in upper_subsystems:
         path_to_dir_subsystem = os.path.join(path, subsystem_path, subsystem)
-        info_subsystem = info_about_subsystems(subsystem, path_to_dir_subsystem, reg_exp_pattern_content)
+        info_subsystem = info_about_subsystems(subsystem, '', path_to_dir_subsystem, reg_exp_pattern_content)
         structure_of_codemeter.subsystems.append(info_subsystem)
 
     structure_of_codemeter.get_structure_subsystem()
@@ -477,15 +477,19 @@ def get_structure_of_configuration():
     return structure_of_codemeter
 
 
-def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
+def info_about_subsystems(subsystem, upper_subsystem, path, reg_exp_pattern_content):
     subsystem_name = os.path.join(path, subsystem + '.mdo')
+    full_subsystem = subsystem
+    if upper_subsystem != '':
+        full_subsystem = f'{upper_subsystem}.{subsystem}'
+
     contents = []
     subsystems = []
     if os.path.isdir(os.path.join(path, 'Subsystems')):
         inner_subsystems = [f for f in os.listdir(os.path.join(path, 'Subsystems')) if f != '.DS_Store']
         for inner_subsystem in inner_subsystems:
             inner_subsystem_path = os.path.join(path, 'Subsystems', inner_subsystem)
-            inner_info = info_about_subsystems(inner_subsystem, inner_subsystem_path, reg_exp_pattern_content)
+            inner_info = info_about_subsystems(inner_subsystem, full_subsystem, inner_subsystem_path, reg_exp_pattern_content)
             subsystems.append(inner_info)
 
     with open(subsystem_name, mode='r', encoding='utf8') as f:
@@ -493,7 +497,7 @@ def info_about_subsystems(subsystem, path, reg_exp_pattern_content):
         for content in re.findall(reg_exp_pattern_content, file):
             contents.append(content)
 
-    return {subsystem: {'subsystems': subsystems, 'contents': contents}}
+    return {full_subsystem: {'subsystems': subsystems, 'contents': contents}}
 
 
 if __name__ == '__main__':

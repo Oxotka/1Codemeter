@@ -1,5 +1,3 @@
-import datetime
-
 import settings
 import re
 import os
@@ -76,7 +74,7 @@ def print_subsystem(subsystems, file):
 class StructureOfCodemeter:
     def __init__(self):
         self.path_to_repo = os.path.normpath(settings.path_to_repo())  # Путь до локального репозитория
-        self.name_of_src = os.path.normpath(settings.name_of_configuration())  # Имя в папке с конфигурацией
+        self.name_of_src = os.path.normpath(settings.name_of_src())  # Имя в папке с конфигурацией
         self.date_since = settings.date_since()  # Дата, с которой начинаем читать коммиты
         self.date_before = settings.date_before()  # Дата, до которой читаем коммиты
         self.exclude_subsystems = settings.exclude_subsystems()  # Исключаемые подсистемы
@@ -116,7 +114,10 @@ class StructureOfCodemeter:
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
         commits = list(repo.iter_commits("master"))
-
+        print('')
+        print('Statistics collection has started')
+        print('Please wait. It may take a long time...')
+        print('')
         print('The number of all commits in the repository: {len}'.format(len=len(commits)))
         print('')
         if self.date_before is not None and self.date_since is not None:
@@ -218,9 +219,11 @@ class StructureOfCodemeter:
 
                 if len(self.exclude_subsystems) > 0 and len(self.subsystem_by_object) > 0:
                     for exclude in self.exclude_subsystems:
-                        if exclude != "" and exclude in subsystems:
-                            skip = True
-                            break
+                        if exclude != "":
+                            for object_subsystem in subsystems:
+                                if exclude in object_subsystem:
+                                    skip = True
+                                    break
                 if skip:
                     continue
 
@@ -381,7 +384,7 @@ class StructureOfCodemeter:
             sheet['B{}'.format(row_title)] = 'Коммиты с {since}'.format(since=self.date_since.date())
             row_title += 1
         elif self.date_before is not None:
-            sheet['B{}'.format(row_title)] = 'Коммиты по {before}'.format(since=self.date_before.date())
+            sheet['B{}'.format(row_title)] = 'Коммиты по {before}'.format(before=self.date_before.date())
             row_title += 1
         if len(self.include_subsystems) > 0:
             sheet['B{}'.format(row_title)] = 'Отбор по этим подсистемам: {subsystems}'.format(
@@ -445,17 +448,27 @@ def path_to_object(content):
 
 def get_structure_of_configuration():
     structure_of_codemeter = StructureOfCodemeter()
+    if structure_of_codemeter.path_to_repo == '':
+        print('Path to repo is empty. Please check settings.py')
+        return
+
     path = os.path.join(structure_of_codemeter.path_to_repo, structure_of_codemeter.name_of_src)
     configuration = os.path.normpath('src/Configuration/Configuration.mdo')
     subsystem_path = os.path.normpath('src/Subsystems/')
 
     reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
     reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
-    reg_exp_pattern_name = '(?<=<name>).*?(?=</name>)'
+    reg_exp_pattern_name = '(?<=<value>).*?(?=</value>)'
+
+    path_to_configuration = os.path.join(path, configuration)
+    if not os.path.isfile(path_to_configuration):
+        print('Configuration file is not found by path - {path}. Please check settings.py'.format(
+            path=path_to_configuration))
+        return
 
     # get upper subsystems
     upper_subsystems = []
-    with open(os.path.join(path, configuration), mode='r', encoding='utf8') as f:
+    with open(path_to_configuration, mode='r', encoding='utf8') as f:
         file = f.read().encode('utf-8').decode('utf-8')
         m = re.search(reg_exp_pattern_name, file)
         if not (m is None):
@@ -489,7 +502,8 @@ def info_about_subsystems(subsystem, upper_subsystem, path, reg_exp_pattern_cont
         inner_subsystems = [f for f in os.listdir(os.path.join(path, 'Subsystems')) if f != '.DS_Store']
         for inner_subsystem in inner_subsystems:
             inner_subsystem_path = os.path.join(path, 'Subsystems', inner_subsystem)
-            inner_info = info_about_subsystems(inner_subsystem, full_subsystem, inner_subsystem_path, reg_exp_pattern_content)
+            inner_info = info_about_subsystems(inner_subsystem,
+                                               full_subsystem, inner_subsystem_path, reg_exp_pattern_content)
             subsystems.append(inner_info)
 
     with open(subsystem_name, mode='r', encoding='utf8') as f:
@@ -500,15 +514,13 @@ def info_about_subsystems(subsystem, upper_subsystem, path, reg_exp_pattern_cont
     return {full_subsystem: {'subsystems': subsystems, 'contents': contents}}
 
 
-if __name__ == '__main__':
+def get_statistics():
+    structure = get_structure_of_configuration()
+    if structure is None:
+        return
+
     save_to_md = settings.save_to_md()
     save_to_excel = settings.save_to_excel()
-
-    print('')
-    print('Statistics collection has started')
-    print('Please wait. It may take a long time...')
-    print('')
-    structure = get_structure_of_configuration()
     if save_to_md:
         structure.save_to_markdown()
     if save_to_excel:
@@ -528,3 +540,7 @@ if __name__ == '__main__':
             print('Please check result file: stats.xlsx')
         else:
             print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_excel()')
+
+
+if __name__ == '__main__':
+    get_statistics()

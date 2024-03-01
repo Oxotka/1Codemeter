@@ -32,13 +32,13 @@
 ## Объекты:
 
 
-### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> CommonModules
+### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> CommonModules
 
 <details>
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> КонвертацияХранилища
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> КонвертацияХранилища
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+9670</span> <span style="color:rgb(255,0,0)">-4799</span>
 2. Ivan Maslikov <ivan.maslikov@gmail.com> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-5</span>
@@ -54,79 +54,79 @@
 12. Vladislav Moroz <vlad.frost@gmail.com> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-0</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбработкаОчередей
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ОбработкаОчередей
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+459</span> <span style="color:rgb(255,0,0)">-181</span>
 2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+370</span> <span style="color:rgb(255,0,0)">-353</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначения
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ОбщегоНазначения
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+753</span> <span style="color:rgb(255,0,0)">-329</span>
 2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+662</span> <span style="color:rgb(255,0,0)">-620</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ДлительныеОперации
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ДлительныеОперации
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+540</span> <span style="color:rgb(255,0,0)">-266</span>
 2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+538</span> <span style="color:rgb(255,0,0)">-522</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияПовтИсп
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ОбщегоНазначенияПовтИсп
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+497</span> <span style="color:rgb(255,0,0)">-246</span>
 2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+474</span> <span style="color:rgb(255,0,0)">-426</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ДлительныеОперацииКлиент
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ДлительныеОперацииКлиент
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+96</span> <span style="color:rgb(255,0,0)">-80</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+88</span> <span style="color:rgb(255,0,0)">-40</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияГлобальный
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ОбщегоНазначенияГлобальный
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+48</span> <span style="color:rgb(255,0,0)">-32</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+40</span> <span style="color:rgb(255,0,0)">-16</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияКлиент
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ОбщегоНазначенияКлиент
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+190</span> <span style="color:rgb(255,0,0)">-174</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+182</span> <span style="color:rgb(255,0,0)">-87</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияКлиентСервер
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> ОбщегоНазначенияКлиентСервер
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+510</span> <span style="color:rgb(255,0,0)">-494</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+502</span> <span style="color:rgb(255,0,0)">-247</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаВБезопасномРежиме
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> РаботаВБезопасномРежиме
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+500</span> <span style="color:rgb(255,0,0)">-484</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+492</span> <span style="color:rgb(255,0,0)">-242</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РегламентныеЗаданияСервер
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> РегламентныеЗаданияСервер
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+482</span> <span style="color:rgb(255,0,0)">-466</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+940</span> <span style="color:rgb(255,0,0)">-466</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РегламентныеЗаданияСлужебный
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> РегламентныеЗаданияСлужебный
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+1268</span> <span style="color:rgb(255,0,0)">-1252</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+1260</span> <span style="color:rgb(255,0,0)">-627</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> СтандартныеПодсистемыСервер
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> СтандартныеПодсистемыСервер
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+637</span> <span style="color:rgb(255,0,0)">-621</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+629</span> <span style="color:rgb(255,0,0)">-311</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> СтроковыеФункцииКлиентСервер
+#### <img title="CommonModules" align=center width=16 height=16 src="../icons/CommonModules.png"> СтроковыеФункцииКлиентСервер
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+438</span> <span style="color:rgb(255,0,0)">-422</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+430</span> <span style="color:rgb(255,0,0)">-211</span>
@@ -134,13 +134,13 @@
 </details>
 
 
-### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Catalogs
+### <img title="Catalogs" align=center width=16 height=16 src="../icons/Catalogs.png"> Catalogs
 
 <details>
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ХранилищаКонфигураций
+#### <img title="Catalogs" align=center width=16 height=16 src="../icons/Catalogs.png"> ХранилищаКонфигураций
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+2741</span> <span style="color:rgb(255,0,0)">-835</span>
 2. Бронников Владимир Сергеевич <vsbronnikov@gmail.com> <span style="color:rgb(0,128,0)">+20</span> <span style="color:rgb(255,0,0)">-0</span>
@@ -184,7 +184,7 @@
 </details>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ВерсииХранилища
+#### <img title="Catalogs" align=center width=16 height=16 src="../icons/Catalogs.png"> ВерсииХранилища
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+1317</span> <span style="color:rgb(255,0,0)">-620</span>
 2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+1445</span> <span style="color:rgb(255,0,0)">-1217</span>
@@ -217,7 +217,7 @@
 </details>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ОчередиВыполнения
+#### <img title="Catalogs" align=center width=16 height=16 src="../icons/Catalogs.png"> ОчередиВыполнения
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+579</span> <span style="color:rgb(255,0,0)">-245</span>
 2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+570</span> <span style="color:rgb(255,0,0)">-482</span>
@@ -247,7 +247,7 @@
 </details>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> КопииХранилищКонфигурации
+#### <img title="Catalogs" align=center width=16 height=16 src="../icons/Catalogs.png"> КопииХранилищКонфигурации
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+623</span> <span style="color:rgb(255,0,0)">-571</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+588</span> <span style="color:rgb(255,0,0)">-286</span>
@@ -272,13 +272,13 @@
 </details>
 
 
-### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> DataProcessors
+### <img title="DataProcessors" align=center width=16 height=16 src="../icons/DataProcessors.png"> DataProcessors
 
 <details>
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> КонвертацияВФорматEDT
+#### <img title="DataProcessors" align=center width=16 height=16 src="../icons/DataProcessors.png"> КонвертацияВФорматEDT
 
 1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+1105</span> <span style="color:rgb(255,0,0)">-140</span>
 2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+2087</span> <span style="color:rgb(255,0,0)">-116</span>
@@ -308,7 +308,7 @@
 </details>
 
 
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> РегламентныеИФоновыеЗадания
+#### <img title="DataProcessors" align=center width=16 height=16 src="../icons/DataProcessors.png"> РегламентныеИФоновыеЗадания
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+2862</span> <span style="color:rgb(255,0,0)">-2802</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+2833</span> <span style="color:rgb(255,0,0)">-1401</span>
@@ -348,13 +348,13 @@
 </details>
 
 
-### <img title="Constants" align=center width=16 height=16 src="icons/Constants.png"> Constants
+### <img title="Constants" align=center width=16 height=16 src="../icons/Constants.png"> Constants
 
 <details>
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="Constants" align=center width=16 height=16 src="icons/Constants.png"> ПутьКВерсиямПлатформыНаСервере
+#### <img title="Constants" align=center width=16 height=16 src="../icons/Constants.png"> ПутьКВерсиямПлатформыНаСервере
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+64</span> <span style="color:rgb(255,0,0)">-7</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+30</span> <span style="color:rgb(255,0,0)">-6</span>
@@ -363,13 +363,13 @@
 </details>
 
 
-### <img title="InformationRegisters" align=center width=16 height=16 src="icons/InformationRegisters.png"> InformationRegisters
+### <img title="InformationRegisters" align=center width=16 height=16 src="../icons/InformationRegisters.png"> InformationRegisters
 
 <details>
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="InformationRegisters" align=center width=16 height=16 src="icons/InformationRegisters.png"> ИнформацияПользователей
+#### <img title="InformationRegisters" align=center width=16 height=16 src="../icons/InformationRegisters.png"> ИнформацияПользователей
 
 1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>

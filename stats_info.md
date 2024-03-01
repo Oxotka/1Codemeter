@@ -1,10 +1,10 @@
 
-# Демонстрационное приложение
+# 1С:ГитКонвертер, ред. 1.0
 
 <details>
   <summary><i>Отборы:</i></summary>
 
-Коммиты собраны начиная с 2016-01-01 по 2024-02-29
+Коммиты собраны начиная с 2016-01-01 по 2024-03-01
 
 Исключая эти подсистемы:
 - Финансы.Банк
@@ -14,9 +14,19 @@
 
 ## Разработчики:
 
-1. Арипов Никита <aripovn@gmail.com> <span style="color:rgb(0,128,0)">+12</span> <span style="color:rgb(255,0,0)">-0</span>
-2. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3710</span> <span style="color:rgb(255,0,0)">-695</span>
-3. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9026</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+25755</span> <span style="color:rgb(255,0,0)">-11637</span>
+2. Ivan Maslikov <ivan.maslikov@gmail.com> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-5</span>
+3. Антон <33430119+BProg-Gladkov@users.noreply.github.com> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-3</span>
+4. Andrei Ovsiankin <ovsiankin.aa@gmail.com> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
+5. Evgeny Zabelin <eug2603@gmail.com> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
+6. Бронников Владимир Сергеевич <vsbronnikov@gmail.com> <span style="color:rgb(0,128,0)">+145</span> <span style="color:rgb(255,0,0)">-7</span>
+7. Fenixnow <fenixnow@mail.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-2</span>
+8. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+24229</span> <span style="color:rgb(255,0,0)">-18835</span>
+9. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+151</span> <span style="color:rgb(255,0,0)">-30</span>
+10. Бахтиев Рамиз Ильгизович <bahr@1c.ru> <span style="color:rgb(0,128,0)">+211</span> <span style="color:rgb(255,0,0)">-19</span>
+11. ILazutin <lazutin.ilya@gmail.com> <span style="color:rgb(0,128,0)">+34</span> <span style="color:rgb(255,0,0)">-16</span>
+12. Vladislav Moroz <vlad.frost@gmail.com> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-0</span>
+13. Popov_MA <popma@1c.ru> <span style="color:rgb(0,128,0)">+32</span> <span style="color:rgb(255,0,0)">-0</span>
 
 
 ## Объекты:
@@ -28,341 +38,98 @@
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ПроведениеСервер
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> КонвертацияХранилища
 
-1. Арипов Никита <aripovn@gmail.com> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+9670</span> <span style="color:rgb(255,0,0)">-4799</span>
+2. Ivan Maslikov <ivan.maslikov@gmail.com> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-5</span>
+3. Антон <33430119+BProg-Gladkov@users.noreply.github.com> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-3</span>
+4. Andrei Ovsiankin <ovsiankin.aa@gmail.com> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
+5. Evgeny Zabelin <eug2603@gmail.com> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
+6. Бронников Владимир Сергеевич <vsbronnikov@gmail.com> <span style="color:rgb(0,128,0)">+125</span> <span style="color:rgb(255,0,0)">-7</span>
+7. Fenixnow <fenixnow@mail.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-2</span>
+8. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+8420</span> <span style="color:rgb(255,0,0)">-6250</span>
+9. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+60</span> <span style="color:rgb(255,0,0)">-5</span>
+10. Бахтиев Рамиз Ильгизович <bahr@1c.ru> <span style="color:rgb(0,128,0)">+204</span> <span style="color:rgb(255,0,0)">-17</span>
+11. ILazutin <lazutin.ilya@gmail.com> <span style="color:rgb(0,128,0)">+28</span> <span style="color:rgb(255,0,0)">-15</span>
+12. Vladislav Moroz <vlad.frost@gmail.com> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-0</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПоследовательностями
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбработкаОчередей
 
-1. Арипов Никита <aripovn@gmail.com> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+459</span> <span style="color:rgb(255,0,0)">-181</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+370</span> <span style="color:rgb(255,0,0)">-353</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ГеопозиционированиеКлиент
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначения
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+115</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+753</span> <span style="color:rgb(255,0,0)">-329</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+662</span> <span style="color:rgb(255,0,0)">-620</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ГеопозиционированиеСервер
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ДлительныеОперации
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+66</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+540</span> <span style="color:rgb(255,0,0)">-266</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+538</span> <span style="color:rgb(255,0,0)">-522</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСДоставляемымиУведомлениям
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияПовтИсп
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+49</span> <span style="color:rgb(255,0,0)">-125</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+76</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+497</span> <span style="color:rgb(255,0,0)">-246</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+474</span> <span style="color:rgb(255,0,0)">-426</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПанельюЗадач
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ДлительныеОперацииКлиент
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+53</span> <span style="color:rgb(255,0,0)">-2</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+96</span> <span style="color:rgb(255,0,0)">-80</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+88</span> <span style="color:rgb(255,0,0)">-40</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> УведомленияКлиент
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияГлобальный
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+60</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+48</span> <span style="color:rgb(255,0,0)">-32</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+40</span> <span style="color:rgb(255,0,0)">-16</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> УведомленияСервер
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияКлиент
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+153</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+190</span> <span style="color:rgb(255,0,0)">-174</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+182</span> <span style="color:rgb(255,0,0)">-87</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбменМобильныеПереопределяемый
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбщегоНазначенияКлиентСервер
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+38</span> <span style="color:rgb(255,0,0)">-18</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+238</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+510</span> <span style="color:rgb(255,0,0)">-494</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+502</span> <span style="color:rgb(255,0,0)">-247</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> Пользователи
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаВБезопасномРежиме
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-37</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+64</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+500</span> <span style="color:rgb(255,0,0)">-484</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+492</span> <span style="color:rgb(255,0,0)">-242</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> Помощник
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РегламентныеЗаданияСервер
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+244</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+482</span> <span style="color:rgb(255,0,0)">-466</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+940</span> <span style="color:rgb(255,0,0)">-466</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ПомощникКлиент
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РегламентныеЗаданияСлужебный
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+24</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+1268</span> <span style="color:rgb(255,0,0)">-1252</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+1260</span> <span style="color:rgb(255,0,0)">-627</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСИсториейДанных
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> СтандартныеПодсистемыСервер
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+637</span> <span style="color:rgb(255,0,0)">-621</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+629</span> <span style="color:rgb(255,0,0)">-311</span>
 
 
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСХранилищемОбщихНастроек
+#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> СтроковыеФункцииКлиентСервер
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+30</span> <span style="color:rgb(255,0,0)">-0</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+56</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПочтой
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+35</span> <span style="color:rgb(255,0,0)">-12</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+346</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПочтойВызовСервера
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+12</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСТорговымОборудованием
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-0</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+177</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РегламентныеЗаданияАгрегатов
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+23</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> СервисныеМеханизмы
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+11</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> ОбменМобильныеОбщее
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+109</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonModules" align=center width=16 height=16 src="icons/CommonModules.png"> РаботаСПолнотекстовымПоиском
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+18</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> Documents
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> НовыйДокумент
-
-1. Арипов Никита <aripovn@gmail.com> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-0</span>
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. Арипов Никита <aripovn@gmail.com> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> Заказ
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+162</span> <span style="color:rgb(255,0,0)">-70</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+323</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Продажи
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+44</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+161</span> <span style="color:rgb(255,0,0)">-69</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+279</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> ОперацияПоУчетуТоваров
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+23</span> <span style="color:rgb(255,0,0)">-23</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+90</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- ТоварныеЗапасы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+19</span> <span style="color:rgb(255,0,0)">-19</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+26</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+64</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> Оплата
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-7</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+89</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Финансы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-7</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+49</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+40</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> ПоступлениеДенег
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-7</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+85</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Финансы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-7</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+48</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+37</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> ПриходТовара
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+58</span> <span style="color:rgb(255,0,0)">-58</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+242</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Закупки
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-8</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+76</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Модуль менеджера
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+50</span> <span style="color:rgb(255,0,0)">-50</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+166</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Documents" align=center width=16 height=16 src="icons/Documents.png"> РасходТовара
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+129</span> <span style="color:rgb(255,0,0)">-114</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+688</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Продажи
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+57</span> <span style="color:rgb(255,0,0)">-47</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+310</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаДокумента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+72</span> <span style="color:rgb(255,0,0)">-67</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+295</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ОформлениеДоставки
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-</details>
-
-
-### <img title="AccumulationRegisters" align=center width=16 height=16 src="icons/AccumulationRegisters.png"> AccumulationRegisters
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="AccumulationRegisters" align=center width=16 height=16 src="icons/AccumulationRegisters.png"> Взаиморасчеты
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+22</span> <span style="color:rgb(255,0,0)">-22</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+52</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Финансы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ТекущиеВзаиморасчеты
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+22</span> <span style="color:rgb(255,0,0)">-22</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+39</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаСписка
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+438</span> <span style="color:rgb(255,0,0)">-422</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+430</span> <span style="color:rgb(255,0,0)">-211</span>
 
 </details>
 
@@ -373,437 +140,134 @@
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Контрагенты
+#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ХранилищаКонфигураций
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+391</span> <span style="color:rgb(255,0,0)">-14</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+62</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Закупки
-- Продажи
-- Финансы
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+2741</span> <span style="color:rgb(255,0,0)">-835</span>
+2. Бронников Владимир Сергеевич <vsbronnikov@gmail.com> <span style="color:rgb(0,128,0)">+20</span> <span style="color:rgb(255,0,0)">-0</span>
+3. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+1857</span> <span style="color:rgb(255,0,0)">-1372</span>
+4. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+81</span> <span style="color:rgb(255,0,0)">-20</span>
+5. Бахтиев Рамиз Ильгизович <bahr@1c.ru> <span style="color:rgb(0,128,0)">+7</span> <span style="color:rgb(255,0,0)">-2</span>
+6. Popov_MA <popma@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
 
 <details>
   <summary><i>Еще</i></summary>
 
 ##### Модуль объекта
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-6</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+41</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+470</span> <span style="color:rgb(255,0,0)">-191</span>
+2. Бронников Владимир Сергеевич <vsbronnikov@gmail.com> <span style="color:rgb(0,128,0)">+9</span> <span style="color:rgb(255,0,0)">-0</span>
+3. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+373</span> <span style="color:rgb(255,0,0)">-288</span>
+4. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-9</span>
+5. Бахтиев Рамиз Ильгизович <bahr@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-1</span>
 
 ##### Модуль менеджера
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
 ##### Формы
 
 ФормаЭлемента
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+385</span> <span style="color:rgb(255,0,0)">-8</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+21</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> МобильныеУстройства
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+31</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль менеджера
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+31</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> НастройкиТорговогоОборудования
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+4</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Товары
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-7</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+784</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Закупки
-- Продажи
-- ТоварныеЗапасы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+147</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-ФормаСпискаСОстатками
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-5</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+29</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+3</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+484</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ХранимыеФайлы
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+226</span> <span style="color:rgb(255,0,0)">-18</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+1244</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-СписокСертификатов
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+49</span> <span style="color:rgb(255,0,0)">-0</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+154</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+2263</span> <span style="color:rgb(255,0,0)">-644</span>
+2. Бронников Владимир Сергеевич <vsbronnikov@gmail.com> <span style="color:rgb(0,128,0)">+11</span> <span style="color:rgb(255,0,0)">-0</span>
+3. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+1436</span> <span style="color:rgb(255,0,0)">-1084</span>
+4. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+68</span> <span style="color:rgb(255,0,0)">-11</span>
+5. Бахтиев Рамиз Ильгизович <bahr@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-1</span>
 
 ФормаСписка
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+29</span> <span style="color:rgb(255,0,0)">-16</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+216</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+148</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+736</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаЗагрузкиФайлов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+116</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаПароля
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+48</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-0</span>
+3. Popov_MA <popma@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Встречи
+#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ВерсииХранилища
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+771</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+1317</span> <span style="color:rgb(255,0,0)">-620</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+1445</span> <span style="color:rgb(255,0,0)">-1217</span>
 
 <details>
   <summary><i>Еще</i></summary>
 
 ##### Модуль объекта
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+44</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+167</span> <span style="color:rgb(255,0,0)">-71</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+150</span> <span style="color:rgb(255,0,0)">-132</span>
 
 ##### Модуль менеджера
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+630</span> <span style="color:rgb(255,0,0)">-582</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+592</span> <span style="color:rgb(255,0,0)">-291</span>
 
 ##### Формы
 
-Календарь
+ФормаЭлемента
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+595</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+234</span> <span style="color:rgb(255,0,0)">-113</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+273</span> <span style="color:rgb(255,0,0)">-221</span>
 
 ФормаСписка
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+14</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+62</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+392</span> <span style="color:rgb(255,0,0)">-282</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+324</span> <span style="color:rgb(255,0,0)">-145</span>
 
 </details>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ИсходящиеПисьма
+#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ОчередиВыполнения
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+95</span> <span style="color:rgb(255,0,0)">-56</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+271</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+95</span> <span style="color:rgb(255,0,0)">-56</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+265</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ВходящиеПисьма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+42</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+42</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Организации
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаЭлемента
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Пользователи
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+579</span> <span style="color:rgb(255,0,0)">-245</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+570</span> <span style="color:rgb(255,0,0)">-482</span>
+3. Popov_MA <popma@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
 
 <details>
   <summary><i>Еще</i></summary>
 
 ##### Модуль объекта
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+240</span> <span style="color:rgb(255,0,0)">-226</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+234</span> <span style="color:rgb(255,0,0)">-113</span>
+
+##### Формы
+
+ФормаЭлемента
+
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+314</span> <span style="color:rgb(255,0,0)">-132</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+270</span> <span style="color:rgb(255,0,0)">-256</span>
+
+ФормаСписка
+
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+46</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+18</span> <span style="color:rgb(255,0,0)">-0</span>
+3. Popov_MA <popma@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
 
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> РасчетныеСчетаКонтрагентов
+#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> КопииХранилищКонфигурации
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Закупки
-- Продажи
-- Финансы
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+623</span> <span style="color:rgb(255,0,0)">-571</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+588</span> <span style="color:rgb(255,0,0)">-286</span>
 
 <details>
   <summary><i>Еще</i></summary>
 
 ##### Модуль объекта
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+244</span> <span style="color:rgb(255,0,0)">-230</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+238</span> <span style="color:rgb(255,0,0)">-115</span>
+
+##### Формы
+
+ФормаЭлемента
+
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+379</span> <span style="color:rgb(255,0,0)">-341</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+350</span> <span style="color:rgb(255,0,0)">-171</span>
 
 </details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> Склады
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+45</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- ТоварныеЗапасы
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль менеджера
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+45</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="Catalogs" align=center width=16 height=16 src="icons/Catalogs.png"> ХранилищеВариантовОтчетов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+33</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-</details>
-
-</details>
-
-
-### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> CommonCommands
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> УстановитьСканерШтрихкодов
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+12</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Закупки
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> НастроитьСканерШтрихКодов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+81</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Закупки
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> ОбщиеНастройки
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> УстановитьВидимостьОбъектовЧерезODataAPI
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+45</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> УстановитьРасширениеРаботыСКриптографией
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+10</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonCommands" align=center width=16 height=16 src="icons/CommonCommands.png"> УстановитьРасширениеРаботыСФайлами
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+9</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-</details>
-
-
-### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> CommonForms
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> Звонок
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+16</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> НастройкиМобильногоУстройства
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+144</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ФормаПодбораМобильная
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+121</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> НастройкаПомощникаНеотработанныхЗаказов
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+69</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> НастройкаPushУведомлений
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-8</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+68</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ОбщиеНастройки
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+5</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="CommonForms" align=center width=16 height=16 src="icons/CommonForms.png"> ФормаПодбора
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+97</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 
@@ -814,356 +278,111 @@
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> НастройкиПользователя
+#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> КонвертацияВФорматEDT
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+65</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+65</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> Путеводитель
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+191</span> <span style="color:rgb(255,0,0)">-0</span>
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаПутеводителя
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-4</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+185</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> ЭлектроннаяПочта
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-19</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+195</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+17</span> <span style="color:rgb(255,0,0)">-19</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+195</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеСистемойВзаимодействия
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+173</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+173</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> ЖурналРегистрации
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+917</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+1105</span> <span style="color:rgb(255,0,0)">-140</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+2087</span> <span style="color:rgb(255,0,0)">-116</span>
+3. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+10</span> <span style="color:rgb(255,0,0)">-5</span>
 
 <details>
   <summary><i>Еще</i></summary>
 
 ##### Модуль объекта
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+43</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
-##### Формы
+##### Модуль менеджера
 
-ОтборЖурналаРегистрации
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+311</span> <span style="color:rgb(255,0,0)">-0</span>
-
-ЖурналРегистрации
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+292</span> <span style="color:rgb(255,0,0)">-0</span>
-
-РедакторСоставаСвойства
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+271</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> АдминистративныйСервис
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
 ##### Формы
 
 Форма
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+1105</span> <span style="color:rgb(255,0,0)">-140</span>
+2. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+2087</span> <span style="color:rgb(255,0,0)">-116</span>
+3. Завялик Павел Сергеевич <zavp@1c.ru> <span style="color:rgb(0,128,0)">+10</span> <span style="color:rgb(255,0,0)">-5</span>
 
 </details>
 
 
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> ПроведениеДокументов
+#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> РегламентныеИФоновыеЗадания
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+151</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+2862</span> <span style="color:rgb(255,0,0)">-2802</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+2833</span> <span style="color:rgb(255,0,0)">-1401</span>
 
 <details>
   <summary><i>Еще</i></summary>
 
 ##### Модуль объекта
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+41</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+
+##### Модуль менеджера
+
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
 ##### Формы
 
-Форма
+РегламентноеЗадание
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+110</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+522</span> <span style="color:rgb(255,0,0)">-508</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+515</span> <span style="color:rgb(255,0,0)">-254</span>
 
-</details>
+РегламентныеИФоновыеЗадания
 
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+2162</span> <span style="color:rgb(255,0,0)">-2146</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+2154</span> <span style="color:rgb(255,0,0)">-1073</span>
 
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> СписокАктивныхПользователей
+ФоновоеЗадание
 
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+106</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ФормаСпискаАктивныхПользователей
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+106</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УдалениеПомеченныхОбъектов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+284</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-ОсновнаяФорма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+284</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеАгрегатамиПродаж
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+232</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+232</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеНастройкамиФорм
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+415</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Модуль объекта
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+153</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+262</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-#### <img title="DataProcessors" align=center width=16 height=16 src="icons/DataProcessors.png"> УправлениеПолнотекстовымПоиском
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+88</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Предприятие
-
-<details>
-  <summary><i>Еще</i></summary>
-
-##### Формы
-
-Форма
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+88</span> <span style="color:rgb(255,0,0)">-0</span>
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+136</span> <span style="color:rgb(255,0,0)">-122</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+129</span> <span style="color:rgb(255,0,0)">-61</span>
 
 </details>
 
 </details>
 
 
-### <img title="ExchangePlans" align=center width=16 height=16 src="icons/ExchangePlans.png"> ExchangePlans
+### <img title="Constants" align=center width=16 height=16 src="icons/Constants.png"> Constants
 
 <details>
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="ExchangePlans" align=center width=16 height=16 src="icons/ExchangePlans.png"> Мобильные
+#### <img title="Constants" align=center width=16 height=16 src="icons/Constants.png"> ПутьКВерсиямПлатформыНаСервере
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+13</span> <span style="color:rgb(255,0,0)">-13</span>
-
-##### Подсистемы
-
-- Предприятие
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+64</span> <span style="color:rgb(255,0,0)">-7</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+30</span> <span style="color:rgb(255,0,0)">-6</span>
+3. ILazutin <lazutin.ilya@gmail.com> <span style="color:rgb(0,128,0)">+6</span> <span style="color:rgb(255,0,0)">-1</span>
 
 </details>
 
 
-### <img title="HTTPServices" align=center width=16 height=16 src="icons/HTTPServices.png"> HTTPServices
+### <img title="InformationRegisters" align=center width=16 height=16 src="icons/InformationRegisters.png"> InformationRegisters
 
 <details>
   <summary><i>Подробнее</i></summary>
 
 
-#### <img title="HTTPServices" align=center width=16 height=16 src="icons/HTTPServices.png"> ОписанияТоваров
+#### <img title="InformationRegisters" align=center width=16 height=16 src="icons/InformationRegisters.png"> ИнформацияПользователей
 
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+67</span> <span style="color:rgb(255,0,0)">-0</span>
-
-
-#### <img title="HTTPServices" align=center width=16 height=16 src="icons/HTTPServices.png"> Товары
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+2</span> <span style="color:rgb(255,0,0)">-2</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+216</span> <span style="color:rgb(255,0,0)">-0</span>
-
-</details>
-
-
-### <img title="Reports" align=center width=16 height=16 src="icons/Reports.png"> Reports
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="Reports" align=center width=16 height=16 src="icons/Reports.png"> ОстаткиТоваровНаСкладах
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+1</span> <span style="color:rgb(255,0,0)">-1</span>
-2. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+8</span> <span style="color:rgb(255,0,0)">-0</span>
-
-##### Подсистемы
-
-- Закупки
-- Продажи
-- ТоварныеЗапасы
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
 <details>
   <summary><i>Еще</i></summary>
 
-</details>
+##### Модуль записи
+
+1. Dmitriy Marmyshev <marmyshev@gmail.com> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
+2. Dmitriy Marmyshev <dmar@1c.ru> <span style="color:rgb(0,128,0)">+0</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
-
-
-### <img title="WebServices" align=center width=16 height=16 src="icons/WebServices.png"> WebServices
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="WebServices" align=center width=16 height=16 src="icons/WebServices.png"> MAExchange
-
-1. 1C-Company <register.github@1c.ru> <span style="color:rgb(0,128,0)">+179</span> <span style="color:rgb(255,0,0)">-12</span>
-
-</details>
-
-
-### <img title="SettingsStorages" align=center width=16 height=16 src="icons/SettingsStorages.png"> SettingsStorages
-
-<details>
-  <summary><i>Подробнее</i></summary>
-
-
-#### <img title="SettingsStorages" align=center width=16 height=16 src="icons/SettingsStorages.png"> ХранилищеВариантовОтчетов
-
-1. 1C-Company <shan@1c.ru> <span style="color:rgb(0,128,0)">+512</span> <span style="color:rgb(255,0,0)">-0</span>
 
 </details>
 

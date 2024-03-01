@@ -4,14 +4,14 @@ import datetime
 def path_to_repo():
     # Путь до локального репозитория
     # Например '/Users/user/dt-demo-configuration/'
-    # или 'C:/Repo/dt-demo-configuration'
-    return '/Users/nikitaaripov/Documents/dt-demo-configuration/'
+    # или 'C:/Repo/GitConverter'
+    return '/Users/nikitaaripov/Documents/GitConverter/'
 
 
 def name_of_src():
     # Путь до src
     # Например 'DemoConfDT/' или 'GitConverter/'
-    return "DemoConfDT/"
+    return "GitConverter/"
 
 
 def date_since():
@@ -19,7 +19,7 @@ def date_since():
     # По умолчанию с начала текущего года
     # Можно задать любую дату с помощью datetime - datetime.datetime(2016, 1, 1)
     current_year = datetime.datetime.now().year
-    return datetime.datetime(2016, 1, 1)
+    return datetime.datetime(current_year, 1, 1)
 
 
 def date_before():

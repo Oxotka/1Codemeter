@@ -277,7 +277,8 @@ class StructureOfCodemeter:
                     structure_of_configuration['authors'] = structure_authors
                 type_info = dict(sorted(type_info.items()))
                 structure_of_configuration.update({type_name: type_info})
-        self.structure_of_conf = structure_of_configuration
+
+        self.structure_of_conf = dict(sorted(structure_of_configuration.items()))
 
     def save_to_markdown(self):
         if len(self.structure_of_conf) == 0:

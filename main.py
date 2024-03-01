@@ -46,16 +46,23 @@ def icon_md(name):
 
 
 def print_authors(authors, lines_info, file):
+
     if len(lines_info) == 0:
         return
 
-    number = 1
+    new_lines_info = {}
     for author in lines_info:
-        author_info = lines_info.get(author)
-        write_line(file, '{num}. {name} <{email}> {insert} {delete}'.format(
+        name = '{name} <{email}>'.format(name=authors.get(author), email=author)
+        new_lines_info[name] = lines_info.get(author)
+
+    sorted_lines_info = dict(sorted(new_lines_info.items()))
+
+    number = 1
+    for author in sorted_lines_info:
+        author_info = sorted_lines_info.get(author)
+        write_line(file, '{num}. {name} {insert} {delete}'.format(
             num=number,
-            name=authors.get(author),
-            email=author,
+            name=author,
             insert=color_text('+{}'.format(author_info.get('insert', 0)), 'rgb(0,128,0)'),
             delete=color_text('-{}'.format(author_info.get('delete', 0)), 'rgb(255,0,0)')))
         number += 1
@@ -64,6 +71,7 @@ def print_authors(authors, lines_info, file):
 
 def print_subsystem(subsystems, file):
     if len(subsystems) > 0:
+        subsystems = sorted(subsystems)
         write_line(file, "##### Подсистемы")
         write_line(file, '')
         for subsystem in subsystems:
@@ -267,6 +275,7 @@ class StructureOfCodemeter:
                     structure_authors[email_info_by_author] = structure_author
 
                     structure_of_configuration['authors'] = structure_authors
+                type_info = dict(sorted(type_info.items()))
                 structure_of_configuration.update({type_name: type_info})
         self.structure_of_conf = structure_of_configuration
 

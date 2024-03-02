@@ -19,7 +19,7 @@ def date_since():
     # По умолчанию с начала текущего года
     # Можно задать любую дату с помощью datetime - datetime.datetime(2016, 1, 1)
     current_year = datetime.datetime.now().year
-    return datetime.datetime(2010, 1, 1)
+    return datetime.datetime(current_year, 1, 1)
 
 
 def date_before():

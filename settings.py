@@ -54,6 +54,6 @@ def save_to_md():
     return True
 
 
-def save_to_excel():
+def save_to_xsl():
     # Сохранять статистику в файл excel
     return True

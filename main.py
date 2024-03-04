@@ -3,9 +3,8 @@ import re
 import os
 import git
 import copy
-import openpyxl
 import save_to_markdown
-from openpyxl.styles import Font
+import save_to_excel
 from tqdm import tqdm
 
 
@@ -210,73 +209,6 @@ class StructureOfCodemeter:
 
         self.structure_of_conf = dict(sorted(structure_of_configuration.items()))
 
-    def save_to_excel(self):
-        if len(self.structure_of_conf) == 0:
-            return
-        wb = openpyxl.Workbook()
-        wb.create_sheet(title='Все данные', index=0)
-        sheet = wb['Все данные']
-        title_font = Font(name='Arial', size=18)
-        bold_font = Font(bold=True)
-        row_title = 2
-        sheet['B{}'.format(row_title)] = self.configuration_name
-        sheet['B{}'.format(row_title)].font = title_font
-        row_title += 1
-        if self.date_since is not None \
-                and self.date_before is not None:
-            sheet['B{}'.format(row_title)] = 'Коммиты с {since} по {before}'.format(
-                since=self.date_since.date(), before=self.date_before.date())
-            row_title += 1
-        elif self.date_since is not None:
-            sheet['B{}'.format(row_title)] = 'Коммиты с {since}'.format(since=self.date_since.date())
-            row_title += 1
-        elif self.date_before is not None:
-            sheet['B{}'.format(row_title)] = 'Коммиты по {before}'.format(before=self.date_before.date())
-            row_title += 1
-        if len(self.include_subsystems) > 0:
-            sheet['B{}'.format(row_title)] = 'Отбор по этим подсистемам: {subsystems}'.format(
-                subsystems=', '.join(self.include_subsystems))
-            row_title += 1
-        if len(self.exclude_subsystems) > 0:
-            sheet['B{}'.format(row_title)] = 'Исключая эти подсистемы: {subsystems}'.format(
-                subsystems=', '.join(self.exclude_subsystems))
-            row_title += 1
-        row_title += 1
-        column_titles = {'type': 2, 'object': 3, 'subsystem': 4, 'author': 5, 'email': 6, 'insert': 7, 'delete': 8}
-        for col in column_titles:
-            cell = sheet.cell(row=row_title, column=column_titles[col])
-            cell.value = col
-            cell.font = bold_font
-        row = row_title
-        with tqdm(total=len(self.structure_of_conf), desc='Save to Excel', ncols=100, colour='green') as pbar:
-            for type_name in self.structure_of_conf:
-                pbar.update(1)
-                if type_name == 'authors' or type_name == 'Configuration':
-                    continue
-                else:
-                    subsystem_obj = self.subsystem_by_object.get(type_name, {})
-                    objects = self.structure_of_conf.get(type_name)
-                    for object_name in objects:
-                        if object_name == 'authors':
-                            continue
-                        else:
-                            object_info = objects.get(object_name)
-                            authors_info = object_info.get('authors')
-                            for author in authors_info:
-                                row += 1
-                                sheet.cell(row=row, column=column_titles['type']).value = type_name
-                                sheet.cell(row=row, column=column_titles['object']).value = object_name
-                                sheet.cell(row=row, column=column_titles['subsystem']).value = \
-                                    ', '.join(subsystem_obj.get(object_name, []))
-                                sheet.cell(row=row, column=column_titles['email']).value = author
-                                sheet.cell(row=row, column=column_titles['author']).value = self.authors[author]
-                                sheet.cell(row=row, column=column_titles['insert']).value = \
-                                    authors_info.get(author).get('insert')
-                                sheet.cell(row=row, column=column_titles['delete']).value = \
-                                    authors_info.get(author).get('delete')
-
-        wb.save('stats.xlsx')
-
 
 def single_to_plural(content):
     if content.startswith('FilterCriterion'):
@@ -367,11 +299,11 @@ def get_statistics():
         return
 
     save_to_md = settings.save_to_md()
-    save_to_excel = settings.save_to_excel()
+    save_to_xsl = settings.save_to_xsl()
     if save_to_md:
         save_to_markdown.save(structure)
-    if save_to_excel:
-        structure.save_to_excel()
+    if save_to_xsl:
+        save_to_excel.save(structure)
     print('')
 
     if len(structure.structure_of_conf) == 0:
@@ -379,14 +311,14 @@ def get_statistics():
         print('For example: settings.date_since() and settings.date_before()')
     else:
         print('Statistics are collected!')
-        if save_to_md and save_to_excel:
+        if save_to_md and save_to_xsl:
             print('Please check result files: stats_info.md and stats.xlsx')
         elif save_to_md:
             print('Please check result file: stats_info.md')
-        elif save_to_excel:
+        elif save_to_xsl:
             print('Please check result file: stats.xlsx')
         else:
-            print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_excel()')
+            print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_xsl()')
 
 
 if __name__ == '__main__':

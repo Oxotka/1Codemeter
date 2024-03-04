@@ -23,6 +23,15 @@ class StructureOfCodemeter:
         self.authors = {}  # Авторы в формате {емайл : имя}. Заполняется автоматически при чтении коммитов
         self.structure_of_conf = {}  # Итоговая структура конфигурации
 
+    @staticmethod
+    def single_to_plural(content):
+        if content.startswith('FilterCriterion'):
+            return content.replace("FilterCriterion", "FilterCriteria")
+        if content.startswith('ChartOfCharacteristicTypes'):
+            return content.replace("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes")
+        else:
+            return content.replace(".", "s.")
+
     def get_structure_subsystem(self):
         if len(self.subsystems) == 0:
             return
@@ -36,7 +45,7 @@ class StructureOfCodemeter:
                     self.get_subsystem_info(inner_subsystem)
 
             for content in subsystem.get(info).get('contents'):
-                elements = single_to_plural(content).split('.')
+                elements = self.single_to_plural(content).split('.')
                 if len(elements) != 2:
                     continue
                 type_name = elements[0]
@@ -208,21 +217,6 @@ class StructureOfCodemeter:
                 structure_of_configuration.update({type_name: type_info})
 
         self.structure_of_conf = dict(sorted(structure_of_configuration.items()))
-
-
-def single_to_plural(content):
-    if content.startswith('FilterCriterion'):
-        return content.replace("FilterCriterion", "FilterCriteria")
-    if content.startswith('ChartOfCharacteristicTypes'):
-        return content.replace("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes")
-    else:
-        return content.replace(".", "s.")
-
-
-def path_to_object(content):
-    content = single_to_plural(content)
-    parts_of_name = content.split('.')
-    return content.replace(".", "/") + "/" + parts_of_name[1] + '.mdo'
 
 
 def get_structure_of_configuration():

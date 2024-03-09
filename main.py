@@ -32,17 +32,85 @@ class StructureOfCodemeter:
         else:
             return content.replace(".", "s.")
 
-    def get_structure_subsystem(self):
+    def collect_data(self):
+        if self.path_to_repo == '':
+            print('Path to repo is empty. Please check settings.py')
+            return
+
+        path = os.path.join(self.path_to_repo, self.name_of_src)
+        configuration = os.path.normpath('src/Configuration/Configuration.mdo')
+        path_to_configuration = os.path.join(path, configuration)
+        if not os.path.isfile(path_to_configuration):
+            print('Configuration file is not found by path - {path}. Please check settings.py'.format(
+                path=path_to_configuration))
+            return
+        reg_exp_pattern_name = '(?<=<value>).*?(?=</value>)'
+        with open(path_to_configuration, mode='r', encoding='utf8') as f:
+            file = f.read().encode('utf-8').decode('utf-8')
+            m = re.search(reg_exp_pattern_name, file)
+            if not (m is None):
+                self.configuration_name = m.group()
+
+        subsystem_path = os.path.normpath('src/Subsystems/')
+
+        reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
+        reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
+
+
+        # get upper subsystems
+        upper_subsystems = []
+        with open(path_to_configuration, mode='r', encoding='utf8') as f:
+            file = f.read().encode('utf-8').decode('utf-8')
+            for subsystem in re.findall(reg_exp_pattern_subsystem, file):
+                upper_subsystems.append(subsystem)
+
+        # get info about subsystems
+        for subsystem in upper_subsystems:
+            path_to_dir_subsystem = os.path.join(path, subsystem_path, subsystem)
+            info_subsystem = self.info_about_subsystems(subsystem, '', path_to_dir_subsystem, reg_exp_pattern_content)
+            self.subsystems.append(info_subsystem)
+
+        self.get_structure_subsystems_content()
+        self.get_commits_info()
+        self.structure_by_content_and_subsystem()
+
+    def get_subsystems(self):
+
+
+    def info_about_subsystems(self, subsystem, upper_subsystem, path, reg_exp_pattern_content):
+        subsystem_name = os.path.join(path, subsystem + '.mdo')
+        full_subsystem = subsystem
+        if upper_subsystem != '':
+            full_subsystem = f'{upper_subsystem}.{subsystem}'
+
+        contents = []
+        subsystems = []
+        if os.path.isdir(os.path.join(path, 'Subsystems')):
+            inner_subsystems = [f for f in os.listdir(os.path.join(path, 'Subsystems')) if f != '.DS_Store']
+            for inner_subsystem in inner_subsystems:
+                inner_subsystem_path = os.path.join(path, 'Subsystems', inner_subsystem)
+                inner_info = self.info_about_subsystems(inner_subsystem,
+                                                        full_subsystem, inner_subsystem_path, reg_exp_pattern_content)
+                subsystems.append(inner_info)
+
+        with open(subsystem_name, mode='r', encoding='utf8') as f:
+            file = f.read().encode('utf-8').decode('utf-8')
+            for content in re.findall(reg_exp_pattern_content, file):
+                contents.append(content)
+
+        return {full_subsystem: {'subsystems': subsystems, 'contents': contents}}
+
+    def get_structure_subsystems_content(self):
         if len(self.subsystems) == 0:
             return
         for subsystem in self.subsystems:
-            self.get_subsystem_info(subsystem)
+            self.get_subsystem_content_info(subsystem)
 
-    def get_subsystem_info(self, subsystem):
+    def get_subsystem_content_info(self, subsystem):
         for info in subsystem:
             if len(subsystem.get(info).get('subsystems')) > 0:
                 for inner_subsystem in subsystem.get(info).get('subsystems'):
-                    self.get_subsystem_info(inner_subsystem)
+                    self.get_subsystem_content_info(inner_subsystem)
 
             for content in subsystem.get(info).get('contents'):
                 elements = self.single_to_plural(content).split('.')
@@ -219,76 +287,9 @@ class StructureOfCodemeter:
         self.structure_of_conf = dict(sorted(structure_of_configuration.items()))
 
 
-def get_structure_of_configuration():
-    structure_of_codemeter = StructureOfCodemeter()
-    if structure_of_codemeter.path_to_repo == '':
-        print('Path to repo is empty. Please check settings.py')
-        return
-
-    path = os.path.join(structure_of_codemeter.path_to_repo, structure_of_codemeter.name_of_src)
-    configuration = os.path.normpath('src/Configuration/Configuration.mdo')
-    subsystem_path = os.path.normpath('src/Subsystems/')
-
-    reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
-    reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
-    reg_exp_pattern_name = '(?<=<value>).*?(?=</value>)'
-
-    path_to_configuration = os.path.join(path, configuration)
-    if not os.path.isfile(path_to_configuration):
-        print('Configuration file is not found by path - {path}. Please check settings.py'.format(
-            path=path_to_configuration))
-        return
-
-    # get upper subsystems
-    upper_subsystems = []
-    with open(path_to_configuration, mode='r', encoding='utf8') as f:
-        file = f.read().encode('utf-8').decode('utf-8')
-        m = re.search(reg_exp_pattern_name, file)
-        if not (m is None):
-            structure_of_codemeter.configuration_name = m.group()
-
-        for subsystem in re.findall(reg_exp_pattern_subsystem, file):
-            upper_subsystems.append(subsystem)
-
-    # get info about subsystems
-    for subsystem in upper_subsystems:
-        path_to_dir_subsystem = os.path.join(path, subsystem_path, subsystem)
-        info_subsystem = info_about_subsystems(subsystem, '', path_to_dir_subsystem, reg_exp_pattern_content)
-        structure_of_codemeter.subsystems.append(info_subsystem)
-
-    structure_of_codemeter.get_structure_subsystem()
-    structure_of_codemeter.get_commits_info()
-    structure_of_codemeter.structure_by_content_and_subsystem()
-
-    return structure_of_codemeter
-
-
-def info_about_subsystems(subsystem, upper_subsystem, path, reg_exp_pattern_content):
-    subsystem_name = os.path.join(path, subsystem + '.mdo')
-    full_subsystem = subsystem
-    if upper_subsystem != '':
-        full_subsystem = f'{upper_subsystem}.{subsystem}'
-
-    contents = []
-    subsystems = []
-    if os.path.isdir(os.path.join(path, 'Subsystems')):
-        inner_subsystems = [f for f in os.listdir(os.path.join(path, 'Subsystems')) if f != '.DS_Store']
-        for inner_subsystem in inner_subsystems:
-            inner_subsystem_path = os.path.join(path, 'Subsystems', inner_subsystem)
-            inner_info = info_about_subsystems(inner_subsystem,
-                                               full_subsystem, inner_subsystem_path, reg_exp_pattern_content)
-            subsystems.append(inner_info)
-
-    with open(subsystem_name, mode='r', encoding='utf8') as f:
-        file = f.read().encode('utf-8').decode('utf-8')
-        for content in re.findall(reg_exp_pattern_content, file):
-            contents.append(content)
-
-    return {full_subsystem: {'subsystems': subsystems, 'contents': contents}}
-
-
 def get_statistics():
-    structure = get_structure_of_configuration()
+    structure = StructureOfCodemeter()
+    structure.collect_data()
     if structure is None:
         return
 

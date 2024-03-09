@@ -37,6 +37,7 @@ class StructureOfCodemeter:
             print('Path to repo is empty. Please check settings.py')
             return
 
+        # check path to configuration
         path = os.path.join(self.path_to_repo, self.name_of_src)
         configuration = os.path.normpath('src/Configuration/Configuration.mdo')
         path_to_configuration = os.path.join(path, configuration)
@@ -44,6 +45,13 @@ class StructureOfCodemeter:
             print('Configuration file is not found by path - {path}. Please check settings.py'.format(
                 path=path_to_configuration))
             return
+
+        self.get_configuration_name(path_to_configuration)
+        self.get_subsystems_info(path_to_configuration, path)
+        self.get_commits_info()
+        self.structure_by_content_and_subsystem()
+
+    def get_configuration_name(self, path_to_configuration):
         reg_exp_pattern_name = '(?<=<value>).*?(?=</value>)'
         with open(path_to_configuration, mode='r', encoding='utf8') as f:
             file = f.read().encode('utf-8').decode('utf-8')
@@ -51,11 +59,10 @@ class StructureOfCodemeter:
             if not (m is None):
                 self.configuration_name = m.group()
 
+    def get_subsystems_info(self, path_to_configuration, path):
         subsystem_path = os.path.normpath('src/Subsystems/')
-
         reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
         reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
-
 
         # get upper subsystems
         upper_subsystems = []
@@ -70,12 +77,11 @@ class StructureOfCodemeter:
             info_subsystem = self.info_about_subsystems(subsystem, '', path_to_dir_subsystem, reg_exp_pattern_content)
             self.subsystems.append(info_subsystem)
 
-        self.get_structure_subsystems_content()
-        self.get_commits_info()
-        self.structure_by_content_and_subsystem()
-
-    def get_subsystems(self):
-
+        # get subsystem content info
+        if len(self.subsystems) == 0:
+            return
+        for subsystem in self.subsystems:
+            self.get_subsystem_content_info(subsystem)
 
     def info_about_subsystems(self, subsystem, upper_subsystem, path, reg_exp_pattern_content):
         subsystem_name = os.path.join(path, subsystem + '.mdo')
@@ -99,12 +105,6 @@ class StructureOfCodemeter:
                 contents.append(content)
 
         return {full_subsystem: {'subsystems': subsystems, 'contents': contents}}
-
-    def get_structure_subsystems_content(self):
-        if len(self.subsystems) == 0:
-            return
-        for subsystem in self.subsystems:
-            self.get_subsystem_content_info(subsystem)
 
     def get_subsystem_content_info(self, subsystem):
         for info in subsystem:
@@ -293,6 +293,12 @@ def get_statistics():
     if structure is None:
         return
 
+    if len(structure.structure_of_conf) == 0:
+        print('Nothing was found. Check the settings')
+        print('For example: settings.date_since() and settings.date_before()')
+        return
+
+    print('Statistics are collected!')
     save_to_md = settings.save_to_md()
     save_to_xsl = settings.save_to_xsl()
     if save_to_md:
@@ -301,19 +307,14 @@ def get_statistics():
         save_to_excel.save(structure)
     print('')
 
-    if len(structure.structure_of_conf) == 0:
-        print('Nothing was found. Check the settings')
-        print('For example: settings.date_since() and settings.date_before()')
+    if save_to_md and save_to_xsl:
+        print('Please check result files: stats_info.md and stats.xlsx')
+    elif save_to_md:
+        print('Please check result file: stats_info.md')
+    elif save_to_xsl:
+        print('Please check result file: stats.xlsx')
     else:
-        print('Statistics are collected!')
-        if save_to_md and save_to_xsl:
-            print('Please check result files: stats_info.md and stats.xlsx')
-        elif save_to_md:
-            print('Please check result file: stats_info.md')
-        elif save_to_xsl:
-            print('Please check result file: stats.xlsx')
-        else:
-            print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_xsl()')
+        print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_xsl()')
 
 
 if __name__ == '__main__':

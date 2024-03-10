@@ -35,7 +35,7 @@ def write_title(title, file):
 
 
 def icon_md(name):
-    return '<img title="{name}" align=center width=16 height=16 src="../icons/{name}.png"> '.format(name=name)
+    return '<img title="{name}" align=center width=16 height=16 src="../src/icons/{name}.png"> '.format(name=name)
 
 
 def print_authors(authors, lines_info, file):

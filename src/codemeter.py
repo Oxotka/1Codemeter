@@ -28,7 +28,7 @@ class StructureOfCodemeter:
         if content.startswith('ChartOfCharacteristicTypes'):
             return content.replace("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes")
         else:
-            return content.replace(".", "s.")
+            return content.replace(".", "s.", 1)
 
     def collect_data(self):
         if self.path_to_repo == '':
@@ -205,16 +205,20 @@ class StructureOfCodemeter:
                 file = file.replace(os.path.join(self.name_of_src, ''), '')
                 parts_of_name = file.split(os.path.sep)
                 if len(parts_of_name) == 1:
-                    parts_of_name = file.split('.')
-                    type_name = self.single_to_plural(parts_of_name[1])
-                    object_name = parts_of_name[2]
+                    # TODO Это какие-то странные объекты и они считаются неправильно. Статистика после этого поехала.
+                    # Стоит разобраться что пошло не так.
+                    parts_of_name = self.single_to_plural(file).split('.')
+                    type_name = parts_of_name[0]
+                    object_name = parts_of_name[1]
+                    content_object = 2
                 else:
                     type_name = parts_of_name[1]  # example: AccumulationRegisters
                     object_name = parts_of_name[2]  # example: Взаиморасчеты
+                    content_object = 3
                 type_info = copy.deepcopy(structure_of_configuration.get(type_name, {}))
                 object_info = copy.deepcopy(type_info.get(object_name, {}))
                 info = object_info
-                for i in range(3, len(parts_of_name)):
+                for i in range(content_object, len(parts_of_name)):
                     inner_info = info.get(parts_of_name[i])
                     if inner_info is None:
                         info.update({parts_of_name[i]: {}})

@@ -35,7 +35,7 @@ def write_title(title, file):
 
 
 def icon_md(name):
-    return '<img title="{name}" align=center width=16 height=16 src="icons/{name}.png"> '.format(name=name)
+    return '<img title="{name}" align=center width=16 height=16 src="../icons/{name}.png"> '.format(name=name)
 
 
 def print_authors(authors, lines_info, file):
@@ -72,12 +72,12 @@ def print_subsystem(subsystems, file):
         write_line(file, '')
 
 
-def save(conf):
+def save(conf, path='result/stats_info.md'):
     if len(conf.structure_of_conf) == 0:
         return
 
     with tqdm(total=len(conf.structure_of_conf), desc='Save to markdown', ncols=100, colour='green') as pbar:
-        with open('../stats_info.md', 'w', encoding='utf-8') as result_file:
+        with open(path, 'w', encoding='utf-8') as result_file:
             write_line(result_file, conf.configuration_name, '#')
             open_details('Отборы:', result_file)
             if conf.date_since is not None \

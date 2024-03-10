@@ -3,7 +3,7 @@ from openpyxl.styles import Font
 from tqdm import tqdm
 
 
-def save(configuration):
+def save(configuration, path='result/stats.xlsx'):
     if len(configuration.structure_of_conf) == 0:
         return
     wb = openpyxl.Workbook()
@@ -68,4 +68,4 @@ def save(configuration):
                             sheet.cell(row=row, column=column_titles['delete']).value = \
                                 authors_info.get(author).get('delete')
 
-    wb.save('stats.xlsx')
+    wb.save(path)

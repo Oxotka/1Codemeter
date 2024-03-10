@@ -16,9 +16,11 @@ def get_statistics():
     save_to_md = settings.save_to_md()
     save_to_xsl = settings.save_to_xsl()
     if save_to_md:
-        save_to_markdown.save(structure)
+        path = 'result/stats_info.md'
+        save_to_markdown.save(structure, path)
     if save_to_xsl:
-        save_to_excel.save(structure)
+        path = 'result/stats.xlsx'
+        save_to_excel.save(structure, path)
     print('')
 
     if save_to_md and save_to_xsl:

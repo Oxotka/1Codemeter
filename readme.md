@@ -15,8 +15,8 @@
 
 ## Как работать
 
-- Внести свои данные в [settings.py](settings.py)
-- Запустить на исполнение [main.py](main.py)
+- Внести свои данные в [settings.py](src/settings.py)
+- Запустить на исполнение [main.py](src/codemeter.py)
 - Результат выводится в [stats_info.md](stats_info.md) и [stats.xlsx](stats.xlsx)
 
 ## Текущие задачи

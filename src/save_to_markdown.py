@@ -77,7 +77,7 @@ def save(conf):
         return
 
     with tqdm(total=len(conf.structure_of_conf), desc='Save to markdown', ncols=100, colour='green') as pbar:
-        with open('stats_info.md', 'w', encoding='utf-8') as result_file:
+        with open('../stats_info.md', 'w', encoding='utf-8') as result_file:
             write_line(result_file, conf.configuration_name, '#')
             open_details('Отборы:', result_file)
             if conf.date_since is not None \

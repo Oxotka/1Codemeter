@@ -3,7 +3,7 @@ import os
 import git
 import copy
 from tqdm import tqdm
-from src import settings
+from src import settings, save_to_mongo
 
 
 class StructureOfCodemeter:
@@ -145,7 +145,7 @@ class StructureOfCodemeter:
             print('Processing is performed only before {before}'.format(
                 before=self.date_since.date()))
             print('Other commits will be skipped and the process may stop before the progress bar completes.')
-
+        save_to_mongoDB = settings.save_to_mongo()
         with tqdm(total=len(commits), desc='Get commits', ncols=100, colour='green') as pbar:
             for commit in commits:
                 pbar.update(1)
@@ -172,6 +172,22 @@ class StructureOfCodemeter:
                                 'email': commit.author.email}
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name
+                        # TODO add here save to mongoDB - add sha commit, type, object and subsystem
+                        if save_to_mongoDB:
+                            record_for_mongo = \
+                              {'date': commit.committed_datetime.date(),
+                               'file': file,
+                               'insert': commit.stats.files.get(file).get('insertions'),
+                               'delete': commit.stats.files.get(file).get('deletions'),
+                               'email': commit.author.email,
+                               'name': commit.author.name,
+                               # 'sha': commit.sha,
+                               # 'type':
+                               # 'object': ''
+                               # 'content': ''
+                               # 'subsystems': [],
+                               }
+                            save_to_mongo.save(record_for_mongo)
 
     def summarize_info_to_contents(self):
         summarized = {}

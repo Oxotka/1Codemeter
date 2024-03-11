@@ -57,3 +57,9 @@ def save_to_md():
 def save_to_xsl():
     # Сохранять статистику в файл excel
     return True
+
+
+def save_to_mongo():
+    # Сохранять статистику в файл excel
+    return False
+

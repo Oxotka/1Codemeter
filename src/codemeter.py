@@ -145,7 +145,7 @@ class StructureOfCodemeter:
             print('Processing is performed only before {before}'.format(
                 before=self.date_since.date()))
             print('Other commits will be skipped and the process may stop before the progress bar completes.')
-        save_to_mongoDB = settings.save_to_mongo()
+        save_to_mongodb = settings.save_to_mongo()
         with tqdm(total=len(commits), desc='Get commits', ncols=100, colour='green') as pbar:
             for commit in commits:
                 pbar.update(1)
@@ -173,7 +173,7 @@ class StructureOfCodemeter:
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name
                         # TODO add here save to mongoDB - add sha commit, type, object and subsystem
-                        if save_to_mongoDB:
+                        if save_to_mongodb:
                             record_for_mongo = \
                               {'date': commit.committed_datetime.date(),
                                'file': file,

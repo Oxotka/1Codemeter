@@ -60,7 +60,7 @@ def print_subsystem(subsystems, file):
         write_line(file, '</ul>')
 
 
-def save(conf, path='result/stats_info.html'):
+def save(conf, path='result/stats.html'):
     if len(conf.structure_of_conf) == 0:
         return
 

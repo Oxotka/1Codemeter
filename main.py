@@ -17,13 +17,13 @@ def get_statistics():
     save_to_xsl = settings.save_to_xsl()
     save_to_web = settings.save_to_html()
     if save_to_md:
-        path = 'result/stats_info.md'
+        path = 'result/stats.md'
         save_to_markdown.save(structure, path)
     if save_to_xsl:
         path = 'result/stats.xlsx'
         save_to_excel.save(structure, path)
     if save_to_web:
-        path = 'result/stats_info.html'
+        path = 'result/stats.html'
         save_to_html.save(structure, path)
     print('')
 

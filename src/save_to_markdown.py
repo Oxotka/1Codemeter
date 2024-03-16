@@ -73,7 +73,7 @@ def print_subsystem(subsystems, file):
         write_line(file, '')
 
 
-def save(conf, path='result/stats_info.md'):
+def save(conf, path='result/stats.md'):
     if len(conf.structure_of_conf) == 0:
         return
 

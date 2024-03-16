@@ -18,4 +18,7 @@
 
 - Внести свои данные в [src/settings.py](src/settings.py)
 - Запустить на исполнение [src/main.py](src/codemeter.py)
-- Результат выводится в [result/stats_info.md](result/stats_info.md) и [result/stats.xlsx](result/stats.xlsx)
+- Результат выводится: 
+  - markdown [result/stats.md](result/stats.md)
+  - html [result/stats.html](result/stats.html)
+  - excel [result/stats.xlsx](result/stats.xlsx)

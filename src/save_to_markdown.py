@@ -1,4 +1,5 @@
 from tqdm import tqdm
+import markdown
 
 
 def color_text(text, color):

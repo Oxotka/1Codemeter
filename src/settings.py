@@ -54,12 +54,17 @@ def save_to_md():
     return True
 
 
+def save_to_html():
+    # Сохранять статистику в файл html
+    return True
+
+
 def save_to_xsl():
     # Сохранять статистику в файл excel
     return True
 
 
 def save_to_mongo():
-    # Сохранять статистику в файл excel
+    # Сохранять статистику в mongoDB
     return False
 

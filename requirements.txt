@@ -1,3 +1,4 @@
 tqdm>=4.66
 GitPython>=3.1.40
 openpyxl>=3.1.2
+markdown>=3.6

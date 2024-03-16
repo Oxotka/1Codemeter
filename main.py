@@ -1,4 +1,4 @@
-from src import codemeter, save_to_excel, save_to_markdown, settings
+from src import codemeter, save_to_excel, save_to_markdown, save_to_html, settings
 
 
 def get_statistics():
@@ -15,20 +15,26 @@ def get_statistics():
     print('Statistics are collected!')
     save_to_md = settings.save_to_md()
     save_to_xsl = settings.save_to_xsl()
+    save_to_web = settings.save_to_html()
     if save_to_md:
         path = 'result/stats_info.md'
         save_to_markdown.save(structure, path)
     if save_to_xsl:
         path = 'result/stats.xlsx'
         save_to_excel.save(structure, path)
+    if save_to_web:
+        path = 'result/stats_info.html'
+        save_to_html.save(structure, path)
     print('')
 
     if save_to_md and save_to_xsl:
         print('Please check result files: stats_info.md and stats.xlsx')
     elif save_to_md:
         print('Please check result file: stats_info.md')
-    elif save_to_xsl:
+    elif save_to_excel:
         print('Please check result file: stats.xlsx')
+    elif save_to_web:
+        print('Please check result file: stats.html')
     else:
         print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_xsl()')
 

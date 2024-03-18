@@ -50,6 +50,28 @@ def print_authors(authors, lines_info, file):
     write_line(file, '</ol>')
 
 
+def open_header_html(result_file, conf):
+    write_line(result_file, '<!DOCTYPE html>')
+    write_line(result_file, '<html lang="ru">')
+    write_line(result_file, '<head>')
+    write_line(result_file, '<meta charset="utf-8">')
+    write_line(result_file, '<meta name="viewport" content="width=device-width, initial-scale=1.0">')
+    write_line(result_file, conf.configuration_name, 'title')
+
+    write_line(result_file, '</head>')
+    write_line(result_file, '<body>')
+    write_line(result_file, '<header>')
+    write_line(result_file, conf.configuration_name, 'h1')
+    write_line(result_file, '</header>')
+    write_line(result_file, '<main>')
+
+
+def close_header_html(result_file):
+    write_line(result_file, '</main>')
+    write_line(result_file, '</body>')
+    write_line(result_file, '</html>')
+
+
 def print_subsystem(subsystems, file):
     if len(subsystems) > 0:
         subsystems = sorted(subsystems)
@@ -66,19 +88,7 @@ def save(conf, path='result/stats.html'):
 
     with tqdm(total=len(conf.structure_of_conf), desc='Save to html', ncols=100, colour='green') as pbar:
         with open(path, 'w', encoding='utf-8') as result_file:
-            write_line(result_file, '<!DOCTYPE html>')
-            write_line(result_file, '<html lang="ru">')
-            write_line(result_file, '<head>')
-            write_line(result_file, '<meta charset="utf-8">')
-            write_line(result_file, '<meta name="viewport" content="width=device-width, initial-scale=1.0">')
-            write_line(result_file, conf.configuration_name, 'title')
-
-            write_line(result_file, '</head>')
-            write_line(result_file, '<body>')
-            write_line(result_file, '<header>')
-            write_line(result_file, conf.configuration_name, 'h1')
-            write_line(result_file, '</header>')
-            write_line(result_file, '<main>')
+            open_header_html(result_file, conf)
             open_details('Отборы:', result_file)
             if conf.date_since is not None \
                     and conf.date_before is not None:
@@ -162,8 +172,5 @@ def save(conf, path='result/stats.html'):
                                         lines_info = forms_info.get(form).get('Module.bsl')
                                         print_authors(conf.authors, lines_info, result_file)
                                 close_details(result_file)
-
                     close_details(result_file)
-            write_line(result_file, '</main>')
-            write_line(result_file, '</body>')
-            write_line(result_file, '</html>')
+            close_header_html(result_file)

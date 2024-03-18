@@ -221,8 +221,9 @@ class StructureOfCodemeter:
                 file = file.replace(os.path.join(self.name_of_src, ''), '')
                 parts_of_name = file.split(os.path.sep)
                 if len(parts_of_name) == 1:
-                    # TODO Это какие-то странные объекты и они считаются неправильно. Статистика после этого поехала.
-                    # Стоит разобраться что пошло не так.
+                    continue
+                    # TODO Это какие-то странные объекты и они считаются неправильно, поэтому отключил их.
+                    #  Если включить, то статистика после этого едет. Возможно, это удаления или переименования
                     parts_of_name = self.single_to_plural(file).split('.')
                     type_name = parts_of_name[0]
                     object_name = parts_of_name[1]

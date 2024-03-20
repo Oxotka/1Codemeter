@@ -17,8 +17,9 @@
 - Excel для добавления отборов [GitConverter.xlsx](example/GitConverter.xlsx)
 
 ## Как работать
-
 - Внести свои данные в [src/settings.py](src/settings.py)
+  - Путь до локального репо в path_to_repo()
+  - Относительный путь до src внутри репо в name_of_src()
 - Запустить на исполнение [src/main.py](src/codemeter.py)
 - Результат выводится: 
   - markdown [result/stats.md](result/stats.md)

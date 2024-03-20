@@ -17,26 +17,26 @@ def get_statistics():
     save_to_xsl = settings.save_to_xsl()
     save_to_web = settings.save_to_html()
     if save_to_md:
-        path = 'result/stats.md'
-        save_to_markdown.save(structure, path)
+        path_to_md = 'result/stats.md'
+        save_to_markdown.save(structure, path_to_md)
     if save_to_xsl:
-        path = 'result/stats.xlsx'
-        save_to_excel.save(structure, path)
+        path_to_xls = 'result/stats.xlsx'
+        save_to_excel.save(structure, path_to_xls)
     if save_to_web:
-        path = 'result/stats.html'
-        save_to_html.save(structure, path)
+        path_to_web = 'result/stats.html'
+        save_to_html.save(structure, path_to_web)
     print('')
 
-    if save_to_md and save_to_xsl:
-        print('Please check result files: stats_info.md and stats.xlsx')
-    elif save_to_md:
-        print('Please check result file: stats_info.md')
-    elif save_to_excel:
-        print('Please check result file: stats.xlsx')
-    elif save_to_web:
-        print('Please check result file: stats.html')
+    if not(save_to_md or save_to_xsl or save_to_web):
+        print('Result file has not been saved. Please check settings.py')
     else:
-        print('Result file has not been saved. Please check settings.py - save_to_md() and save_to_xsl()')
+        print('Please check result files:')
+        if save_to_md:
+            print(path_to_md)
+        if save_to_xsl:
+            print(path_to_xls)
+        if save_to_web:
+            print(path_to_web)
 
 
 if __name__ == '__main__':

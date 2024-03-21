@@ -16,6 +16,12 @@
 - HTML для просмотра на своем месте [GitConverter.html](example/GitConverter.html)
 - Excel для добавления отборов [GitConverter.xlsx](example/GitConverter.xlsx)
 
+## Как начать
+1. Устанавливаем python - [https://www.python.org](https://www.python.org/downloads/)
+2. Клонируем этот репозиторий. В консоли пишем: https://github.com/Oxotka/1Codemeter.git
+3. Скачиваем зависимости. В консоли пишем: - python -m pip install -r requirements.txt
+
+
 ## Как работать
 - Внести свои данные в [src/settings.py](src/settings.py)
   - Путь до локального репо в path_to_repo()

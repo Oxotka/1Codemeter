@@ -37,7 +37,7 @@ class StructureOfCodemeter:
 
         # check path to configuration
         path = os.path.join(self.path_to_repo, self.name_of_src)
-        configuration = os.path.normpath('src/Configuration/Configuration.mdo')
+        configuration = os.path.normpath('Configuration/Configuration.mdo')
         path_to_configuration = os.path.join(path, configuration)
         if not os.path.isfile(path_to_configuration):
             print('Configuration file is not found by path - {path}. Please check settings.py'.format(
@@ -58,7 +58,7 @@ class StructureOfCodemeter:
                 self.configuration_name = m.group()
 
     def get_subsystems_info(self, path_to_configuration, path):
-        subsystem_path = os.path.normpath('src/Subsystems/')
+        subsystem_path = os.path.normpath('Subsystems/')
         reg_exp_pattern_subsystem = '(?<=<subsystems>Subsystem.).*?(?=</subsystems>)'
         reg_exp_pattern_content = '(?<=<content>).*?(?=</content>)'
 
@@ -125,7 +125,8 @@ class StructureOfCodemeter:
 
     def get_commits_info(self):
         repo = git.Repo(self.path_to_repo)
-        commits = list(repo.iter_commits("master"))
+        branch = settings.name_of_branch()
+        commits = list(repo.iter_commits(branch))
         print('')
         print('Statistics collection has started')
         print('Please wait. It may take a long time...')
@@ -229,9 +230,9 @@ class StructureOfCodemeter:
                     object_name = parts_of_name[1]
                     content_object = 2
                 else:
-                    type_name = parts_of_name[1]  # example: AccumulationRegisters
-                    object_name = parts_of_name[2]  # example: Взаиморасчеты
-                    content_object = 3
+                    type_name = parts_of_name[0]  # example: AccumulationRegisters
+                    object_name = parts_of_name[1]  # example: Взаиморасчеты
+                    content_object = 2
                 type_info = copy.deepcopy(structure_of_configuration.get(type_name, {}))
                 object_info = copy.deepcopy(type_info.get(object_name, {}))
                 info = object_info

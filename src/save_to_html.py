@@ -34,7 +34,7 @@ def print_authors(authors, lines_info, file):
 
     new_lines_info = {}
     for author in lines_info:
-        name = '{name} ({email})'.format(name=authors.get(author), email=author)
+        name = '{name} (<a href="mailto:{email}">{email}</a>)'.format(name=authors.get(author), email=author)
         new_lines_info[name] = lines_info.get(author)
 
     sorted_lines_info = dict(sorted(new_lines_info.items()))
@@ -56,6 +56,7 @@ def open_header_html(result_file, conf):
     write_line(result_file, '<head>')
     write_line(result_file, '<meta charset="utf-8">')
     write_line(result_file, '<meta name="viewport" content="width=device-width, initial-scale=1.0">')
+    write_line(result_file, '<link rel="stylesheet" href="../src/css/styles.css" type="text/css">')
     write_line(result_file, conf.configuration_name, 'title')
 
     write_line(result_file, '</head>')

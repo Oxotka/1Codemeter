@@ -40,3 +40,6 @@
   - html [result/stats.html](result/stats.html)
   - excel [result/stats.xlsx](result/stats.xlsx)
 
+## Настройка и запуск на видео
+
+[🎬 1Codemeter - настройки и работа](https://www.youtube.com/watch?v=8JKCiaP0nHg)

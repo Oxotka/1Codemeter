@@ -22,6 +22,13 @@
 - HTML для просмотра на своем месте [GitConverter.html](example/GitConverter.html)
 - Excel для добавления отборов [GitConverter.xlsx](example/GitConverter.xlsx)
 
+## Первоначальная настройка
+
+0. Устанавливаем python - [https://www.python.org](https://www.python.org/downloads/)
+1. Клонируем репозиторий. В консоли пишем: ```git clone https://github.com/Oxotka/1Codemeter.git```
+2. Переходим в папку 1Codemeter. В консоли пишем ```cd 1Codemeter``` 
+3. Скачиваем зависимости. В консоли пишем: ```python -m pip install -r requirements.txt```
+
 ## Как работать
 
 - Внести свои данные в [src/settings.py](src/settings.py)
@@ -33,13 +40,3 @@
   - html [result/stats.html](result/stats.html)
   - excel [result/stats.xlsx](result/stats.xlsx)
 
-## Как начать для новеньких
-
-0. Устанавливаем python - [https://www.python.org](https://www.python.org/downloads/)
-1. Клонируем репозиторий. В консоли пишем: ```git clone https://github.com/Oxotka/1Codemeter.git```
-2. Переходим в папку 1Codemeter. В консоли пишем ```cd 1Codemeter``` 
-3. Скачиваем зависимости. В консоли пишем: ```python -m pip install -r requirements.txt```
-
-## Пример настройки и выполнения
-
-TODO Подготовить видео с настройкой и запуском

@@ -43,7 +43,7 @@ python3 -m pip install -r requirements.txt
 - Внести свои данные в [src/settings.py](src/settings.py). Воспользуйтесь любым текстовым редактором
   - Путь до локального репо в ```path_to_repo()```
   - Относительный путь до src внутри репо в ```name_of_src()```
-- Запустить на исполнение [src/main.py](src/codemeter.py). В консоли пишем: 
+- Запустить на исполнение [main.py](main.py). В консоли пишем: 
 ```sh
 python3 main.py
 ```

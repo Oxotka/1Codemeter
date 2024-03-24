@@ -20,10 +20,10 @@ def name_of_branch():
 
 def date_since():
     # Дата, с которой начинаем поиск
-    # По умолчанию с начала текущего года
+    # По умолчанию с начала прошлого года
     # Можно задать любую дату с помощью datetime - datetime.datetime(2016, 1, 1)
-    current_year = datetime.datetime.now().year
-    return datetime.datetime(2016, 1, 1)
+    previous_year = datetime.datetime.now().year - 1
+    return datetime.datetime(previous_year, 1, 1)
 
 
 def date_before():
@@ -47,9 +47,9 @@ def exclude_subsystems():
     # Исключаемые подсистемы
     # Эти подсистемы не попадут в статистику. Подсистемы могут быть иерархические. В этом случае они указываются так:
     # "Финансы.Банк".
-    # Чтобы сделать отбор по верхней подсистеме, то можно указать только "Финансы",
+    # Чтобы сделать отбор по верхней подсистеме, то можно указать только "Финансы.",
     # чтобы указать отбор по подчиненной подсистеме лучше указывать полный путь "Финансы.Банк"
-    subsystems = ["Финансы.Банк"]
+    subsystems = []
     return subsystems
 
 
@@ -70,5 +70,6 @@ def save_to_xsl():
 
 def save_to_mongo():
     # Сохранять статистику в mongoDB
+    # TODO - WIP - https://github.com/Oxotka/1Codemeter/issues/1
     return False
 

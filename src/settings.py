@@ -5,13 +5,13 @@ def path_to_repo():
     # Путь до локального репозитория
     # Например '/Users/user/dt-demo-configuration/'
     # или 'C:/Repo/GitConverter'
-    return '/Users/nikitaaripov/Documents/GitConverter/'
+    return ''
 
 
 def name_of_src():
     # Путь до src
-    # Например 'DemoConfDT/' или 'GitConverter/'
-    return "GitConverter/src/"
+    # Например 'DemoConfDT/src' или 'GitConverter/src'
+    return "name/src/"
 
 
 def name_of_branch():

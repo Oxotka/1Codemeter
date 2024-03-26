@@ -54,4 +54,4 @@ python3 main.py
 
 ## Дополнительные материалы
 - [🎬 1Codemeter - настройки и работа](https://www.youtube.com/watch?v=8JKCiaP0nHg)
-- [1Codemeter - cбор метрик по изменениям в коде](https://infostart.ru/1c/tools/2071624/)
+- [📝 1Codemeter - cбор метрик по изменениям в коде](https://infostart.ru/1c/tools/2071624/)

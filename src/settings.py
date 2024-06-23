@@ -71,5 +71,5 @@ def save_to_xsl():
 def save_to_mongo():
     # Сохранять статистику в mongoDB
     # TODO - WIP - https://github.com/Oxotka/1Codemeter/issues/1
-    return False
+    return True
 

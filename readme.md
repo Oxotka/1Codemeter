@@ -1,3 +1,5 @@
+[![Static Badge](https://img.shields.io/badge/my%20telegram-channel-blue)](https://t.me/AriN1C) [![Static Badge](https://img.shields.io/badge/infostart-profile-blue)](http://infostart.ru/profile/237528/)
+
 # Сбор статистики по количеству строк кода в 1С конфигурации
 
 ![social](img/social.png)

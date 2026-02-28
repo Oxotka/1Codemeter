@@ -7,6 +7,8 @@ from pymongo import UpdateOne
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
+from src import settings
+
 
 class MongoStorage:
     def __init__(
@@ -110,3 +112,105 @@ class MongoStorage:
             {"$set": doc},
             upsert=True,
         )
+
+
+class MongoRepository:
+    """Legacy-compatible repository used by scan_repository.py and old docs."""
+
+    def __init__(self, connection_string: Optional[str] = None, database_name: Optional[str] = None):
+        if connection_string is None:
+            connection_string = settings.mongo_connection_string()
+        if database_name is None:
+            database_name = settings.mongo_database_name()
+
+        self.client = MongoClient(connection_string, server_api=ServerApi("1"))
+        self.db = self.client[database_name]
+        self.commits_collection = self.db["commits"]
+        self.authors_collection = self.db["authors"]
+        self.metadata_collection = self.db["metadata"]
+        self._create_indexes()
+
+    def _create_indexes(self):
+        self.commits_collection.create_index([("sha", 1), ("file", 1)], unique=True)
+        self.commits_collection.create_index("sha")
+        self.commits_collection.create_index("date")
+        self.commits_collection.create_index("email")
+        self.commits_collection.create_index([("type", 1), ("object", 1)])
+        self.metadata_collection.create_index("key", unique=True)
+
+    def save_commit(self, commit_data: Dict[str, Any]) -> bool:
+        sha = commit_data.get("sha")
+        file_path = commit_data.get("file")
+        if sha is None or file_path is None:
+            return False
+
+        doc = dict(commit_data)
+        if "date" in doc and hasattr(doc["date"], "year") and not isinstance(doc["date"], datetime.datetime):
+            doc["date"] = datetime.datetime.combine(doc["date"], datetime.datetime.min.time())
+
+        doc["created_at"] = datetime.datetime.utcnow()
+
+        result = self.commits_collection.update_one(
+            {"sha": sha, "file": file_path},
+            {"$setOnInsert": doc},
+            upsert=True,
+        )
+        return result.upserted_id is not None
+
+    def save_author(self, email: str, name: str):
+        self.authors_collection.update_one(
+            {"email": email},
+            {"$set": {"email": email, "name": name, "updated_at": datetime.datetime.utcnow()}},
+            upsert=True,
+        )
+
+    def get_last_processed_commit_sha(self) -> Optional[str]:
+        metadata = self.metadata_collection.find_one({"key": "last_processed_commit_sha"})
+        if metadata:
+            return metadata.get("value")
+        return None
+
+    def set_last_processed_commit_sha(self, sha: str):
+        self.metadata_collection.update_one(
+            {"key": "last_processed_commit_sha"},
+            {
+                "$set": {
+                    "key": "last_processed_commit_sha",
+                    "value": sha,
+                    "updated_at": datetime.datetime.utcnow(),
+                }
+            },
+            upsert=True,
+        )
+
+    def commit_exists(self, sha: str) -> bool:
+        return self.commits_collection.find_one({"sha": sha}) is not None
+
+    def commit_file_exists(self, sha: str, file_path: str) -> bool:
+        return self.commits_collection.find_one({"sha": sha, "file": file_path}) is not None
+
+    def get_commits_count(self) -> int:
+        return self.commits_collection.count_documents({})
+
+    def get_authors_count(self) -> int:
+        return self.authors_collection.count_documents({})
+
+    def close(self):
+        self.client.close()
+
+
+_repo: Optional[MongoRepository] = None
+
+
+def get_repository() -> MongoRepository:
+    global _repo
+    if _repo is None:
+        _repo = MongoRepository()
+    return _repo
+
+
+def save(record: Dict[str, Any]):
+    repo = get_repository()
+    repo.save_commit(record)
+    if "email" in record and "name" in record:
+        repo.save_author(record["email"], record["name"])

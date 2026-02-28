@@ -373,21 +373,26 @@ class StructureOfCodemeter:
 
         repo = git.Repo(self.path_to_repo)
         branch = settings.name_of_branch()
-        commits_newest = list(repo.iter_commits(branch))
-        if len(commits_newest) == 0:
+
+        repo_key = self._build_repo_key(branch)
+        last_processed_sha = storage.get_last_processed_sha(repo_key)
+        commits_to_process_newest = []
+        last_processed_commit = None
+
+        for commit in repo.iter_commits(branch):
+            if last_processed_sha is not None and commit.hexsha == last_processed_sha:
+                last_processed_commit = commit
+                break
+            commits_to_process_newest.append(commit)
+
+        if len(commits_to_process_newest) == 0 and last_processed_commit is None:
             print('MongoDB synchronization skipped: no commits found.')
             return
 
-        repo_key = self._build_repo_key(branch)
-        commit_shas = [commit.hexsha for commit in commits_newest]
-        last_processed_sha = storage.get_last_processed_sha(repo_key)
-
-        if last_processed_sha in commit_shas:
-            last_processed_index = commit_shas.index(last_processed_sha)
-            commits_to_process = list(reversed(commits_newest[:last_processed_index]))
-            current_subsystem_map = self._get_subsystem_mapping_for_commit(commits_newest[last_processed_index])
+        commits_to_process = list(reversed(commits_to_process_newest))
+        if last_processed_commit is not None:
+            current_subsystem_map = self._get_subsystem_mapping_for_commit(last_processed_commit)
         else:
-            commits_to_process = list(reversed(commits_newest))
             current_subsystem_map = {}
 
         if len(commits_to_process) == 0:
@@ -399,6 +404,7 @@ class StructureOfCodemeter:
         print('Commits to process: {count}'.format(count=len(commits_to_process)))
 
         with tqdm(total=len(commits_to_process), desc='Sync mongo', ncols=100, colour='blue') as pbar:
+            src_prefix = self._src_posix() + '/'
             for commit in commits_to_process:
                 pbar.update(1)
                 stats_files = commit.stats.files
@@ -436,7 +442,7 @@ class StructureOfCodemeter:
                     file_path = expanded_paths[-1]
                     if not file_path.endswith('.bsl'):
                         continue
-                    if not file_path.startswith(self._src_posix() + '/'):
+                    if not file_path.startswith(src_prefix):
                         continue
 
                     type_name, object_name = self._parse_type_and_object(file_path)
@@ -509,10 +515,11 @@ class StructureOfCodemeter:
                 for file in commit.stats.files:
                     if os.path.normpath(file).startswith(os.path.join(self.name_of_src, '')) \
                             and file.endswith('bsl'):
+                        file_stats = commit.stats.files.get(file, {})
                         stat = {'date': commit.committed_datetime.date(),
-                                'file': norm_file,
-                                'insert': insertions,
-                                'delete': deletions,
+                                'file': file,
+                                'insert': file_stats.get('insertions', 0),
+                                'delete': file_stats.get('deletions', 0),
                                 'email': commit.author.email}
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name

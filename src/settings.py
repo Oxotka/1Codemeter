@@ -95,3 +95,13 @@ def save_to_mongo():
     # Сохранять статистику в mongoDB
     # Включается автоматически, если указан mongo_uri.
     return mongo_uri() != ''
+
+
+def mongo_connection_string():
+    # Backward compatible alias
+    return mongo_uri()
+
+
+def mongo_database_name():
+    # Backward compatible alias
+    return mongo_db_name()

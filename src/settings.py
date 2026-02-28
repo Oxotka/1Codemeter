@@ -70,6 +70,19 @@ def save_to_xsl():
 
 def save_to_mongo():
     # Сохранять статистику в mongoDB
-    # TODO - WIP - https://github.com/Oxotka/1Codemeter/issues/1
     return False
+
+
+def mongo_connection_string():
+    # Строка подключения к MongoDB
+    # По умолчанию локальный MongoDB
+    # Примеры:
+    # 'mongodb://localhost:27017/' - локальный MongoDB
+    # 'mongodb://user:password@localhost:27017/' - с аутентификацией
+    return 'mongodb://localhost:27017/'
+
+
+def mongo_database_name():
+    # Имя базы данных MongoDB
+    return 'codemeter'
 

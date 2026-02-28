@@ -209,31 +209,49 @@ class StructureOfCodemeter:
                     break
                 for file in commit.stats.files:
                     # Находим только в выбранной конфигурации и .bsl файлах
-                    if os.path.normpath(file).startswith(os.path.join(self.name_of_src, '')) \
-                            and file.endswith('bsl'):
+                    norm_file = os.path.normpath(file)
+                    if norm_file.startswith(os.path.join(self.name_of_src, '')) and norm_file.endswith('.bsl'):
+                        file_stats = commit.stats.files.get(file, {})
+                        insertions = file_stats.get('insertions', 0)
+                        deletions = file_stats.get('deletions', 0)
+
                         stat = {'date': commit.committed_datetime.date(),
-                                'file': file,
-                                'insert': commit.stats.files.get(file).get('insertions'),
-                                'delete': commit.stats.files.get(file).get('deletions'),
+                                'file': norm_file,
+                                'insert': insertions,
+                                'delete': deletions,
                                 'email': commit.author.email}
                         self.commits.append(stat)
                         self.authors[commit.author.email] = commit.author.name
                         
-                        # TODO добавить сохранение в MongoDB - добавить sha коммита, тип, объект и подсистему
                         if save_to_mongodb:
-                            record_for_mongo = \
-                              {'date': commit.committed_datetime.date(),
-                               'file': file,
-                               'insert': commit.stats.files.get(file).get('insertions'),
-                               'delete': commit.stats.files.get(file).get('deletions'),
-                               'email': commit.author.email,
-                               'name': commit.author.name,
-                               # 'sha': commit.sha,
-                               # 'type':
-                               # 'object': ''
-                               # 'content': ''
-                               # 'subsystems': [],
-                               }
+                            relative_path = norm_file.replace(os.path.join(self.name_of_src, ''), '', 1)
+                            parts = relative_path.split(os.path.sep)
+
+                            type_name = parts[0] if len(parts) >= 2 else None
+                            object_name = parts[1] if len(parts) >= 2 else None
+                            content_path = os.path.sep.join(parts[2:]) if len(parts) > 2 else None
+
+                            subsystems = []
+                            if type_name and object_name:
+                                subsystem_type = self.subsystem_by_object.get(type_name, {})
+                                subsystems = subsystem_type.get(object_name, [])
+
+                            record_for_mongo = {
+                                'sha': commit.hexsha,
+                                'date': commit.committed_datetime,
+                                'file': norm_file,
+                                'type': type_name,
+                                'object': object_name,
+                                'content': content_path,
+                                'subsystems': subsystems,
+                                'insert': insertions,
+                                'delete': deletions,
+                                'email': commit.author.email,
+                                'name': commit.author.name,
+                                'message': commit.message[:500] if commit.message else '',
+                                'committed_date': commit.committed_datetime,
+                                'authored_date': commit.authored_datetime,
+                            }
                             save_to_mongo.save(record_for_mongo)
 
     def summarize_info_to_contents(self):

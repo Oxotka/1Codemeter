@@ -1,4 +1,5 @@
 import datetime
+import os
 
 
 def path_to_repo():
@@ -68,21 +69,29 @@ def save_to_xsl():
     return True
 
 
+def mongo_uri():
+    # Строка подключения MongoDB. Рекомендуется задавать через переменную окружения CODEMETER_MONGO_URI
+    # Можно вернуть строку напрямую, но лучше не хранить секреты в коде.
+    return os.getenv('CODEMETER_MONGO_URI', '')
+
+
+def mongo_db_name():
+    return os.getenv('CODEMETER_MONGO_DB', 'codemeter')
+
+
+def mongo_changes_collection():
+    return os.getenv('CODEMETER_MONGO_CHANGES_COLLECTION', 'changes')
+
+
+def mongo_subsystem_history_collection():
+    return os.getenv('CODEMETER_MONGO_SUBSYSTEM_COLLECTION', 'subsystem_history')
+
+
+def mongo_sync_collection():
+    return os.getenv('CODEMETER_MONGO_SYNC_COLLECTION', 'sync_state')
+
+
 def save_to_mongo():
     # Сохранять статистику в mongoDB
-    return False
-
-
-def mongo_connection_string():
-    # Строка подключения к MongoDB
-    # По умолчанию локальный MongoDB
-    # Примеры:
-    # 'mongodb://localhost:27017/' - локальный MongoDB
-    # 'mongodb://user:password@localhost:27017/' - с аутентификацией
-    return 'mongodb://localhost:27017/'
-
-
-def mongo_database_name():
-    # Имя базы данных MongoDB
-    return 'codemeter'
-
+    # Включается автоматически, если указан mongo_uri.
+    return mongo_uri() != ''
